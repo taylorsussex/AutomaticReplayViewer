@@ -1,0 +1,6 @@
+v1.1
+- Made it so that the program presses LK instead of LP
+- Make the program actually press the buttons specified in the XML file instead of pressing A/right arrow key regardless (whoops :P)
+
+v1.0
+- First build released

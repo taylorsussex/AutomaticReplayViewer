@@ -1,0 +1,10 @@
+C:\Users\TaylorSussex\Documents\GitHub\AutomaticReplayViewer\Source\bin\Debug\AutomaticReplayViewer.exe.config
+C:\Users\TaylorSussex\Documents\GitHub\AutomaticReplayViewer\Source\obj\Debug\AutomaticReplayViewer.csprojResolveAssemblyReference.cache
+C:\Users\TaylorSussex\Documents\GitHub\AutomaticReplayViewer\Source\obj\Debug\AutomaticReplayViewer.MainForm.resources
+C:\Users\TaylorSussex\Documents\GitHub\AutomaticReplayViewer\Source\obj\Debug\AutomaticReplayViewer.Properties.Resources.resources
+C:\Users\TaylorSussex\Documents\GitHub\AutomaticReplayViewer\Source\obj\Debug\AutomaticReplayViewer.csproj.GenerateResource.Cache
+C:\Users\TaylorSussex\Documents\GitHub\AutomaticReplayViewer\Source\bin\Debug\AutomaticReplayViewer.exe
+C:\Users\TaylorSussex\Documents\GitHub\AutomaticReplayViewer\Source\bin\Debug\AutomaticReplayViewer.pdb
+C:\Users\TaylorSussex\Documents\GitHub\AutomaticReplayViewer\Source\bin\Debug\InputManager.dll
+C:\Users\TaylorSussex\Documents\GitHub\AutomaticReplayViewer\Source\obj\Debug\AutomaticReplayViewer.exe
+C:\Users\TaylorSussex\Documents\GitHub\AutomaticReplayViewer\Source\obj\Debug\AutomaticReplayViewer.pdb
