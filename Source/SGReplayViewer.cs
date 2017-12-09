@@ -9,12 +9,17 @@ class SGReplayViewer : ReplayViewer
     {
     }
 
-    public void StartLoop(int ReplaysToPlay, Keys inputLK, Keys inputRight, Keys RecordStart, Keys RecordStop)
+    public void StartLoop(int ReplaysToPlay, Keys inputLP, Keys inputLK, Keys inputMP, Keys inputRight, Keys RecordStart, Keys RecordStop, bool Hitboxes, bool Inputs, bool AttackData)
     {
         NoErrors = true;
         getProcess();
+        LP = inputLP;
         LK = inputLK;
+        MP = inputMP;
         Right = inputRight;
+        DisplayHitboxes = Hitboxes;
+        DisplayInputs = Inputs;
+        DisplayAttackData = AttackData;
         
         if (NoErrors)
         {
@@ -30,12 +35,7 @@ class SGReplayViewer : ReplayViewer
 
     protected override void MenuStateActive(ref bool menu)
     {
-        if (readMemory(pointer) == 0x3F666666)
-        {
-            menu = true;
-            return;
-        }
-        menu = false;
+        menu = (readMemory(pointer) == 0x3F666666);
     }
 
     protected override void NavigateDefault()
@@ -60,8 +60,36 @@ class SGReplayViewer : ReplayViewer
         NoErrors = false;
     }
 
+    protected override void InMatchInputs()
+    {
+        Thread.Sleep(100);
+        if (DisplayHitboxes)
+        {
+            Keyboard.KeyDown(LP);
+            Thread.Sleep(100);
+            Keyboard.KeyUp(LP);
+        }
+        if (DisplayInputs)
+        {
+            Keyboard.KeyDown(LK);
+            Thread.Sleep(100);
+            Keyboard.KeyUp(LK);
+        }
+        if (DisplayAttackData)
+        {
+            Keyboard.KeyDown(MP);
+            Thread.Sleep(100);
+            Keyboard.KeyUp(MP);
+        }
+    }
+
+    private Keys LP = Keys.A;
     private Keys LK = Keys.Z;
+    private Keys MP = Keys.S;
     private Keys Right = Keys.Right;
     private int pointer;
     private bool NoErrors;
+    private bool DisplayHitboxes;
+    private bool DisplayInputs;
+    private bool DisplayAttackData;
 }

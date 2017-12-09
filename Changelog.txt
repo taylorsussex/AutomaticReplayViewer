@@ -1,3 +1,8 @@
+v1.2
+- New feature: Display Hitboxes/Inputs/Attack Data during playback
+- Expose all your favourite players as mashers completely automatically!
+- With this update, the config file has been changed to include keybinds for LP and MP as well as LK and Right. Please update the config file to reflect this in order to use this new feature.
+
 v1.1
 - Made it so that the program presses LK instead of LP
 - Make the program actually press the buttons specified in the XML file instead of pressing A/right arrow key regardless (whoops :P)

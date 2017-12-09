@@ -39,6 +39,9 @@ namespace AutomaticReplayViewer
             this.InputStopHotkey = new System.Windows.Forms.TextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
+            this.DisplayHitboxes = new System.Windows.Forms.CheckBox();
+            this.DisplayInputs = new System.Windows.Forms.CheckBox();
+            this.DisplayAttackData = new System.Windows.Forms.CheckBox();
             this.SuspendLayout();
             // 
             // StartButton
@@ -120,11 +123,44 @@ namespace AutomaticReplayViewer
             this.label3.TabIndex = 4;
             this.label3.Text = "Stop recording hotkey";
             // 
+            // DisplayHitboxes
+            // 
+            this.DisplayHitboxes.AutoSize = true;
+            this.DisplayHitboxes.Location = new System.Drawing.Point(11, 188);
+            this.DisplayHitboxes.Name = "DisplayHitboxes";
+            this.DisplayHitboxes.Size = new System.Drawing.Size(104, 17);
+            this.DisplayHitboxes.TabIndex = 6;
+            this.DisplayHitboxes.Text = "Display Hitboxes";
+            this.DisplayHitboxes.UseVisualStyleBackColor = true;
+            // 
+            // DisplayInputs
+            // 
+            this.DisplayInputs.AutoSize = true;
+            this.DisplayInputs.Location = new System.Drawing.Point(121, 188);
+            this.DisplayInputs.Name = "DisplayInputs";
+            this.DisplayInputs.Size = new System.Drawing.Size(92, 17);
+            this.DisplayInputs.TabIndex = 7;
+            this.DisplayInputs.Text = "Display Inputs";
+            this.DisplayInputs.UseVisualStyleBackColor = true;
+            // 
+            // DisplayAttackData
+            // 
+            this.DisplayAttackData.AutoSize = true;
+            this.DisplayAttackData.Location = new System.Drawing.Point(219, 188);
+            this.DisplayAttackData.Name = "DisplayAttackData";
+            this.DisplayAttackData.Size = new System.Drawing.Size(120, 17);
+            this.DisplayAttackData.TabIndex = 8;
+            this.DisplayAttackData.Text = "Display Attack Data";
+            this.DisplayAttackData.UseVisualStyleBackColor = true;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(318, 182);
+            this.ClientSize = new System.Drawing.Size(340, 213);
+            this.Controls.Add(this.DisplayAttackData);
+            this.Controls.Add(this.DisplayInputs);
+            this.Controls.Add(this.DisplayHitboxes);
             this.Controls.Add(this.InputStopHotkey);
             this.Controls.Add(this.InputRecordHotkey);
             this.Controls.Add(this.label3);
@@ -184,6 +220,9 @@ namespace AutomaticReplayViewer
         private System.Windows.Forms.Label label3;
         public Keys RecordHotkey;
         public Keys StopHotkey;
+        private CheckBox DisplayHitboxes;
+        private CheckBox DisplayInputs;
+        private CheckBox DisplayAttackData;
     }
 }
 

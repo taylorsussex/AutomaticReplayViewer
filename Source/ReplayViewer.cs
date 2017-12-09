@@ -65,7 +65,10 @@ abstract class ReplayViewer : MemoryReader
                     IsLoading = true;
                 }
                 else if (IsLoading && !menu)
+                {
                     IsLoading = false;
+                    InMatchInputs();
+                }
             }
         }
         catch (IndexOutOfRangeException)
@@ -94,6 +97,10 @@ abstract class ReplayViewer : MemoryReader
 
     protected abstract void NavigateDefault();
     protected abstract void MenuStateActive(ref bool menu);
+
+    protected virtual void InMatchInputs()
+    {
+    }
 
     [DllImport("user32.dll")]
     [return: MarshalAs(UnmanagedType.Bool)]

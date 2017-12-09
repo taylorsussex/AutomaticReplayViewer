@@ -1,4 +1,4 @@
-AutomaticReplayViewer v1.1 for Skullgirls
+AutomaticReplayViewer v1.2 for Skullgirls
 
 Created by Mao (@NZMao)
 InputManager.dll by shynet (https://www.codeproject.com/Articles/117657/InputManager-library-Track-user-input-and-simulate)
@@ -23,9 +23,19 @@ Inputs:
 	- An optional hotkey for the purpose of stopping a recording of the set
 	- Set this to whatever stop recording hotkey you use with your software
 	- If either of these hotkeys are left blank or do not parse this functionality is disabled
+- Display Hitboxes
+	- This will display in-game hitboxes during playback
+- Display Inputs
+	- This will display both players inputs during playback
+- Display Attack Data
+	- This will display attack data during playback
 
-By default the program assumes that LK in SG is bound to the Z button, and that right is bound to the Right button.
+By default the program assumes that in SG:
+	- LP is bound to the A button
+	- LK is bound to the Z button
+	- MP is bound to the S button
+	- Right is bound to the right button
 This can be changed by editing the config file included with the program.
-The default text in all the forms can be changed in the config file as well.
+The default settings for all the forms can be changed in the config file as well.
 
 If at any point during the viewing process SG is not open the viewing process will stop.
