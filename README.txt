@@ -1,12 +1,15 @@
-AutomaticReplayViewer v1.2 for Skullgirls
+AutomaticReplayViewer v1.3
 
 Created by Mao (@NZMao)
 InputManager.dll by shynet (https://www.codeproject.com/Articles/117657/InputManager-library-Track-user-input-and-simulate)
 
 This program allows for sets of consecutive replays to be played back automatically.
 It also has functionality for pressing hotkeys for starting and stopping recording software such as OBS.
+The games supported in the current version are:
+- Skullgirls
+- Rivals of Aether
 
-Before starting the viewing process, navigate to the first replay to be played in SG.
+Before starting the viewing process, navigate to the first replay to be played.
 
 Inputs:
 - Start!
@@ -23,19 +26,21 @@ Inputs:
 	- An optional hotkey for the purpose of stopping a recording of the set
 	- Set this to whatever stop recording hotkey you use with your software
 	- If either of these hotkeys are left blank or do not parse this functionality is disabled
-- Display Hitboxes
+- Display Hitboxes (SG only)
 	- This will display in-game hitboxes during playback
-- Display Inputs
+- Display Inputs (SG only)
 	- This will display both players inputs during playback
-- Display Attack Data
+- Display Attack Data (SG only)
 	- This will display attack data during playback
+- Select Game
+	- Sets the game for which replays are to be played
+- More Settings...
+	- Opens a menu where the default settings as well as the keybindings can be changed
 
-By default the program assumes that in SG:
-	- LP is bound to the A button
-	- LK is bound to the Z button
-	- MP is bound to the S button
-	- Right is bound to the right button
-This can be changed by editing the config file included with the program.
-The default settings for all the forms can be changed in the config file as well.
+Textboxes that contain keybindings maybe cleared by right-clicking on them
 
-If at any point during the viewing process SG is not open the viewing process will stop.
+In order for the program to function correctly, the keybindings in the settings menu must match the keybindings in game.
+The settings menu can be found in Select Game > More Settings...
+The default settings for all the forms can be changed in the settings menu as well.
+
+If at any point during the viewing process the current game is not open the viewing process will stop.

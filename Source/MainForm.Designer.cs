@@ -35,18 +35,29 @@ namespace AutomaticReplayViewer
             this.numReplays = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.viewerText = new System.Windows.Forms.Label();
-            this.InputRecordHotkey = new System.Windows.Forms.TextBox();
-            this.InputStopHotkey = new System.Windows.Forms.TextBox();
+            this.InputRecordHotkey = new TapToSetTextBox();
+            this.InputStopHotkey = new TapToSetTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
-            this.DisplayHitboxes = new System.Windows.Forms.CheckBox();
-            this.DisplayInputs = new System.Windows.Forms.CheckBox();
+            this.menuStrip = new System.Windows.Forms.MenuStrip();
+            this.selectGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.skullgirlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.rivalsOfAetherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.moreOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.readmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.aboutToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.SGSettings = new System.Windows.Forms.Panel();
             this.DisplayAttackData = new System.Windows.Forms.CheckBox();
+            this.DisplayInputs = new System.Windows.Forms.CheckBox();
+            this.DisplayHitboxes = new System.Windows.Forms.CheckBox();
+            this.menuStrip.SuspendLayout();
+            this.SGSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // StartButton
             // 
-            this.StartButton.Location = new System.Drawing.Point(12, 12);
+            this.StartButton.Location = new System.Drawing.Point(12, 33);
             this.StartButton.Name = "StartButton";
             this.StartButton.Size = new System.Drawing.Size(169, 41);
             this.StartButton.TabIndex = 0;
@@ -57,7 +68,7 @@ namespace AutomaticReplayViewer
             // StopButton
             // 
             this.StopButton.Enabled = false;
-            this.StopButton.Location = new System.Drawing.Point(12, 59);
+            this.StopButton.Location = new System.Drawing.Point(12, 80);
             this.StopButton.Name = "StopButton";
             this.StopButton.Size = new System.Drawing.Size(169, 41);
             this.StopButton.TabIndex = 1;
@@ -67,7 +78,7 @@ namespace AutomaticReplayViewer
             // 
             // numReplays
             // 
-            this.numReplays.Location = new System.Drawing.Point(187, 33);
+            this.numReplays.Location = new System.Drawing.Point(187, 54);
             this.numReplays.Name = "numReplays";
             this.numReplays.Size = new System.Drawing.Size(100, 20);
             this.numReplays.TabIndex = 2;
@@ -76,7 +87,7 @@ namespace AutomaticReplayViewer
             // label1
             // 
             this.label1.AutoSize = true;
-            this.label1.Location = new System.Drawing.Point(187, 9);
+            this.label1.Location = new System.Drawing.Point(187, 30);
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(92, 13);
             this.label1.TabIndex = 3;
@@ -85,7 +96,7 @@ namespace AutomaticReplayViewer
             // viewerText
             // 
             this.viewerText.AutoSize = true;
-            this.viewerText.Location = new System.Drawing.Point(187, 73);
+            this.viewerText.Location = new System.Drawing.Point(187, 94);
             this.viewerText.Name = "viewerText";
             this.viewerText.Size = new System.Drawing.Size(53, 13);
             this.viewerText.TabIndex = 4;
@@ -93,22 +104,22 @@ namespace AutomaticReplayViewer
             // 
             // InputRecordHotkey
             // 
-            this.InputRecordHotkey.Location = new System.Drawing.Point(12, 150);
+            this.InputRecordHotkey.Location = new System.Drawing.Point(12, 171);
             this.InputRecordHotkey.Name = "InputRecordHotkey";
             this.InputRecordHotkey.Size = new System.Drawing.Size(100, 20);
-            this.InputRecordHotkey.TabIndex = 5;
+            this.InputRecordHotkey.TabIndex = 3;
             // 
             // InputStopHotkey
             // 
-            this.InputStopHotkey.Location = new System.Drawing.Point(140, 150);
+            this.InputStopHotkey.Location = new System.Drawing.Point(140, 171);
             this.InputStopHotkey.Name = "InputStopHotkey";
             this.InputStopHotkey.Size = new System.Drawing.Size(100, 20);
-            this.InputStopHotkey.TabIndex = 5;
+            this.InputStopHotkey.TabIndex = 4;
             // 
             // label2
             // 
             this.label2.AutoSize = true;
-            this.label2.Location = new System.Drawing.Point(12, 119);
+            this.label2.Location = new System.Drawing.Point(12, 140);
             this.label2.Name = "label2";
             this.label2.Size = new System.Drawing.Size(111, 13);
             this.label2.TabIndex = 4;
@@ -117,50 +128,125 @@ namespace AutomaticReplayViewer
             // label3
             // 
             this.label3.AutoSize = true;
-            this.label3.Location = new System.Drawing.Point(137, 119);
+            this.label3.Location = new System.Drawing.Point(137, 140);
             this.label3.Name = "label3";
             this.label3.Size = new System.Drawing.Size(111, 13);
             this.label3.TabIndex = 4;
             this.label3.Text = "Stop recording hotkey";
             // 
-            // DisplayHitboxes
+            // menuStrip
             // 
-            this.DisplayHitboxes.AutoSize = true;
-            this.DisplayHitboxes.Location = new System.Drawing.Point(11, 188);
-            this.DisplayHitboxes.Name = "DisplayHitboxes";
-            this.DisplayHitboxes.Size = new System.Drawing.Size(104, 17);
-            this.DisplayHitboxes.TabIndex = 6;
-            this.DisplayHitboxes.Text = "Display Hitboxes";
-            this.DisplayHitboxes.UseVisualStyleBackColor = true;
+            this.menuStrip.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.selectGameToolStripMenuItem,
+            this.helpToolStripMenuItem});
+            this.menuStrip.Location = new System.Drawing.Point(0, 0);
+            this.menuStrip.Name = "menuStrip";
+            this.menuStrip.Size = new System.Drawing.Size(340, 24);
+            this.menuStrip.TabIndex = 9;
+            this.menuStrip.Text = "menuStrip";
             // 
-            // DisplayInputs
+            // selectGameToolStripMenuItem
             // 
-            this.DisplayInputs.AutoSize = true;
-            this.DisplayInputs.Location = new System.Drawing.Point(121, 188);
-            this.DisplayInputs.Name = "DisplayInputs";
-            this.DisplayInputs.Size = new System.Drawing.Size(92, 17);
-            this.DisplayInputs.TabIndex = 7;
-            this.DisplayInputs.Text = "Display Inputs";
-            this.DisplayInputs.UseVisualStyleBackColor = true;
+            this.selectGameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.skullgirlsToolStripMenuItem,
+            this.rivalsOfAetherToolStripMenuItem,
+            this.moreOptionsToolStripMenuItem});
+            this.selectGameToolStripMenuItem.Name = "selectGameToolStripMenuItem";
+            this.selectGameToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
+            this.selectGameToolStripMenuItem.Text = "Select Game";
+            // 
+            // skullgirlsToolStripMenuItem
+            // 
+            this.skullgirlsToolStripMenuItem.CheckOnClick = true;
+            this.skullgirlsToolStripMenuItem.Name = "skullgirlsToolStripMenuItem";
+            this.skullgirlsToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.skullgirlsToolStripMenuItem.Text = "Skullgirls";
+            this.skullgirlsToolStripMenuItem.Click += new System.EventHandler(this.skullgirlsToolStripMenuItem_Click);
+            // 
+            // rivalsOfAetherToolStripMenuItem
+            // 
+            this.rivalsOfAetherToolStripMenuItem.CheckOnClick = true;
+            this.rivalsOfAetherToolStripMenuItem.Name = "rivalsOfAetherToolStripMenuItem";
+            this.rivalsOfAetherToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.rivalsOfAetherToolStripMenuItem.Text = "Rivals of Aether";
+            this.rivalsOfAetherToolStripMenuItem.Click += new System.EventHandler(this.rivalsOfAetherToolStripMenuItem_Click);
+            // 
+            // moreOptionsToolStripMenuItem
+            // 
+            this.moreOptionsToolStripMenuItem.Name = "moreOptionsToolStripMenuItem";
+            this.moreOptionsToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.moreOptionsToolStripMenuItem.Text = "More Options...";
+            this.moreOptionsToolStripMenuItem.Click += new System.EventHandler(this.moreOptionsToolStripMenuItem_Click);
+            // 
+            // helpToolStripMenuItem
+            // 
+            this.helpToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.readmeToolStripMenuItem,
+            this.aboutToolStripMenuItem});
+            this.helpToolStripMenuItem.Name = "helpToolStripMenuItem";
+            this.helpToolStripMenuItem.Size = new System.Drawing.Size(44, 20);
+            this.helpToolStripMenuItem.Text = "Help";
+            // 
+            // readmeToolStripMenuItem
+            // 
+            this.readmeToolStripMenuItem.Name = "readmeToolStripMenuItem";
+            this.readmeToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.readmeToolStripMenuItem.Text = "Readme";
+            this.readmeToolStripMenuItem.Click += new System.EventHandler(this.readmeToolStripMenuItem_Click);
+            // 
+            // aboutToolStripMenuItem
+            // 
+            this.aboutToolStripMenuItem.Name = "aboutToolStripMenuItem";
+            this.aboutToolStripMenuItem.Size = new System.Drawing.Size(117, 22);
+            this.aboutToolStripMenuItem.Text = "About";
+            this.aboutToolStripMenuItem.Click += new System.EventHandler(this.aboutToolStripMenuItem_Click);
+            // 
+            // SGSettings
+            // 
+            this.SGSettings.Controls.Add(this.DisplayAttackData);
+            this.SGSettings.Controls.Add(this.DisplayInputs);
+            this.SGSettings.Controls.Add(this.DisplayHitboxes);
+            this.SGSettings.Location = new System.Drawing.Point(0, 202);
+            this.SGSettings.Name = "SGSettings";
+            this.SGSettings.Size = new System.Drawing.Size(340, 18);
+            this.SGSettings.TabIndex = 10;
             // 
             // DisplayAttackData
             // 
             this.DisplayAttackData.AutoSize = true;
-            this.DisplayAttackData.Location = new System.Drawing.Point(219, 188);
+            this.DisplayAttackData.Location = new System.Drawing.Point(217, 1);
             this.DisplayAttackData.Name = "DisplayAttackData";
             this.DisplayAttackData.Size = new System.Drawing.Size(120, 17);
-            this.DisplayAttackData.TabIndex = 8;
+            this.DisplayAttackData.TabIndex = 11;
             this.DisplayAttackData.Text = "Display Attack Data";
             this.DisplayAttackData.UseVisualStyleBackColor = true;
+            // 
+            // DisplayInputs
+            // 
+            this.DisplayInputs.AutoSize = true;
+            this.DisplayInputs.Location = new System.Drawing.Point(119, 1);
+            this.DisplayInputs.Name = "DisplayInputs";
+            this.DisplayInputs.Size = new System.Drawing.Size(92, 17);
+            this.DisplayInputs.TabIndex = 10;
+            this.DisplayInputs.Text = "Display Inputs";
+            this.DisplayInputs.UseVisualStyleBackColor = true;
+            // 
+            // DisplayHitboxes
+            // 
+            this.DisplayHitboxes.AutoSize = true;
+            this.DisplayHitboxes.Location = new System.Drawing.Point(9, 1);
+            this.DisplayHitboxes.Name = "DisplayHitboxes";
+            this.DisplayHitboxes.Size = new System.Drawing.Size(104, 17);
+            this.DisplayHitboxes.TabIndex = 9;
+            this.DisplayHitboxes.Text = "Display Hitboxes";
+            this.DisplayHitboxes.UseVisualStyleBackColor = true;
             // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(340, 213);
-            this.Controls.Add(this.DisplayAttackData);
-            this.Controls.Add(this.DisplayInputs);
-            this.Controls.Add(this.DisplayHitboxes);
+            this.ClientSize = new System.Drawing.Size(340, 232);
+            this.Controls.Add(this.SGSettings);
             this.Controls.Add(this.InputStopHotkey);
             this.Controls.Add(this.InputRecordHotkey);
             this.Controls.Add(this.label3);
@@ -170,10 +256,16 @@ namespace AutomaticReplayViewer
             this.Controls.Add(this.numReplays);
             this.Controls.Add(this.StopButton);
             this.Controls.Add(this.StartButton);
+            this.Controls.Add(this.menuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.MainMenuStrip = this.menuStrip;
+            this.MaximizeBox = false;
             this.Name = "MainForm";
             this.Text = "AutomaticReplayViewer";
-            this.Load += new System.EventHandler(this.Form1_Load);
+            this.menuStrip.ResumeLayout(false);
+            this.menuStrip.PerformLayout();
+            this.SGSettings.ResumeLayout(false);
+            this.SGSettings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -220,9 +312,18 @@ namespace AutomaticReplayViewer
         private System.Windows.Forms.Label label3;
         public Keys RecordHotkey;
         public Keys StopHotkey;
-        private CheckBox DisplayHitboxes;
-        private CheckBox DisplayInputs;
+        private MenuStrip menuStrip;
+        private ToolStripMenuItem selectGameToolStripMenuItem;
+        private ToolStripMenuItem skullgirlsToolStripMenuItem;
+        private ToolStripMenuItem rivalsOfAetherToolStripMenuItem;
+        private ToolStripMenuItem moreOptionsToolStripMenuItem;
+        private Panel SGSettings;
         private CheckBox DisplayAttackData;
+        private CheckBox DisplayInputs;
+        private CheckBox DisplayHitboxes;
+        private ToolStripMenuItem helpToolStripMenuItem;
+        private ToolStripMenuItem readmeToolStripMenuItem;
+        private ToolStripMenuItem aboutToolStripMenuItem;
     }
 }
 

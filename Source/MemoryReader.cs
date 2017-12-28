@@ -32,6 +32,13 @@ public class MemoryReader
         return BitConverter.ToInt32(buffer, 0);
     }
 
+    protected double readMemoryDouble(int targetAddress)
+    {
+        byte[] doubleBuffer = new byte[8];
+        ReadProcessMemory(pHandle, targetAddress, doubleBuffer, doubleBuffer.Length, ref bytesRead);
+        return BitConverter.ToDouble(doubleBuffer, 0);
+    }
+
     protected void writeMemory(int targetAddress, int value)
     {
         if (!canWrite)

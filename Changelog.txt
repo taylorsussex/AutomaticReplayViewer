@@ -1,3 +1,8 @@
+v1.3
+- Now supports multiple games! Added support for Rivals of Aether
+- Settings Menu added so that the default settings/keybindings can be changed without editing the config file
+- All textboxes where a key is set are now tap to set. These textboxes can be cleared by right clicking on them.
+
 v1.2
 - New feature: Display Hitboxes/Inputs/Attack Data during playback
 - Expose all your favourite players as mashers completely automatically!
