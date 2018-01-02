@@ -37,6 +37,10 @@
             this.DisplayAttackData = new System.Windows.Forms.CheckBox();
             this.DisplayInputs = new System.Windows.Forms.CheckBox();
             this.DisplayHitboxes = new System.Windows.Forms.CheckBox();
+            this.SGRightKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
+            this.SGMPKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
+            this.SGLKKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
+            this.SGLPKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
             this.label7 = new System.Windows.Forms.Label();
             this.label6 = new System.Windows.Forms.Label();
             this.label5 = new System.Windows.Forms.Label();
@@ -44,28 +48,24 @@
             this.panelGeneral = new System.Windows.Forms.Panel();
             this.label8 = new System.Windows.Forms.Label();
             this.DefaultGame = new System.Windows.Forms.ComboBox();
+            this.InputStopHotkey = new AutomaticReplayViewer.TapToSetTextBox();
             this.label3 = new System.Windows.Forms.Label();
+            this.InputRecordHotkey = new AutomaticReplayViewer.TapToSetTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.numReplays = new System.Windows.Forms.TextBox();
             this.panelROA = new System.Windows.Forms.Panel();
+            this.ROALKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
+            this.ROAStartKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
             this.label13 = new System.Windows.Forms.Label();
             this.label14 = new System.Windows.Forms.Label();
-            this.label9 = new System.Windows.Forms.Label();
-            this.label10 = new System.Windows.Forms.Label();
-            this.label11 = new System.Windows.Forms.Label();
-            this.label12 = new System.Windows.Forms.Label();
-            this.ROALKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
-            this.ROAAKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
             this.ROARightKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
             this.ROALeftKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
             this.ROADownKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
             this.ROAUpKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
-            this.SGRightKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
-            this.SGMPKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
-            this.SGLKKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
-            this.SGLPKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
-            this.InputStopHotkey = new AutomaticReplayViewer.TapToSetTextBox();
-            this.InputRecordHotkey = new AutomaticReplayViewer.TapToSetTextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panelSG.SuspendLayout();
             this.SGSettings.SuspendLayout();
             this.panelGeneral.SuspendLayout();
@@ -171,6 +171,38 @@
             this.DisplayHitboxes.Text = "Display Hitboxes";
             this.DisplayHitboxes.UseVisualStyleBackColor = true;
             // 
+            // SGRightKeyboardInput
+            // 
+            this.SGRightKeyboardInput.Location = new System.Drawing.Point(174, 105);
+            this.SGRightKeyboardInput.Name = "SGRightKeyboardInput";
+            this.SGRightKeyboardInput.ReadOnly = true;
+            this.SGRightKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.SGRightKeyboardInput.TabIndex = 7;
+            // 
+            // SGMPKeyboardInput
+            // 
+            this.SGMPKeyboardInput.Location = new System.Drawing.Point(174, 75);
+            this.SGMPKeyboardInput.Name = "SGMPKeyboardInput";
+            this.SGMPKeyboardInput.ReadOnly = true;
+            this.SGMPKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.SGMPKeyboardInput.TabIndex = 6;
+            // 
+            // SGLKKeyboardInput
+            // 
+            this.SGLKKeyboardInput.Location = new System.Drawing.Point(174, 45);
+            this.SGLKKeyboardInput.Name = "SGLKKeyboardInput";
+            this.SGLKKeyboardInput.ReadOnly = true;
+            this.SGLKKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.SGLKKeyboardInput.TabIndex = 5;
+            // 
+            // SGLPKeyboardInput
+            // 
+            this.SGLPKeyboardInput.Location = new System.Drawing.Point(174, 15);
+            this.SGLPKeyboardInput.Name = "SGLPKeyboardInput";
+            this.SGLPKeyboardInput.ReadOnly = true;
+            this.SGLPKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.SGLPKeyboardInput.TabIndex = 4;
+            // 
             // label7
             // 
             this.label7.AutoSize = true;
@@ -242,6 +274,14 @@
             this.DefaultGame.Size = new System.Drawing.Size(121, 21);
             this.DefaultGame.TabIndex = 15;
             // 
+            // InputStopHotkey
+            // 
+            this.InputStopHotkey.Location = new System.Drawing.Point(211, 121);
+            this.InputStopHotkey.Name = "InputStopHotkey";
+            this.InputStopHotkey.ReadOnly = true;
+            this.InputStopHotkey.Size = new System.Drawing.Size(100, 20);
+            this.InputStopHotkey.TabIndex = 14;
+            // 
             // label3
             // 
             this.label3.AutoSize = true;
@@ -250,6 +290,14 @@
             this.label3.Size = new System.Drawing.Size(155, 13);
             this.label3.TabIndex = 13;
             this.label3.Text = "Default Stop Recording Hotkey";
+            // 
+            // InputRecordHotkey
+            // 
+            this.InputRecordHotkey.Location = new System.Drawing.Point(211, 71);
+            this.InputRecordHotkey.Name = "InputRecordHotkey";
+            this.InputRecordHotkey.ReadOnly = true;
+            this.InputRecordHotkey.Size = new System.Drawing.Size(100, 20);
+            this.InputRecordHotkey.TabIndex = 12;
             // 
             // label2
             // 
@@ -271,7 +319,7 @@
             // 
             this.panelROA.BackColor = System.Drawing.SystemColors.Control;
             this.panelROA.Controls.Add(this.ROALKeyboardInput);
-            this.panelROA.Controls.Add(this.ROAAKeyboardInput);
+            this.panelROA.Controls.Add(this.ROAStartKeyboardInput);
             this.panelROA.Controls.Add(this.label13);
             this.panelROA.Controls.Add(this.label14);
             this.panelROA.Controls.Add(this.ROARightKeyboardInput);
@@ -287,6 +335,22 @@
             this.panelROA.Size = new System.Drawing.Size(367, 212);
             this.panelROA.TabIndex = 11;
             // 
+            // ROALKeyboardInput
+            // 
+            this.ROALKeyboardInput.Location = new System.Drawing.Point(174, 165);
+            this.ROALKeyboardInput.Name = "ROALKeyboardInput";
+            this.ROALKeyboardInput.ReadOnly = true;
+            this.ROALKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.ROALKeyboardInput.TabIndex = 11;
+            // 
+            // ROAStartKeyboardInput
+            // 
+            this.ROAStartKeyboardInput.Location = new System.Drawing.Point(174, 135);
+            this.ROAStartKeyboardInput.Name = "ROAStartKeyboardInput";
+            this.ROAStartKeyboardInput.ReadOnly = true;
+            this.ROAStartKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.ROAStartKeyboardInput.TabIndex = 10;
+            // 
             // label13
             // 
             this.label13.AutoSize = true;
@@ -301,9 +365,41 @@
             this.label14.AutoSize = true;
             this.label14.Location = new System.Drawing.Point(34, 138);
             this.label14.Name = "label14";
-            this.label14.Size = new System.Drawing.Size(87, 13);
+            this.label14.Size = new System.Drawing.Size(102, 13);
             this.label14.TabIndex = 8;
-            this.label14.Text = "A keyboard input";
+            this.label14.Text = "Start keyboard input";
+            // 
+            // ROARightKeyboardInput
+            // 
+            this.ROARightKeyboardInput.Location = new System.Drawing.Point(174, 105);
+            this.ROARightKeyboardInput.Name = "ROARightKeyboardInput";
+            this.ROARightKeyboardInput.ReadOnly = true;
+            this.ROARightKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.ROARightKeyboardInput.TabIndex = 7;
+            // 
+            // ROALeftKeyboardInput
+            // 
+            this.ROALeftKeyboardInput.Location = new System.Drawing.Point(174, 75);
+            this.ROALeftKeyboardInput.Name = "ROALeftKeyboardInput";
+            this.ROALeftKeyboardInput.ReadOnly = true;
+            this.ROALeftKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.ROALeftKeyboardInput.TabIndex = 6;
+            // 
+            // ROADownKeyboardInput
+            // 
+            this.ROADownKeyboardInput.Location = new System.Drawing.Point(174, 45);
+            this.ROADownKeyboardInput.Name = "ROADownKeyboardInput";
+            this.ROADownKeyboardInput.ReadOnly = true;
+            this.ROADownKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.ROADownKeyboardInput.TabIndex = 5;
+            // 
+            // ROAUpKeyboardInput
+            // 
+            this.ROAUpKeyboardInput.Location = new System.Drawing.Point(174, 15);
+            this.ROAUpKeyboardInput.Name = "ROAUpKeyboardInput";
+            this.ROAUpKeyboardInput.ReadOnly = true;
+            this.ROAUpKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.ROAUpKeyboardInput.TabIndex = 4;
             // 
             // label9
             // 
@@ -340,102 +436,6 @@
             this.label12.Size = new System.Drawing.Size(94, 13);
             this.label12.TabIndex = 0;
             this.label12.Text = "Up keyboard input";
-            // 
-            // ROALKeyboardInput
-            // 
-            this.ROALKeyboardInput.Location = new System.Drawing.Point(174, 165);
-            this.ROALKeyboardInput.Name = "ROALKeyboardInput";
-            this.ROALKeyboardInput.ReadOnly = true;
-            this.ROALKeyboardInput.Size = new System.Drawing.Size(100, 20);
-            this.ROALKeyboardInput.TabIndex = 11;
-            // 
-            // ROAAKeyboardInput
-            // 
-            this.ROAAKeyboardInput.Location = new System.Drawing.Point(174, 135);
-            this.ROAAKeyboardInput.Name = "ROAAKeyboardInput";
-            this.ROAAKeyboardInput.ReadOnly = true;
-            this.ROAAKeyboardInput.Size = new System.Drawing.Size(100, 20);
-            this.ROAAKeyboardInput.TabIndex = 10;
-            // 
-            // ROARightKeyboardInput
-            // 
-            this.ROARightKeyboardInput.Location = new System.Drawing.Point(174, 105);
-            this.ROARightKeyboardInput.Name = "ROARightKeyboardInput";
-            this.ROARightKeyboardInput.ReadOnly = true;
-            this.ROARightKeyboardInput.Size = new System.Drawing.Size(100, 20);
-            this.ROARightKeyboardInput.TabIndex = 7;
-            // 
-            // ROALeftKeyboardInput
-            // 
-            this.ROALeftKeyboardInput.Location = new System.Drawing.Point(174, 75);
-            this.ROALeftKeyboardInput.Name = "ROALeftKeyboardInput";
-            this.ROALeftKeyboardInput.ReadOnly = true;
-            this.ROALeftKeyboardInput.Size = new System.Drawing.Size(100, 20);
-            this.ROALeftKeyboardInput.TabIndex = 6;
-            // 
-            // ROADownKeyboardInput
-            // 
-            this.ROADownKeyboardInput.Location = new System.Drawing.Point(174, 45);
-            this.ROADownKeyboardInput.Name = "ROADownKeyboardInput";
-            this.ROADownKeyboardInput.ReadOnly = true;
-            this.ROADownKeyboardInput.Size = new System.Drawing.Size(100, 20);
-            this.ROADownKeyboardInput.TabIndex = 5;
-            // 
-            // ROAUpKeyboardInput
-            // 
-            this.ROAUpKeyboardInput.Location = new System.Drawing.Point(174, 15);
-            this.ROAUpKeyboardInput.Name = "ROAUpKeyboardInput";
-            this.ROAUpKeyboardInput.ReadOnly = true;
-            this.ROAUpKeyboardInput.Size = new System.Drawing.Size(100, 20);
-            this.ROAUpKeyboardInput.TabIndex = 4;
-            // 
-            // SGRightKeyboardInput
-            // 
-            this.SGRightKeyboardInput.Location = new System.Drawing.Point(174, 105);
-            this.SGRightKeyboardInput.Name = "SGRightKeyboardInput";
-            this.SGRightKeyboardInput.ReadOnly = true;
-            this.SGRightKeyboardInput.Size = new System.Drawing.Size(100, 20);
-            this.SGRightKeyboardInput.TabIndex = 7;
-            // 
-            // SGMPKeyboardInput
-            // 
-            this.SGMPKeyboardInput.Location = new System.Drawing.Point(174, 75);
-            this.SGMPKeyboardInput.Name = "SGMPKeyboardInput";
-            this.SGMPKeyboardInput.ReadOnly = true;
-            this.SGMPKeyboardInput.Size = new System.Drawing.Size(100, 20);
-            this.SGMPKeyboardInput.TabIndex = 6;
-            // 
-            // SGLKKeyboardInput
-            // 
-            this.SGLKKeyboardInput.Location = new System.Drawing.Point(174, 45);
-            this.SGLKKeyboardInput.Name = "SGLKKeyboardInput";
-            this.SGLKKeyboardInput.ReadOnly = true;
-            this.SGLKKeyboardInput.Size = new System.Drawing.Size(100, 20);
-            this.SGLKKeyboardInput.TabIndex = 5;
-            // 
-            // SGLPKeyboardInput
-            // 
-            this.SGLPKeyboardInput.Location = new System.Drawing.Point(174, 15);
-            this.SGLPKeyboardInput.Name = "SGLPKeyboardInput";
-            this.SGLPKeyboardInput.ReadOnly = true;
-            this.SGLPKeyboardInput.Size = new System.Drawing.Size(100, 20);
-            this.SGLPKeyboardInput.TabIndex = 4;
-            // 
-            // InputStopHotkey
-            // 
-            this.InputStopHotkey.Location = new System.Drawing.Point(211, 121);
-            this.InputStopHotkey.Name = "InputStopHotkey";
-            this.InputStopHotkey.ReadOnly = true;
-            this.InputStopHotkey.Size = new System.Drawing.Size(100, 20);
-            this.InputStopHotkey.TabIndex = 14;
-            // 
-            // InputRecordHotkey
-            // 
-            this.InputRecordHotkey.Location = new System.Drawing.Point(211, 71);
-            this.InputRecordHotkey.Name = "InputRecordHotkey";
-            this.InputRecordHotkey.ReadOnly = true;
-            this.InputRecordHotkey.Size = new System.Drawing.Size(100, 20);
-            this.InputRecordHotkey.TabIndex = 12;
             // 
             // Settings
             // 
@@ -502,7 +502,7 @@
         public TapToSetTextBox InputStopHotkey;
         public TapToSetTextBox InputRecordHotkey;
         private TapToSetTextBox ROALKeyboardInput;
-        private TapToSetTextBox ROAAKeyboardInput;
+        private TapToSetTextBox ROAStartKeyboardInput;
         private TapToSetTextBox ROARightKeyboardInput;
         private TapToSetTextBox ROALeftKeyboardInput;
         private TapToSetTextBox ROADownKeyboardInput;

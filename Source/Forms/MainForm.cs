@@ -118,20 +118,23 @@ namespace AutomaticReplayViewer
                     viewSG.StartLoop(ReplaysToPlay, SGLP, SGLK, SGMP, SGRight, RecordHotkey, StopHotkey, DisplayHitboxes.Checked, DisplayInputs.Checked, DisplayAttackData.Checked);
                     break;
                 case "Rivals of Aether":
-                    viewROA.StartLoop(ReplaysToPlay, ROAUp, ROADown, ROALeft, ROARight, ROAA, ROAL, RecordHotkey, StopHotkey);
+                    viewROA.StartLoop(ReplaysToPlay, ROAUp, ROADown, ROALeft, ROARight, ROAStart, ROAL, RecordHotkey, StopHotkey);
                     break;
             }
+
+            StopButton.Focus();
         }
 
         private void StopButton_Click(object sender, EventArgs e)
         {
             viewSG.ProcessRunning = false;
+            viewROA.ProcessRunning = false;
         }
 
         private void ResetUI(object sender, EventArgs e)
-        {
+         {
             this.BeginInvoke((Action)delegate () { this.Enabled = true; this.Focus(); });
-            StartButton.BeginInvoke((Action)delegate () { StartButton.Enabled = true; });
+            StartButton.BeginInvoke((Action)delegate () { StartButton.Enabled = true; StartButton.Focus(); });
             StopButton.BeginInvoke((Action)delegate () { StopButton.Enabled = false; });
             numReplays.BeginInvoke((Action)delegate () { numReplays.Enabled = true; });
             InputRecordHotkey.BeginInvoke((Action)delegate () { InputRecordHotkey.Enabled = true; });
@@ -188,7 +191,7 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"ROA Down keyboard input\" value=\"Down\" />");
             sb.AppendLine("    <add key=\"ROA Left keyboard input\" value=\"Left\" />");
             sb.AppendLine("    <add key=\"ROA Right keyboard input\" value=\"Right\" />");
-            sb.AppendLine("    <add key=\"ROA A keyboard input\" value=\"Z\" />");
+            sb.AppendLine("    <add key=\"ROA Start keyboard input\" value=\"Return\" />");
             sb.AppendLine("    <add key=\"ROA L keyboard input\" value=\"A\" />");
             sb.AppendLine("");
             sb.AppendLine("    <!--Default Settings on Load-->");
@@ -220,7 +223,7 @@ namespace AutomaticReplayViewer
             ROADown = ParseKeys(ConfigurationManager.AppSettings["ROA Down keyboard input"]);
             ROALeft = ParseKeys(ConfigurationManager.AppSettings["ROA Left keyboard input"]);
             ROARight = ParseKeys(ConfigurationManager.AppSettings["ROA Right keyboard input"]);
-            ROAA = ParseKeys(ConfigurationManager.AppSettings["ROA A keyboard input"]);
+            ROAStart = ParseKeys(ConfigurationManager.AppSettings["ROA Start keyboard input"]);
             ROAL = ParseKeys(ConfigurationManager.AppSettings["ROA L keyboard input"]);
         }
 
@@ -234,7 +237,7 @@ namespace AutomaticReplayViewer
         private Keys ROADown = Keys.Down;
         private Keys ROALeft = Keys.Left;
         private Keys ROARight = Keys.Right;
-        private Keys ROAA = Keys.Z;
+        private Keys ROAStart = Keys.Return;
         private Keys ROAL = Keys.A;
         private string currentGame = "Skullgirls";
 

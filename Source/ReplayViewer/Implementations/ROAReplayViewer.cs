@@ -9,7 +9,7 @@ class ROAReplayViewer : ReplayViewer
     {
     }
 
-    public void StartLoop(int ReplaysToPlay, Keys inputUp, Keys inputDown, Keys inputLeft, Keys inputRight, Keys inputA, Keys inputL, Keys RecordStart, Keys RecordStop)
+    public void StartLoop(int ReplaysToPlay, Keys inputUp, Keys inputDown, Keys inputLeft, Keys inputRight, Keys inputStart, Keys inputL, Keys RecordStart, Keys RecordStop)
     {
         NoErrors = true;
         getProcess();
@@ -18,7 +18,7 @@ class ROAReplayViewer : ReplayViewer
         Down = inputDown;
         Left = inputLeft;
         Right = inputRight;
-        A = inputA;
+        Start = inputStart;
         L = inputL;
 
         if (NoErrors)
@@ -49,9 +49,9 @@ class ROAReplayViewer : ReplayViewer
         menu = (readMemory(pointerMenuState) == initMenuState);
         if (readMemory(pointerMenuState) == initMenuState - 2)
         {
-            Keyboard.KeyDown(A);
+            Keyboard.KeyDown(Start);
             Thread.Sleep(50);
-            Keyboard.KeyUp(A);
+            Keyboard.KeyUp(Start);
         }
     }
 
@@ -74,13 +74,13 @@ class ROAReplayViewer : ReplayViewer
         cell2position(currentCell, ref posX, ref posY);
         MoveCursor(posX, posY);
 
-        Keyboard.KeyDown(A);
+        Keyboard.KeyDown(Start);
         Thread.Sleep(50);
-        Keyboard.KeyUp(A);
+        Keyboard.KeyUp(Start);
         Thread.Sleep(50);
-        Keyboard.KeyDown(A);
+        Keyboard.KeyDown(Start);
         Thread.Sleep(50);
-        Keyboard.KeyUp(A);
+        Keyboard.KeyUp(Start);
     }
 	
 	private void MoveCursor(double targetX, double targetY)
@@ -141,6 +141,7 @@ class ROAReplayViewer : ReplayViewer
 
     protected override void InMatchInputs()
     {
+
     }
 
     private double closestPosition(double inputPosition, double[] positionArray, ref int cell)
@@ -185,7 +186,7 @@ class ROAReplayViewer : ReplayViewer
     private double[] menuPositionX = new double[4] { 565, 675, 785, 895 };
     private double[] menuPositionY = new double[4] { 175, 250, 325, 400 };
 
-    private Keys A = Keys.Z;
+    private Keys Start = Keys.Return;
     private Keys L = Keys.A;
     private Keys Up = Keys.Up;
     private Keys Down = Keys.Down;

@@ -43,9 +43,9 @@
             this.label1.Font = new System.Drawing.Font("Microsoft Sans Serif", 14F);
             this.label1.Location = new System.Drawing.Point(18, 18);
             this.label1.Name = "label1";
-            this.label1.Size = new System.Drawing.Size(249, 24);
+            this.label1.Size = new System.Drawing.Size(259, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "AutomaticReplayViewer v1.3";
+            this.label1.Text = "AutomaticReplayViewer v1.31";
             // 
             // label2
             // 
