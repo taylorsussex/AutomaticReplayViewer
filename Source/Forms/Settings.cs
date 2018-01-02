@@ -29,7 +29,7 @@ namespace AutomaticReplayViewer
             ROADownKeyboardInput.Text = ConfigurationManager.AppSettings["ROA Down keyboard input"];
             ROALeftKeyboardInput.Text = ConfigurationManager.AppSettings["ROA Left keyboard input"];
             ROARightKeyboardInput.Text = ConfigurationManager.AppSettings["ROA Right keyboard input"];
-            ROAAKeyboardInput.Text = ConfigurationManager.AppSettings["ROA A keyboard input"];
+            ROAStartKeyboardInput.Text = ConfigurationManager.AppSettings["ROA Start keyboard input"];
             ROALKeyboardInput.Text = ConfigurationManager.AppSettings["ROA L keyboard input"];
 
             foreach (Control ctrl in this.Controls)
@@ -166,9 +166,9 @@ namespace AutomaticReplayViewer
                                 ConfigurationManager.AppSettings["ROA Right keyboard input"] = ROARightKeyboardInput.Text;
                                 node.Attributes[1].Value = ROARightKeyboardInput.Text;
                                 break;
-                            case "ROA A keyboard input":
-                                ConfigurationManager.AppSettings["ROA A keyboard input"] = ROAAKeyboardInput.Text;
-                                node.Attributes[1].Value = ROAAKeyboardInput.Text;
+                            case "ROA Start keyboard input":
+                                ConfigurationManager.AppSettings["ROA Start keyboard input"] = ROAStartKeyboardInput.Text;
+                                node.Attributes[1].Value = ROAStartKeyboardInput.Text;
                                 break;
                             case "ROA L keyboard input":
                                 ConfigurationManager.AppSettings["ROA L keyboard input"] = ROALKeyboardInput.Text;

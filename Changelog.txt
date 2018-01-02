@@ -1,3 +1,8 @@
+v1.31
+- Hotfix that fixes the stop button from not working correctly when playing back replays in ROA
+- For ROA A button replaced with Start button as this results in faster menu navigation
+	- If the navigation with A button was preferred simply bind it to your A button as the code for navigation remains the same
+
 v1.3
 - Now supports multiple games! Added support for Rivals of Aether
 - Settings Menu added so that the default settings/keybindings can be changed without editing the config file
