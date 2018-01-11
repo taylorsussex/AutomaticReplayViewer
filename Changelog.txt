@@ -1,3 +1,6 @@
+v1.32
+- Now compatible with ROA release 1.2.5
+
 v1.31
 - Hotfix that fixes the stop button from not working correctly when playing back replays in ROA
 - For ROA A button replaced with Start button as this results in faster menu navigation

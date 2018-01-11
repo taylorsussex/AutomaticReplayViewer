@@ -1,4 +1,4 @@
-AutomaticReplayViewer v1.31
+AutomaticReplayViewer v1.32
 
 Created by Mao (@NZMao)
 InputManager.dll by shynet (https://www.codeproject.com/Articles/117657/InputManager-library-Track-user-input-and-simulate)

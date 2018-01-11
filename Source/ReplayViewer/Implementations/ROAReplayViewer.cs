@@ -23,9 +23,9 @@ class ROAReplayViewer : ReplayViewer
 
         if (NoErrors)
         {
-            pointerMenuState = findPointer(0x99D15A8);
-            pointerCursorX = findPointer(new int[6] { 0x09A16944, 0x80, 0x44, 0x10, 0x628, 0 });
-            pointerCursorY = findPointer(new int[6] { 0x09A16944, 0x80, 0x44, 0x10, 0x220, 0 });
+            pointerMenuState = findPointer(0x9A27138);
+            pointerCursorX = findPointer(new int[6] { 0x09A6C584, 0x80, 0x44, 0x10, 0x64C, 0 });
+            pointerCursorY = findPointer(new int[6] { 0x09A6C584, 0x80, 0x44, 0x10, 0x250, 0 });
 
             initMenuState = readMemory(pointerMenuState);
             double posX = readMemoryDouble(pointerCursorX);
@@ -85,8 +85,8 @@ class ROAReplayViewer : ReplayViewer
 	
 	private void MoveCursor(double targetX, double targetY)
 	{
-        pointerCursorX = findPointer(new int[6] { 0x09A16944, 0x80, 0x44, 0x10, 0x628, 0 });
-        pointerCursorY = findPointer(new int[6] { 0x09A16944, 0x80, 0x44, 0x10, 0x220, 0 });
+        pointerCursorX = findPointer(new int[6] { 0x09A6C584, 0x80, 0x44, 0x10, 0x64C, 0 });
+        pointerCursorY = findPointer(new int[6] { 0x09A6C584, 0x80, 0x44, 0x10, 0x250, 0 });
 
         double position;
 
