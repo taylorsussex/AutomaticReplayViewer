@@ -39,7 +39,11 @@ abstract class ReplayViewer : MemoryReader
 
             // Start recording hotkey
             if (RecordStart != Keys.None && RecordStop != Keys.None)
-                Keyboard.KeyPress(RecordStart);
+            {
+                Keyboard.KeyDown(RecordStart);
+                Thread.Sleep(50);
+                Keyboard.KeyUp(RecordStart);
+            }
 
             // Main loop
             while (ProcessRunning)
@@ -78,7 +82,11 @@ abstract class ReplayViewer : MemoryReader
 
         // Stop recording hotkey
         if (RecordStart != Keys.None && RecordStop != Keys.None)
-            Keyboard.KeyPress(RecordStop);
+        {
+            Keyboard.KeyDown(RecordStop);
+            Thread.Sleep(50);
+            Keyboard.KeyUp(RecordStop);
+        }
 
         if (ReplaysPlayed <= ReplaysToPlay)
         {

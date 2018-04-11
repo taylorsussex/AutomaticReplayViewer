@@ -1,9 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
+using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
+using System.Xml.Linq;
 
 namespace AutomaticReplayViewer
 {
@@ -31,6 +33,7 @@ namespace AutomaticReplayViewer
             ROARightKeyboardInput.Text = ConfigurationManager.AppSettings["ROA Right keyboard input"];
             ROAStartKeyboardInput.Text = ConfigurationManager.AppSettings["ROA Start keyboard input"];
             ROALKeyboardInput.Text = ConfigurationManager.AppSettings["ROA L keyboard input"];
+            ptrupdatelabel.Text = "Last Updated:" + ConfigurationManager.AppSettings["LastTimePointersUpdated"];
 
             foreach (Control ctrl in this.Controls)
             {
@@ -210,6 +213,106 @@ namespace AutomaticReplayViewer
             {
                 return base.ProcessCmdKey(ref msg, keyData);
             }
+        }
+
+        private void UpdatePointers_Click(object sender, EventArgs e)
+        {
+            this.Enabled = false;
+
+            string SGMenuState, ROAMenuState, ROACursorX, ROACursorY, LastTimePointersUpdated;
+            bool AlreadyUpToDate = false;
+            SGMenuState = ROAMenuState = ROACursorX = ROACursorY = LastTimePointersUpdated = "";
+
+            string url = "https://drive.google.com/uc?export=download&id=1brS3pncZNdeWSUX26YwBjipefdrZrkhk";
+            XmlDocument ptrXML = new XmlDocument();
+            try
+            {
+                ptrXML.Load(url);
+            }
+            catch (System.Net.WebException)
+            {
+                MessageBox.Show("Unable to access pointers. Please connect to the internet in order to update.");
+                this.Enabled = true;
+                return;
+            }
+            foreach (XmlElement element in ptrXML.SelectNodes("*"))
+            {
+                foreach (XmlNode node in element.ChildNodes)
+                {
+                    if (node.Attributes == null)
+                        continue;
+                    switch (node.Attributes[0].Value)
+                    {
+                        case "SGMenuState":
+                            SGMenuState = node.Attributes[1].Value;
+                            break;
+                        case "ROAMenuState":
+                            ROAMenuState = node.Attributes[1].Value;
+                            break;
+                        case "ROACursorX":
+                            ROACursorX = node.Attributes[1].Value;
+                            break;
+                        case "ROACursorY":
+                            ROACursorY = node.Attributes[1].Value;
+                            break;
+                        case "LastTimePointersUpdated":
+                            LastTimePointersUpdated = node.Attributes[1].Value;
+                            break;
+                        default:
+                            break;
+                    }
+                }
+            }
+
+            AlreadyUpToDate = (LastTimePointersUpdated == ConfigurationManager.AppSettings["LastTimePointersUpdated"]);
+
+            XmlDocument xmlDoc = new XmlDocument();
+            string loc = Assembly.GetEntryAssembly().Location;
+            xmlDoc.Load(String.Concat(loc, ".config"));
+
+            foreach (XmlElement element in xmlDoc.DocumentElement)
+            {
+                if (element.Name.Equals("appSettings"))
+                {
+                    foreach (XmlNode node in element.ChildNodes)
+                    {
+                        if (node.Attributes == null)
+                            continue;
+                        switch (node.Attributes[0].Value)
+                        {
+                            case "SGMenuState":
+                                ConfigurationManager.AppSettings["SGMenuState"] = SGMenuState;
+                                node.Attributes[1].Value = SGMenuState;
+                                break;
+                            case "ROAMenuState":
+                                ConfigurationManager.AppSettings["ROAMenuState"] = ROAMenuState;
+                                node.Attributes[1].Value = ROAMenuState;
+                                break;
+                            case "ROACursorX":
+                                ConfigurationManager.AppSettings["ROACursorX"] = ROACursorX;
+                                node.Attributes[1].Value = ROACursorX;
+                                break;
+                            case "ROACursorY":
+                                ConfigurationManager.AppSettings["ROACursorY"] = ROACursorY;
+                                node.Attributes[1].Value = ROACursorY;
+                                break;
+                            case "LastTimePointersUpdated":
+                                ConfigurationManager.AppSettings["LastTimePointersUpdated"] = LastTimePointersUpdated;
+                                node.Attributes[1].Value = LastTimePointersUpdated;
+                                break;
+                            default:
+                                break;
+                        }
+                    }
+                }
+            }
+
+            xmlDoc.Save(String.Concat(loc, ".config"));
+
+            ptrupdatelabel.Text = "Last Updated:" + ConfigurationManager.AppSettings["LastTimePointersUpdated"];
+            MessageBox.Show(AlreadyUpToDate ? "Pointers already up to date" : "Pointers succesfully updated");
+
+            this.Enabled = true;
         }
 
         private bool SuppressKeys = false;

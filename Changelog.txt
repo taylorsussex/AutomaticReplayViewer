@@ -1,3 +1,9 @@
+v1.33
+- Now compatible with ROA release 1.3.1
+- Fixed an issue where the record/stop hotkeys occasionally didn't register as being pressed
+- The pointers used in all implementations of the program are now editable in the config file
+- Additionally, pointers can be updated to the most recent values that I have released in the settings menu. Going forward, you will be able to update pointers using this method rather than having to download a new build.
+
 v1.32
 - Now compatible with ROA release 1.2.5
 

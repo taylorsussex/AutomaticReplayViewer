@@ -1,5 +1,8 @@
 ﻿using InputManager;
 using System;
+using System.Collections.Generic;
+using System.Configuration;
+using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -23,16 +26,19 @@ class ROAReplayViewer : ReplayViewer
 
         if (NoErrors)
         {
-            pointerMenuState = findPointer(0x9A27138);
-            pointerCursorX = findPointer(new int[6] { 0x09A6C584, 0x80, 0x44, 0x10, 0x64C, 0 });
-            pointerCursorY = findPointer(new int[6] { 0x09A6C584, 0x80, 0x44, 0x10, 0x250, 0 });
+            // Notes to make cursor pointer easier to find
+            // X cursor - double: bound between 29 and 965
+            // Y cursor - double: bound between 23 and 491
+            pointerMenuState = findPointer(GetPointerArray("ROAMenuState"));
+            pointerCursorX = findPointer(GetPointerArray("ROACursorX"));
+            pointerCursorY = findPointer(GetPointerArray("ROACursorY"));
 
             initMenuState = readMemory(pointerMenuState);
             double posX = readMemoryDouble(pointerCursorX);
             double posY = readMemoryDouble(pointerCursorY);
 
-            posX = closestPosition(posX, menuPositionX, ref cellX);
-            posY = closestPosition(posY, menuPositionY, ref cellY);
+            posX = ClosestPosition(posX, menuPositionX, ref cellX);
+            posY = ClosestPosition(posY, menuPositionY, ref cellY);
             initCell = cellX + 4 * cellY;
 
             LoopThread = new Thread(() => PlaybackLoop(ReplaysToPlay, RecordStart, RecordStop));
@@ -71,7 +77,7 @@ class ROAReplayViewer : ReplayViewer
             Thread.Sleep(50);
             Keyboard.KeyUp(L);
         }
-        cell2position(currentCell, ref posX, ref posY);
+        Cell2Position(currentCell, ref posX, ref posY);
         MoveCursor(posX, posY);
 
         Keyboard.KeyDown(Start);
@@ -85,8 +91,8 @@ class ROAReplayViewer : ReplayViewer
 	
 	private void MoveCursor(double targetX, double targetY)
 	{
-        pointerCursorX = findPointer(new int[6] { 0x09A6C584, 0x80, 0x44, 0x10, 0x64C, 0 });
-        pointerCursorY = findPointer(new int[6] { 0x09A6C584, 0x80, 0x44, 0x10, 0x250, 0 });
+        pointerCursorX = findPointer(GetPointerArray("ROACursorX"));
+        pointerCursorY = findPointer(GetPointerArray("ROACursorY"));
 
         double position;
 
@@ -144,7 +150,7 @@ class ROAReplayViewer : ReplayViewer
 
     }
 
-    private double closestPosition(double inputPosition, double[] positionArray, ref int cell)
+    private double ClosestPosition(double inputPosition, double[] positionArray, ref int cell)
     {
         if (inputPosition < (positionArray[0] + positionArray[1]) / 2)
         {
@@ -165,12 +171,19 @@ class ROAReplayViewer : ReplayViewer
         return positionArray[3];
     }
 
-    private void cell2position(int cell, ref double posX, ref double posY)
+    private void Cell2Position(int cell, ref double posX, ref double posY)
     {
         int cellX = cell % 4;
         int cellY = (cell - cellX) / 4;
         posX = menuPositionX[cellX];
         posY = menuPositionY[cellY];
+    }
+
+    private int[] GetPointerArray(string key)
+    {
+        string PointerString = ConfigurationManager.AppSettings[key];
+        IEnumerable<int> PointerInts =  (PointerString ?? "").Split(',').Select(c => Convert.ToInt32(c, 16));
+        return PointerInts.ToArray();
     }
 
     private int pointerMenuState;

@@ -1,5 +1,6 @@
 ﻿using InputManager;
 using System;
+using System.Configuration;
 using System.Threading;
 using System.Windows.Forms;
 
@@ -23,7 +24,7 @@ class SGReplayViewer : ReplayViewer
         
         if (NoErrors)
         {
-            pointer = findPointer(new int[1] { 3909632 });
+            pointer = findPointer(new int[1] { Int32.Parse(ConfigurationManager.AppSettings["SGMenuState"]) });
             LoopThread = new Thread(() => PlaybackLoop(ReplaysToPlay, RecordStart, RecordStop));
             LoopThread.Start();
         }
