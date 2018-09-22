@@ -1,41 +1,33 @@
 ﻿using InputManager;
 using System;
-using System.Collections.Generic;
-using System.Configuration;
-using System.Linq;
 using System.Threading;
 using System.Windows.Forms;
 
 class ROAReplayViewer : ReplayViewer
 {
-    public ROAReplayViewer() : base("RivalsofAether", "Rivals of Aether", false)
+    public ROAReplayViewer() : base("RivalsofAether", "Rivals of Aether", true)
     {
     }
 
-    public void StartLoop(int ReplaysToPlay, Keys inputUp, Keys inputDown, Keys inputLeft, Keys inputRight, Keys inputStart, Keys inputL, Keys RecordStart, Keys RecordStop)
+    public void StartLoop(int ReplaysToPlay, Keys inputStart, Keys inputL, Keys RecordStart, Keys RecordStop)
     {
         NoErrors = true;
         getProcess();
 
-        Up = inputUp;
-        Down = inputDown;
-        Left = inputLeft;
-        Right = inputRight;
         Start = inputStart;
         L = inputL;
 
         if (NoErrors)
         {
             // Notes to make cursor pointer easier to find
-            // X cursor - double: bound between 29 and 965
-            // Y cursor - double: bound between 23 and 491
+            // X cursor - float: bound between 0 and 936
+            // Y cursor - float: bound between 0 and 468
             pointerMenuState = findPointer(GetPointerArray("ROAMenuState"));
             pointerCursorX = findPointer(GetPointerArray("ROACursorX"));
             pointerCursorY = findPointer(GetPointerArray("ROACursorY"));
 
-            initMenuState = readMemory(pointerMenuState);
-            double posX = readMemoryDouble(pointerCursorX);
-            double posY = readMemoryDouble(pointerCursorY);
+            float posX = readMemoryFloat(pointerCursorX);
+            float posY = readMemoryFloat(pointerCursorY);
 
             posX = ClosestPosition(posX, menuPositionX, ref cellX);
             posY = ClosestPosition(posY, menuPositionY, ref cellY);
@@ -52,8 +44,8 @@ class ROAReplayViewer : ReplayViewer
 
     protected override void MenuStateActive(ref bool menu)
     {
-        menu = (readMemory(pointerMenuState) == initMenuState);
-        if (readMemory(pointerMenuState) == initMenuState - 2)
+        menu = (readMemory(pointerMenuState) == 57);
+        if (readMemory(pointerMenuState) == 9)
         {
             Keyboard.KeyDown(Start);
             Thread.Sleep(50);
@@ -66,7 +58,7 @@ class ROAReplayViewer : ReplayViewer
         Thread.Sleep(500);
 
         // Input keystrokes for menu navigation
-        double posX = 0, posY = 0;
+        float posX = 0, posY = 0;
 
         currentCell = initCell - ReplaysPlayed + 1;
         if (currentCell < 0)
@@ -80,6 +72,7 @@ class ROAReplayViewer : ReplayViewer
         Cell2Position(currentCell, ref posX, ref posY);
         MoveCursor(posX, posY);
 
+        Thread.Sleep(50);
         Keyboard.KeyDown(Start);
         Thread.Sleep(50);
         Keyboard.KeyUp(Start);
@@ -89,53 +82,10 @@ class ROAReplayViewer : ReplayViewer
         Keyboard.KeyUp(Start);
     }
 	
-	private void MoveCursor(double targetX, double targetY)
+	private void MoveCursor(float targetX, float targetY)
 	{
-        pointerCursorX = findPointer(GetPointerArray("ROACursorX"));
-        pointerCursorY = findPointer(GetPointerArray("ROACursorY"));
-
-        double position;
-
-        while (ProcessRunning)
-        {
-            position = readMemoryDouble(pointerCursorX);
-
-            if (position - targetX > 15)
-            {
-                Keyboard.KeyDown(Left);
-                Thread.Sleep(50);
-                Keyboard.KeyUp(Left);
-            } else if (position - targetX < -15)
-            {
-                Keyboard.KeyDown(Right);
-                Thread.Sleep(50);
-                Keyboard.KeyUp(Right);
-            } else
-            {
-                break;
-            }
-        }
-        while (ProcessRunning)
-        {
-            position = readMemoryDouble(pointerCursorY);
-
-            if (position - targetY > 15)
-            {
-                Keyboard.KeyDown(Up);
-                Thread.Sleep(50);
-                Keyboard.KeyUp(Up);
-            }
-            else if (position - targetY < -15)
-            {
-                Keyboard.KeyDown(Down);
-                Thread.Sleep(50);
-                Keyboard.KeyUp(Down);
-            }
-            else
-            {
-                break;
-            }
-        }
+        writeMemory(findPointer(GetPointerArray("ROACursorX")), targetX);
+        writeMemory(findPointer(GetPointerArray("ROACursorY")), targetY);
     }
 
     protected override void GameNotOpen()
@@ -150,7 +100,7 @@ class ROAReplayViewer : ReplayViewer
 
     }
 
-    private double ClosestPosition(double inputPosition, double[] positionArray, ref int cell)
+    private float ClosestPosition(float inputPosition, float[] positionArray, ref int cell)
     {
         if (inputPosition < (positionArray[0] + positionArray[1]) / 2)
         {
@@ -171,19 +121,12 @@ class ROAReplayViewer : ReplayViewer
         return positionArray[3];
     }
 
-    private void Cell2Position(int cell, ref double posX, ref double posY)
+    private void Cell2Position(int cell, ref float posX, ref float posY)
     {
         int cellX = cell % 4;
         int cellY = (cell - cellX) / 4;
         posX = menuPositionX[cellX];
         posY = menuPositionY[cellY];
-    }
-
-    private int[] GetPointerArray(string key)
-    {
-        string PointerString = ConfigurationManager.AppSettings[key];
-        IEnumerable<int> PointerInts =  (PointerString ?? "").Split(',').Select(c => Convert.ToInt32(c, 16));
-        return PointerInts.ToArray();
     }
 
     private int pointerMenuState;
@@ -195,14 +138,9 @@ class ROAReplayViewer : ReplayViewer
     private int cellY;
     private bool NoErrors;
 
-    private int initMenuState;
-    private double[] menuPositionX = new double[4] { 565, 675, 785, 895 };
-    private double[] menuPositionY = new double[4] { 175, 250, 325, 400 };
+    private float[] menuPositionX = new float[4] { 530, 640, 750, 860 };
+    private float[] menuPositionY = new float[4] { 150, 225, 300, 375 };
 
     private Keys Start = Keys.Return;
     private Keys L = Keys.A;
-    private Keys Up = Keys.Up;
-    private Keys Down = Keys.Down;
-    private Keys Left = Keys.Left;
-    private Keys Right = Keys.Right;
 }

@@ -1,4 +1,4 @@
-AutomaticReplayViewer v1.33
+AutomaticReplayViewer v1.4
 
 Created by Mao (@NZMao)
 InputManager.dll by shynet (https://www.codeproject.com/Articles/117657/InputManager-library-Track-user-input-and-simulate)
@@ -8,6 +8,7 @@ It also has functionality for pressing hotkeys for starting and stopping recordi
 The games supported in the current version are:
 - Skullgirls
 - Rivals of Aether
+- Blazblue Cross Tag Battle
 
 Before starting the viewing process, navigate to the first replay to be played.
 
@@ -26,16 +27,26 @@ Inputs:
 	- An optional hotkey for the purpose of stopping a recording of the set
 	- Set this to whatever stop recording hotkey you use with your software
 	- If either of these hotkeys are left blank or do not parse this functionality is disabled
-- Display Hitboxes (SG only)
-	- This will display in-game hitboxes during playback
-- Display Inputs (SG only)
-	- This will display both players inputs during playback
-- Display Attack Data (SG only)
-	- This will display attack data during playback
 - Select Game
 	- Sets the game for which replays are to be played
 - More Settings...
 	- Opens a menu where the default settings as well as the keybindings can be changed
+
+Game Specific Options:
+
+Skullgirls
+- Display Hitboxes
+	- This will display in-game hitboxes during playback
+- Display Inputs
+	- This will display both players inputs during playback
+- Display Attack Data
+	- This will display attack data during playback
+
+Blazblue Cross Tag Battle
+- Hide Gauge
+	- This will hide the health/meter/assist gauges during playback
+- Hide Window
+	- This will hide the playback controls window during playback
 
 Textboxes that contain keybindings maybe cleared by right-clicking on them
 

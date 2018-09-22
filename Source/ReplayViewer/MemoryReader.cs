@@ -1,5 +1,8 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Configuration;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.InteropServices;
 using System.Windows.Forms;
 
@@ -39,7 +42,22 @@ public class MemoryReader
         return BitConverter.ToDouble(doubleBuffer, 0);
     }
 
+    protected float readMemoryFloat(int targetAddress)
+    {
+        ReadProcessMemory(pHandle, targetAddress, buffer, buffer.Length, ref bytesRead);
+        return BitConverter.ToSingle(buffer, 0);
+    }
+
     protected void writeMemory(int targetAddress, int value)
+    {
+        if (!canWrite)
+            return;
+
+        buffer = BitConverter.GetBytes(value);
+        WriteProcessMemory(pHandle, targetAddress, buffer, buffer.Length, ref bytesWritten);
+    }
+
+    protected void writeMemory(int targetAddress, float value)
     {
         if (!canWrite)
             return;
@@ -101,6 +119,13 @@ public class MemoryReader
     protected virtual void GameNotOpen()
     {
         MessageBox.Show("Please have " + game + " open while runnning this process");
+    }
+
+    protected int[] GetPointerArray(string key)
+    {
+        string PointerString = ConfigurationManager.AppSettings[key];
+        IEnumerable<int> PointerInts = (PointerString ?? "").Split(',').Select(c => Convert.ToInt32(c, 16));
+        return PointerInts.ToArray();
     }
 
     [DllImport("kernel32.dll")]

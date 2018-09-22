@@ -29,12 +29,15 @@ namespace AutomaticReplayViewer
             // Initialise ReplayViewer objects
             viewSG = new SGReplayViewer();
             viewROA = new ROAReplayViewer();
+            viewBBTag = new BBTagReplayViewer();
 
             // Initialise event handlers
             viewSG.PropertyChanged += ProgressText_PropertyChanged;
             viewSG.LoopEnded += ResetUI;
             viewROA.PropertyChanged += ProgressText_PropertyChanged;
             viewROA.LoopEnded += ResetUI;
+            viewBBTag.PropertyChanged += ProgressText_PropertyChanged;
+            viewBBTag.LoopEnded += ResetUI;
 
             // Set initial values of forms from config file
             numReplays.Text = ConfigurationManager.AppSettings["DefaultNumberOfReplays"];
@@ -43,6 +46,8 @@ namespace AutomaticReplayViewer
             DisplayHitboxes.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["DefaultDisplayHitboxes"]);
             DisplayInputs.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["DefaultDisplayInputs"]);
             DisplayAttackData.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["DefaultDisplayAttackData"]);
+            BBTagHideGauge.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["BBTag Hide Gauge"]);
+            BBTagHideWindow.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["BBTag Hide Window"]);
             switch (ConfigurationManager.AppSettings["DefaultGame"])
             {
                 default:
@@ -50,6 +55,9 @@ namespace AutomaticReplayViewer
                     break;
                 case "Rivals of Aether":
                     rivalsOfAetherToolStripMenuItem_Click(rivalsOfAetherToolStripMenuItem, new EventArgs());
+                    break;
+                case "BBTag":
+                    BBTagToolStripMenuItem_Click(bBTagToolStripMenuItem, new EventArgs());
                     break;
             }
 
@@ -118,7 +126,10 @@ namespace AutomaticReplayViewer
                     viewSG.StartLoop(ReplaysToPlay, SGLP, SGLK, SGMP, SGRight, RecordHotkey, StopHotkey, DisplayHitboxes.Checked, DisplayInputs.Checked, DisplayAttackData.Checked);
                     break;
                 case "Rivals of Aether":
-                    viewROA.StartLoop(ReplaysToPlay, ROAUp, ROADown, ROALeft, ROARight, ROAStart, ROAL, RecordHotkey, StopHotkey);
+                    viewROA.StartLoop(ReplaysToPlay, ROAStart, ROAL, RecordHotkey, StopHotkey);
+                    break;
+                case "BBTag":
+                    viewBBTag.StartLoop(ReplaysToPlay, BBTagUp, BBTagConfirm, BBTagGauge, BBTagWindow, RecordHotkey, StopHotkey, BBTagHideGauge.Checked, BBTagHideWindow.Checked);
                     break;
             }
 
@@ -129,6 +140,7 @@ namespace AutomaticReplayViewer
         {
             viewSG.ProcessRunning = false;
             viewROA.ProcessRunning = false;
+            viewBBTag.ProcessRunning = false;
         }
 
         private void ResetUI(object sender, EventArgs e)
@@ -155,6 +167,9 @@ namespace AutomaticReplayViewer
                 case "Rivals of Aether":
                     labelText = viewROA.ProgressText;
                     break;
+                case "BBTag":
+                    labelText = viewBBTag.ProgressText;
+                    break;
             }
         }
 
@@ -170,6 +185,7 @@ namespace AutomaticReplayViewer
 
         private static void GenerateConfigFile()
         {
+            // Update for new config file w BBTag stuff
             System.Text.StringBuilder sb = new StringBuilder();
             sb.AppendLine("<?xml version=\"1.0\" encoding=\"utf-8\" ?>");
             sb.AppendLine("<configuration>");
@@ -185,29 +201,32 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"DefaultDisplayHitboxes\" value=\"False\" />");
             sb.AppendLine("    <add key=\"DefaultDisplayInputs\" value=\"False\" />");
             sb.AppendLine("    <add key=\"DefaultDisplayAttackData\" value=\"False\" />");
-            sb.AppendLine("");
             sb.AppendLine("    <!--SG Pointers-->");
             sb.AppendLine("    <add key=\"SGMenuState\" value=\"3909632\" />");
-            sb.AppendLine("");
             sb.AppendLine("    <!--Relevant Key Bindings in ROA-->");
-            sb.AppendLine("    <add key=\"ROA Up keyboard input\" value=\"Up\" />");
-            sb.AppendLine("    <add key=\"ROA Down keyboard input\" value=\"Down\" />");
-            sb.AppendLine("    <add key=\"ROA Left keyboard input\" value=\"Left\" />");
-            sb.AppendLine("    <add key=\"ROA Right keyboard input\" value=\"Right\" />");
             sb.AppendLine("    <add key=\"ROA Start keyboard input\" value=\"Return\" />");
             sb.AppendLine("    <add key=\"ROA L keyboard input\" value=\"A\" />");
-            sb.AppendLine("");
             sb.AppendLine("    <!--ROA Pointers-->");
-            sb.AppendLine("    <add key=\"ROAMenuState\" value=\"0xAF64730\" />");
-            sb.AppendLine("    <add key=\"ROACursorX\" value=\"0x0AFAA31C,0x80,0x44,0x10,0x640,0\" />");
-            sb.AppendLine("    <add key=\"ROACursorY\" value=\"0x0AFAA31C,0x80,0x44,0x10,0x520,0\" />");
-            sb.AppendLine("");
+            sb.AppendLine("    <add key=\"ROAMenuState\" value=\"0x6B9FFE0\" />");
+            sb.AppendLine("    <add key=\"ROACursorX\" value=\"0x06BA76B8,0x0,0x35C,0xD4,0x8,0xB4\" />");
+            sb.AppendLine("    <add key=\"ROACursorY\" value=\"0x06BA76B8,0x0,0x35C,0xD4,0x8,0xB8\" />");
+            sb.AppendLine("    <!--Relevant Key Bindings in BBTag-->");
+            sb.AppendLine("    <add key=\"BBTag Up keyboard input\" value=\"W\" />");
+            sb.AppendLine("    <add key=\"BBTag Confirm keyboard input\" value=\"J\" />");
+            sb.AppendLine("    <add key=\"BBTag Gauge keyboard input\" value=\"U\" />");
+            sb.AppendLine("    <add key=\"BBTag Window keyboard input\" value=\"I\" />");
+            sb.AppendLine("    <add key=\"BBTag Hide Gauge\" value=\"False\" />");
+            sb.AppendLine("    <add key=\"BBTag Hide Window\" value=\"True\" />");
+            sb.AppendLine("    <!--BBTag Pointers-->");
+            sb.AppendLine("    <add key=\"BBTagReplayTheaterActive\" value=\"0x1643DF8\" />");
+            sb.AppendLine("    <add key=\"BBTagReplayPlaying\" value=\"0x5C9CD8\" />");
+            sb.AppendLine("    <add key=\"BBTagCursor\" value=\"0xFF7D90\" />");
             sb.AppendLine("    <!--Default Settings on Load-->");
             sb.AppendLine("    <add key=\"DefaultNumberOfReplays\" value=\"1\" />");
             sb.AppendLine("    <add key=\"DefaultRecordHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultStopHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultGame\" value=\"Skullgirls\" />");
-            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"11/04/18\" />");
+            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"22/09/18\" />");
             sb.AppendLine("  </appSettings>");
             sb.AppendLine("</configuration>");
 
@@ -228,26 +247,27 @@ namespace AutomaticReplayViewer
             SGLK = ParseKeys(ConfigurationManager.AppSettings["SG LK keyboard input"]);
             SGMP = ParseKeys(ConfigurationManager.AppSettings["SG MP keyboard input"]);
             SGRight = ParseKeys(ConfigurationManager.AppSettings["SG Right keyboard input"]);
-            ROAUp = ParseKeys(ConfigurationManager.AppSettings["ROA Up keyboard input"]);
-            ROADown = ParseKeys(ConfigurationManager.AppSettings["ROA Down keyboard input"]);
-            ROALeft = ParseKeys(ConfigurationManager.AppSettings["ROA Left keyboard input"]);
-            ROARight = ParseKeys(ConfigurationManager.AppSettings["ROA Right keyboard input"]);
             ROAStart = ParseKeys(ConfigurationManager.AppSettings["ROA Start keyboard input"]);
             ROAL = ParseKeys(ConfigurationManager.AppSettings["ROA L keyboard input"]);
+            BBTagUp = ParseKeys(ConfigurationManager.AppSettings["BBTag Up keyboard input"]);
+            BBTagConfirm = ParseKeys(ConfigurationManager.AppSettings["BBTag Confirm keyboard input"]);
+            BBTagGauge = ParseKeys(ConfigurationManager.AppSettings["BBTag Gauge keyboard input"]);
+            BBTagWindow = ParseKeys(ConfigurationManager.AppSettings["BBTag Window keyboard input"]);
         }
 
         private SGReplayViewer viewSG;
         private ROAReplayViewer viewROA;
+        private BBTagReplayViewer viewBBTag;
         private Keys SGLP = Keys.A;
         private Keys SGLK = Keys.Z;
         private Keys SGMP = Keys.S;
         private Keys SGRight = Keys.Right;
-        private Keys ROAUp = Keys.Up;
-        private Keys ROADown = Keys.Down;
-        private Keys ROALeft = Keys.Left;
-        private Keys ROARight = Keys.Right;
         private Keys ROAStart = Keys.Return;
         private Keys ROAL = Keys.A;
+        private Keys BBTagUp = Keys.W;
+        private Keys BBTagConfirm = Keys.J;
+        private Keys BBTagGauge = Keys.U;
+        private Keys BBTagWindow = Keys.I;
         private string currentGame = "Skullgirls";
 
         private void skullgirlsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -255,7 +275,9 @@ namespace AutomaticReplayViewer
             currentGame = viewSG.game;
             skullgirlsToolStripMenuItem.Checked = true;
             rivalsOfAetherToolStripMenuItem.Checked = false;
+            bBTagToolStripMenuItem.Checked = false;
             SGSettings.Visible = true;
+            BBTagSettings.Visible = false;
         }
 
         private void rivalsOfAetherToolStripMenuItem_Click(object sender, EventArgs e)
@@ -263,7 +285,19 @@ namespace AutomaticReplayViewer
             currentGame = viewROA.game;
             skullgirlsToolStripMenuItem.Checked = false;
             rivalsOfAetherToolStripMenuItem.Checked = true;
+            bBTagToolStripMenuItem.Checked = false;
             SGSettings.Visible = false;
+            BBTagSettings.Visible = false;
+        }
+
+        private void BBTagToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentGame = viewBBTag.game;
+            skullgirlsToolStripMenuItem.Checked = false;
+            rivalsOfAetherToolStripMenuItem.Checked = false;
+            bBTagToolStripMenuItem.Checked = true;
+            SGSettings.Visible = false;
+            BBTagSettings.Visible = true;
         }
 
         private void moreOptionsToolStripMenuItem_Click(object sender, EventArgs e)

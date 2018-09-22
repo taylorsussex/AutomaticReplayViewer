@@ -1,11 +1,9 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Configuration;
-using System.Linq;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
-using System.Xml.Linq;
 
 namespace AutomaticReplayViewer
 {
@@ -27,12 +25,14 @@ namespace AutomaticReplayViewer
             DisplayHitboxes.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["DefaultDisplayHitboxes"]);
             DisplayInputs.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["DefaultDisplayInputs"]);
             DisplayAttackData.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["DefaultDisplayAttackData"]);
-            ROAUpKeyboardInput.Text = ConfigurationManager.AppSettings["ROA Up keyboard input"];
-            ROADownKeyboardInput.Text = ConfigurationManager.AppSettings["ROA Down keyboard input"];
-            ROALeftKeyboardInput.Text = ConfigurationManager.AppSettings["ROA Left keyboard input"];
-            ROARightKeyboardInput.Text = ConfigurationManager.AppSettings["ROA Right keyboard input"];
             ROAStartKeyboardInput.Text = ConfigurationManager.AppSettings["ROA Start keyboard input"];
             ROALKeyboardInput.Text = ConfigurationManager.AppSettings["ROA L keyboard input"];
+            BBTagUpKeyboardInput.Text = ConfigurationManager.AppSettings["BBTag Up keyboard input"];
+            BBTagConfirmKeyboardInput.Text = ConfigurationManager.AppSettings["BBTag Confirm keyboard input"];
+            BBTagGaugeKeyboardInput.Text = ConfigurationManager.AppSettings["BBTag Gauge keyboard input"];
+            BBTagWindowKeyboardInput.Text = ConfigurationManager.AppSettings["BBTag Window keyboard input"];
+            BBTagHideGauge.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["BBTag Hide Gauge"]);
+            BBTagHideWindow.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["BBTag Hide Window"]);
             ptrupdatelabel.Text = "Last Updated:" + ConfigurationManager.AppSettings["LastTimePointersUpdated"];
 
             foreach (Control ctrl in this.Controls)
@@ -79,16 +79,25 @@ namespace AutomaticReplayViewer
                     panelGeneral.Visible = true;
                     panelSG.Visible = false;
                     panelROA.Visible = false;
+                    panelBBTag.Visible = false;
                     break;
                 case 1:
                     panelGeneral.Visible = false;
                     panelSG.Visible = true;
                     panelROA.Visible = false;
+                    panelBBTag.Visible = false;
                     break;
                 case 2:
                     panelGeneral.Visible = false;
                     panelSG.Visible = false;
                     panelROA.Visible = true;
+                    panelBBTag.Visible = false;
+                    break;
+                case 3:
+                    panelGeneral.Visible = false;
+                    panelSG.Visible = false;
+                    panelROA.Visible = false;
+                    panelBBTag.Visible = true;
                     break;
             }
         }
@@ -153,22 +162,6 @@ namespace AutomaticReplayViewer
                                 ConfigurationManager.AppSettings["DefaultDisplayAttackData"] = DisplayAttackData.Checked.ToString();
                                 node.Attributes[1].Value = DisplayAttackData.Checked.ToString();
                                 break;
-                            case "ROA Up keyboard input":
-                                ConfigurationManager.AppSettings["ROA Up keyboard input"] = ROAUpKeyboardInput.Text;
-                                node.Attributes[1].Value = ROAUpKeyboardInput.Text;
-                                break;
-                            case "ROA Down keyboard input":
-                                ConfigurationManager.AppSettings["ROA Down keyboard input"] = ROADownKeyboardInput.Text;
-                                node.Attributes[1].Value = ROADownKeyboardInput.Text;
-                                break;
-                            case "ROA Left keyboard input":
-                                ConfigurationManager.AppSettings["ROA Left keyboard input"] = ROALeftKeyboardInput.Text;
-                                node.Attributes[1].Value = ROALeftKeyboardInput.Text;
-                                break;
-                            case "ROA Right keyboard input":
-                                ConfigurationManager.AppSettings["ROA Right keyboard input"] = ROARightKeyboardInput.Text;
-                                node.Attributes[1].Value = ROARightKeyboardInput.Text;
-                                break;
                             case "ROA Start keyboard input":
                                 ConfigurationManager.AppSettings["ROA Start keyboard input"] = ROAStartKeyboardInput.Text;
                                 node.Attributes[1].Value = ROAStartKeyboardInput.Text;
@@ -176,6 +169,30 @@ namespace AutomaticReplayViewer
                             case "ROA L keyboard input":
                                 ConfigurationManager.AppSettings["ROA L keyboard input"] = ROALKeyboardInput.Text;
                                 node.Attributes[1].Value = ROALKeyboardInput.Text;
+                                break;
+                            case "BBTag Up keyboard input":
+                                ConfigurationManager.AppSettings["BBTag Up keyboard input"] = BBTagUpKeyboardInput.Text;
+                                node.Attributes[1].Value = BBTagUpKeyboardInput.Text;
+                                break;
+                            case "BBTag Confirm keyboard input":
+                                ConfigurationManager.AppSettings["BBTag Left keyboard input"] = BBTagConfirmKeyboardInput.Text;
+                                node.Attributes[1].Value = BBTagConfirmKeyboardInput.Text;
+                                break;
+                            case "BBTag Gauge keyboard input":
+                                ConfigurationManager.AppSettings["BBTag Gauge keyboard input"] = BBTagGaugeKeyboardInput.Text;
+                                node.Attributes[1].Value = BBTagGaugeKeyboardInput.Text;
+                                break;
+                            case "BBTag Window keyboard input":
+                                ConfigurationManager.AppSettings["BBTag Window keyboard input"] = BBTagWindowKeyboardInput.Text;
+                                node.Attributes[1].Value = BBTagWindowKeyboardInput.Text;
+                                break;
+                            case "BBTag Hide Gauge":
+                                ConfigurationManager.AppSettings["BBTag Hide Gauge"] = BBTagHideGauge.Checked.ToString();
+                                node.Attributes[1].Value = BBTagHideGauge.Checked.ToString();
+                                break;
+                            case "BBTag Hide Window":
+                                ConfigurationManager.AppSettings["BBTag Hide Window"] = BBTagHideWindow.Checked.ToString();
+                                node.Attributes[1].Value = BBTagHideWindow.Checked.ToString();
                                 break;
                             default:
                                 break;
@@ -219,9 +236,9 @@ namespace AutomaticReplayViewer
         {
             this.Enabled = false;
 
-            string SGMenuState, ROAMenuState, ROACursorX, ROACursorY, LastTimePointersUpdated;
+            string SGMenuState, ROAMenuState, ROACursorX, ROACursorY, BBTagReplayTheaterActive, BBTagReplayPlaying, BBTagCursor, LastTimePointersUpdated;
             bool AlreadyUpToDate = false;
-            SGMenuState = ROAMenuState = ROACursorX = ROACursorY = LastTimePointersUpdated = "";
+            SGMenuState = ROAMenuState = ROACursorX = ROACursorY = BBTagReplayTheaterActive = BBTagReplayPlaying = BBTagCursor = LastTimePointersUpdated = "";
 
             string url = "https://drive.google.com/uc?export=download&id=1brS3pncZNdeWSUX26YwBjipefdrZrkhk";
             XmlDocument ptrXML = new XmlDocument();
@@ -254,6 +271,15 @@ namespace AutomaticReplayViewer
                             break;
                         case "ROACursorY":
                             ROACursorY = node.Attributes[1].Value;
+                            break;
+                        case "BBTagReplayTheaterActive":
+                            BBTagReplayTheaterActive = node.Attributes[1].Value;
+                            break;
+                        case "BBTagCursor":
+                            BBTagCursor = node.Attributes[1].Value;
+                            break;
+                        case "BBTagReplayPlaying":
+                            BBTagReplayPlaying = node.Attributes[1].Value;
                             break;
                         case "LastTimePointersUpdated":
                             LastTimePointersUpdated = node.Attributes[1].Value;
@@ -295,6 +321,18 @@ namespace AutomaticReplayViewer
                             case "ROACursorY":
                                 ConfigurationManager.AppSettings["ROACursorY"] = ROACursorY;
                                 node.Attributes[1].Value = ROACursorY;
+                                break;
+                            case "BBTagReplayTheaterActive":
+                                ConfigurationManager.AppSettings["BBTagReplayTheaterActive"] = BBTagReplayTheaterActive;
+                                node.Attributes[1].Value = BBTagReplayTheaterActive;
+                                break;
+                            case "BBTagCursor":
+                                ConfigurationManager.AppSettings["BBTagCursor"] = BBTagCursor;
+                                node.Attributes[1].Value = BBTagCursor;
+                                break;
+                            case "BBTagReplayPlaying":
+                                ConfigurationManager.AppSettings["BBTagReplayPlaying"] = BBTagReplayPlaying;
+                                node.Attributes[1].Value = BBTagReplayPlaying;
                                 break;
                             case "LastTimePointersUpdated":
                                 ConfigurationManager.AppSettings["LastTimePointersUpdated"] = LastTimePointersUpdated;

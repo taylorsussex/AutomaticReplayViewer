@@ -30,19 +30,19 @@ namespace AutomaticReplayViewer
         /// </summary>
         private void InitializeComponent()
         {
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(MainForm));
             this.StartButton = new System.Windows.Forms.Button();
             this.StopButton = new System.Windows.Forms.Button();
             this.numReplays = new System.Windows.Forms.TextBox();
             this.label1 = new System.Windows.Forms.Label();
             this.viewerText = new System.Windows.Forms.Label();
-            this.InputRecordHotkey = new TapToSetTextBox();
-            this.InputStopHotkey = new TapToSetTextBox();
             this.label2 = new System.Windows.Forms.Label();
             this.label3 = new System.Windows.Forms.Label();
             this.menuStrip = new System.Windows.Forms.MenuStrip();
             this.selectGameToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.skullgirlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rivalsOfAetherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.bBTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moreOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -51,8 +51,14 @@ namespace AutomaticReplayViewer
             this.DisplayAttackData = new System.Windows.Forms.CheckBox();
             this.DisplayInputs = new System.Windows.Forms.CheckBox();
             this.DisplayHitboxes = new System.Windows.Forms.CheckBox();
+            this.BBTagSettings = new System.Windows.Forms.Panel();
+            this.BBTagHideWindow = new System.Windows.Forms.CheckBox();
+            this.BBTagHideGauge = new System.Windows.Forms.CheckBox();
+            this.InputStopHotkey = new AutomaticReplayViewer.TapToSetTextBox();
+            this.InputRecordHotkey = new AutomaticReplayViewer.TapToSetTextBox();
             this.menuStrip.SuspendLayout();
             this.SGSettings.SuspendLayout();
+            this.BBTagSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // StartButton
@@ -102,20 +108,6 @@ namespace AutomaticReplayViewer
             this.viewerText.TabIndex = 4;
             this.viewerText.Text = "Unstarted";
             // 
-            // InputRecordHotkey
-            // 
-            this.InputRecordHotkey.Location = new System.Drawing.Point(12, 171);
-            this.InputRecordHotkey.Name = "InputRecordHotkey";
-            this.InputRecordHotkey.Size = new System.Drawing.Size(100, 20);
-            this.InputRecordHotkey.TabIndex = 3;
-            // 
-            // InputStopHotkey
-            // 
-            this.InputStopHotkey.Location = new System.Drawing.Point(140, 171);
-            this.InputStopHotkey.Name = "InputStopHotkey";
-            this.InputStopHotkey.Size = new System.Drawing.Size(100, 20);
-            this.InputStopHotkey.TabIndex = 4;
-            // 
             // label2
             // 
             this.label2.AutoSize = true;
@@ -150,6 +142,7 @@ namespace AutomaticReplayViewer
             this.selectGameToolStripMenuItem.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.skullgirlsToolStripMenuItem,
             this.rivalsOfAetherToolStripMenuItem,
+            this.bBTagToolStripMenuItem,
             this.moreOptionsToolStripMenuItem});
             this.selectGameToolStripMenuItem.Name = "selectGameToolStripMenuItem";
             this.selectGameToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
@@ -170,6 +163,13 @@ namespace AutomaticReplayViewer
             this.rivalsOfAetherToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.rivalsOfAetherToolStripMenuItem.Text = "Rivals of Aether";
             this.rivalsOfAetherToolStripMenuItem.Click += new System.EventHandler(this.rivalsOfAetherToolStripMenuItem_Click);
+            // 
+            // bBTagToolStripMenuItem
+            // 
+            this.bBTagToolStripMenuItem.Name = "bBTagToolStripMenuItem";
+            this.bBTagToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.bBTagToolStripMenuItem.Text = "BBTag";
+            this.bBTagToolStripMenuItem.Click += new System.EventHandler(this.BBTagToolStripMenuItem_Click);
             // 
             // moreOptionsToolStripMenuItem
             // 
@@ -241,11 +241,57 @@ namespace AutomaticReplayViewer
             this.DisplayHitboxes.Text = "Display Hitboxes";
             this.DisplayHitboxes.UseVisualStyleBackColor = true;
             // 
+            // BBTagSettings
+            // 
+            this.BBTagSettings.Controls.Add(this.BBTagHideWindow);
+            this.BBTagSettings.Controls.Add(this.BBTagHideGauge);
+            this.BBTagSettings.Location = new System.Drawing.Point(0, 202);
+            this.BBTagSettings.Name = "BBTagSettings";
+            this.BBTagSettings.Size = new System.Drawing.Size(340, 18);
+            this.BBTagSettings.TabIndex = 12;
+            // 
+            // BBTagHideWindow
+            // 
+            this.BBTagHideWindow.AutoSize = true;
+            this.BBTagHideWindow.Location = new System.Drawing.Point(181, 1);
+            this.BBTagHideWindow.Name = "BBTagHideWindow";
+            this.BBTagHideWindow.Size = new System.Drawing.Size(90, 17);
+            this.BBTagHideWindow.TabIndex = 10;
+            this.BBTagHideWindow.Text = "Hide Window";
+            this.BBTagHideWindow.UseVisualStyleBackColor = true;
+            // 
+            // BBTagHideGauge
+            // 
+            this.BBTagHideGauge.AutoSize = true;
+            this.BBTagHideGauge.Location = new System.Drawing.Point(71, 1);
+            this.BBTagHideGauge.Name = "BBTagHideGauge";
+            this.BBTagHideGauge.Size = new System.Drawing.Size(83, 17);
+            this.BBTagHideGauge.TabIndex = 9;
+            this.BBTagHideGauge.Text = "Hide Gauge";
+            this.BBTagHideGauge.UseVisualStyleBackColor = true;
+            // 
+            // InputStopHotkey
+            // 
+            this.InputStopHotkey.Location = new System.Drawing.Point(140, 171);
+            this.InputStopHotkey.Name = "InputStopHotkey";
+            this.InputStopHotkey.ReadOnly = true;
+            this.InputStopHotkey.Size = new System.Drawing.Size(100, 20);
+            this.InputStopHotkey.TabIndex = 4;
+            // 
+            // InputRecordHotkey
+            // 
+            this.InputRecordHotkey.Location = new System.Drawing.Point(12, 171);
+            this.InputRecordHotkey.Name = "InputRecordHotkey";
+            this.InputRecordHotkey.ReadOnly = true;
+            this.InputRecordHotkey.Size = new System.Drawing.Size(100, 20);
+            this.InputRecordHotkey.TabIndex = 3;
+            // 
             // MainForm
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 232);
+            this.Controls.Add(this.BBTagSettings);
             this.Controls.Add(this.SGSettings);
             this.Controls.Add(this.InputStopHotkey);
             this.Controls.Add(this.InputRecordHotkey);
@@ -258,6 +304,7 @@ namespace AutomaticReplayViewer
             this.Controls.Add(this.StartButton);
             this.Controls.Add(this.menuStrip);
             this.FormBorderStyle = System.Windows.Forms.FormBorderStyle.FixedSingle;
+            this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.MainMenuStrip = this.menuStrip;
             this.MaximizeBox = false;
             this.Name = "MainForm";
@@ -266,6 +313,8 @@ namespace AutomaticReplayViewer
             this.menuStrip.PerformLayout();
             this.SGSettings.ResumeLayout(false);
             this.SGSettings.PerformLayout();
+            this.BBTagSettings.ResumeLayout(false);
+            this.BBTagSettings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -305,9 +354,6 @@ namespace AutomaticReplayViewer
                 viewerText.Text = newText;
             }
         }
-
-        public System.Windows.Forms.TextBox InputRecordHotkey;
-        public System.Windows.Forms.TextBox InputStopHotkey;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label3;
         public Keys RecordHotkey;
@@ -324,6 +370,12 @@ namespace AutomaticReplayViewer
         private ToolStripMenuItem helpToolStripMenuItem;
         private ToolStripMenuItem readmeToolStripMenuItem;
         private ToolStripMenuItem aboutToolStripMenuItem;
+        private ToolStripMenuItem bBTagToolStripMenuItem;
+        public TapToSetTextBox InputRecordHotkey;
+        public TapToSetTextBox InputStopHotkey;
+        private Panel BBTagSettings;
+        private CheckBox BBTagHideWindow;
+        private CheckBox BBTagHideGauge;
     }
 }
 
