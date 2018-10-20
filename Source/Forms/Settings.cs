@@ -175,7 +175,7 @@ namespace AutomaticReplayViewer
                                 node.Attributes[1].Value = BBTagUpKeyboardInput.Text;
                                 break;
                             case "BBTag Confirm keyboard input":
-                                ConfigurationManager.AppSettings["BBTag Left keyboard input"] = BBTagConfirmKeyboardInput.Text;
+                                ConfigurationManager.AppSettings["BBTag Confirm keyboard input"] = BBTagConfirmKeyboardInput.Text;
                                 node.Attributes[1].Value = BBTagConfirmKeyboardInput.Text;
                                 break;
                             case "BBTag Gauge keyboard input":

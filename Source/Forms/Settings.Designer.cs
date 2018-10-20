@@ -443,7 +443,7 @@
             this.BBTagWindowKeyboardInput.Name = "BBTagWindowKeyboardInput";
             this.BBTagWindowKeyboardInput.ReadOnly = true;
             this.BBTagWindowKeyboardInput.Size = new System.Drawing.Size(100, 20);
-            this.BBTagWindowKeyboardInput.TabIndex = 8;
+            this.BBTagWindowKeyboardInput.TabIndex = 7;
             // 
             // label15
             // 
@@ -460,7 +460,7 @@
             this.BBTagConfirmKeyboardInput.Name = "BBTagConfirmKeyboardInput";
             this.BBTagConfirmKeyboardInput.ReadOnly = true;
             this.BBTagConfirmKeyboardInput.Size = new System.Drawing.Size(100, 20);
-            this.BBTagConfirmKeyboardInput.TabIndex = 6;
+            this.BBTagConfirmKeyboardInput.TabIndex = 5;
             // 
             // BBTagGaugeKeyboardInput
             // 
@@ -468,7 +468,7 @@
             this.BBTagGaugeKeyboardInput.Name = "BBTagGaugeKeyboardInput";
             this.BBTagGaugeKeyboardInput.ReadOnly = true;
             this.BBTagGaugeKeyboardInput.Size = new System.Drawing.Size(100, 20);
-            this.BBTagGaugeKeyboardInput.TabIndex = 5;
+            this.BBTagGaugeKeyboardInput.TabIndex = 6;
             // 
             // BBTagUpKeyboardInput
             // 
