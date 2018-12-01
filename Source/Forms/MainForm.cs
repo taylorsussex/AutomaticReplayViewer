@@ -218,15 +218,15 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"BBTag Hide Gauge\" value=\"False\" />");
             sb.AppendLine("    <add key=\"BBTag Hide Window\" value=\"True\" />");
             sb.AppendLine("    <!--BBTag Pointers-->");
-            sb.AppendLine("    <add key=\"BBTagReplayTheaterActive\" value=\"0x1643DF8\" />");
-            sb.AppendLine("    <add key=\"BBTagReplayPlaying\" value=\"0x5C9CD8\" />");
-            sb.AppendLine("    <add key=\"BBTagCursor\" value=\"0xFF7D90\" />");
+            sb.AppendLine("    <add key=\"BBTagReplayTheaterActive\" value=\"0x1650DF8\" />");
+            sb.AppendLine("    <add key=\"BBTagReplayPlaying\" value=\"0x5CACD8\" />");
+            sb.AppendLine("    <add key=\"BBTagCursor\" value=\"0xFF8D90\" />");
             sb.AppendLine("    <!--Default Settings on Load-->");
             sb.AppendLine("    <add key=\"DefaultNumberOfReplays\" value=\"1\" />");
             sb.AppendLine("    <add key=\"DefaultRecordHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultStopHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultGame\" value=\"Skullgirls\" />");
-            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"25/11/18\" />");
+            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"1/12/18\" />");
             sb.AppendLine("  </appSettings>");
             sb.AppendLine("</configuration>");
 

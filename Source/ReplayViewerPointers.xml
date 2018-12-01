@@ -7,9 +7,9 @@
 	<Pointer key="ROACursorX" value="0x02225828,0xE4,0x80,0xA0"></Pointer>
 	<Pointer key="ROACursorY" value="0x02225828,0xE4,0x80,0xA4"></Pointer>
 	<!--BBTag Pointers-->
-	<Pointer key="BBTagReplayTheaterActive" value="0x1643DF8"></Pointer>
-	<Pointer key="BBTagReplayPlaying" value="0x5C9CD8"></Pointer>
-	<Pointer key="BBTagCursor" value="0xFF7D90"></Pointer>
+	<Pointer key="BBTagReplayTheaterActive" value="0x1650DF8"></Pointer>
+	<Pointer key="BBTagReplayPlaying" value="0x5CACD8"></Pointer>
+	<Pointer key="BBTagCursor" value="0xFF8D90"></Pointer>
 	<!--General Info-->
-	<Pointer key="LastTimePointersUpdated" value="25/11/18"></Pointer>
+	<Pointer key="LastTimePointersUpdated" value="1/12/18"></Pointer>
 </Pointers>
