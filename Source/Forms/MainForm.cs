@@ -207,9 +207,9 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"ROA Start keyboard input\" value=\"Return\" />");
             sb.AppendLine("    <add key=\"ROA L keyboard input\" value=\"A\" />");
             sb.AppendLine("    <!--ROA Pointers-->");
-            sb.AppendLine("    <add key=\"ROAMenuState\" value=\"0x22328B0\" />");
-            sb.AppendLine("    <add key=\"ROACursorX\" value=\"0x02232918,0xE4,0x80,0xA0\" />");
-            sb.AppendLine("    <add key=\"ROACursorY\" value=\"0x02232918,0xE4,0x80,0xA4\" />");
+            sb.AppendLine("    <add key=\"ROAMenuState\" value=\"0x228BBE8\" />");
+            sb.AppendLine("    <add key=\"ROACursorX\" value=\"0x0228BC50,0xE4,0x80,0xA0\" />");
+            sb.AppendLine("    <add key=\"ROACursorY\" value=\"0x0228BC50,0xE4,0x80,0xA4\" />");
             sb.AppendLine("    <!--Relevant Key Bindings in BBTag-->");
             sb.AppendLine("    <add key=\"BBTag Up keyboard input\" value=\"W\" />");
             sb.AppendLine("    <add key=\"BBTag Confirm keyboard input\" value=\"J\" />");
@@ -226,7 +226,7 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"DefaultRecordHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultStopHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultGame\" value=\"Skullgirls\" />");
-            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"29/12/18\" />");
+            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"27/1/19\" />");
             sb.AppendLine("  </appSettings>");
             sb.AppendLine("</configuration>");
 
