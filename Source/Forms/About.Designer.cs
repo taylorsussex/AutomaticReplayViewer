@@ -48,7 +48,7 @@
             this.label1.Name = "label1";
             this.label1.Size = new System.Drawing.Size(249, 24);
             this.label1.TabIndex = 0;
-            this.label1.Text = "AutomaticReplayViewer v1.4";
+            this.label1.Text = "AutomaticReplayViewer v1.5";
             // 
             // label2
             // 

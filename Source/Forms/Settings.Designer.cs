@@ -73,12 +73,27 @@
             this.label18 = new System.Windows.Forms.Label();
             this.label19 = new System.Windows.Forms.Label();
             this.label20 = new System.Windows.Forms.Label();
+            this.panelGGXrd = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.GGXrdHideInputs = new System.Windows.Forms.CheckBox();
+            this.GGXrdHideHUD = new System.Windows.Forms.CheckBox();
+            this.GGXrdHideWindow = new System.Windows.Forms.CheckBox();
+            this.GGXrdInputsKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
+            this.GGXrdHUDKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
+            this.GGXrdWindowKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
+            this.GGXrdConfirmKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
+            this.label9 = new System.Windows.Forms.Label();
+            this.label10 = new System.Windows.Forms.Label();
+            this.label11 = new System.Windows.Forms.Label();
+            this.label12 = new System.Windows.Forms.Label();
             this.panelSG.SuspendLayout();
             this.SGSettings.SuspendLayout();
             this.panelGeneral.SuspendLayout();
             this.panelROA.SuspendLayout();
             this.panelBBTag.SuspendLayout();
             this.BBTagSettings.SuspendLayout();
+            this.panelGGXrd.SuspendLayout();
+            this.panel2.SuspendLayout();
             this.SuspendLayout();
             // 
             // SettingsList
@@ -87,7 +102,8 @@
             "General",
             "Skullgirls",
             "Rivals of Aether",
-            "BBTag"});
+            "BBTag",
+            "GGXrd Rev 2"});
             this.SettingsList.Location = new System.Drawing.Point(12, 12);
             this.SettingsList.Name = "SettingsList";
             this.SettingsList.Size = new System.Drawing.Size(85, 212);
@@ -279,7 +295,8 @@
             this.DefaultGame.Items.AddRange(new object[] {
             "Skullgirls",
             "Rivals of Aether",
-            "BBTag"});
+            "BBTag",
+            "GGXrd Rev 2"});
             this.DefaultGame.Location = new System.Drawing.Point(190, 168);
             this.DefaultGame.Name = "DefaultGame";
             this.DefaultGame.Size = new System.Drawing.Size(121, 21);
@@ -505,6 +522,133 @@
             this.label20.TabIndex = 0;
             this.label20.Text = "Up keyboard input";
             // 
+            // panelGGXrd
+            // 
+            this.panelGGXrd.BackColor = System.Drawing.SystemColors.Control;
+            this.panelGGXrd.Controls.Add(this.panel2);
+            this.panelGGXrd.Controls.Add(this.GGXrdInputsKeyboardInput);
+            this.panelGGXrd.Controls.Add(this.GGXrdHUDKeyboardInput);
+            this.panelGGXrd.Controls.Add(this.GGXrdWindowKeyboardInput);
+            this.panelGGXrd.Controls.Add(this.GGXrdConfirmKeyboardInput);
+            this.panelGGXrd.Controls.Add(this.label9);
+            this.panelGGXrd.Controls.Add(this.label10);
+            this.panelGGXrd.Controls.Add(this.label11);
+            this.panelGGXrd.Controls.Add(this.label12);
+            this.panelGGXrd.Location = new System.Drawing.Point(103, 12);
+            this.panelGGXrd.Name = "panelGGXrd";
+            this.panelGGXrd.Size = new System.Drawing.Size(367, 212);
+            this.panelGGXrd.TabIndex = 15;
+            // 
+            // panel2
+            // 
+            this.panel2.Controls.Add(this.GGXrdHideInputs);
+            this.panel2.Controls.Add(this.GGXrdHideHUD);
+            this.panel2.Controls.Add(this.GGXrdHideWindow);
+            this.panel2.Location = new System.Drawing.Point(13, 153);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(340, 18);
+            this.panel2.TabIndex = 11;
+            // 
+            // GGXrdHideInputs
+            // 
+            this.GGXrdHideInputs.AutoSize = true;
+            this.GGXrdHideInputs.Location = new System.Drawing.Point(217, 1);
+            this.GGXrdHideInputs.Name = "GGXrdHideInputs";
+            this.GGXrdHideInputs.Size = new System.Drawing.Size(80, 17);
+            this.GGXrdHideInputs.TabIndex = 11;
+            this.GGXrdHideInputs.Text = "Hide Inputs";
+            this.GGXrdHideInputs.UseVisualStyleBackColor = true;
+            // 
+            // GGXrdHideHUD
+            // 
+            this.GGXrdHideHUD.AutoSize = true;
+            this.GGXrdHideHUD.Location = new System.Drawing.Point(119, 1);
+            this.GGXrdHideHUD.Name = "GGXrdHideHUD";
+            this.GGXrdHideHUD.Size = new System.Drawing.Size(75, 17);
+            this.GGXrdHideHUD.TabIndex = 10;
+            this.GGXrdHideHUD.Text = "Hide HUD";
+            this.GGXrdHideHUD.UseVisualStyleBackColor = true;
+            // 
+            // GGXrdHideWindow
+            // 
+            this.GGXrdHideWindow.AutoSize = true;
+            this.GGXrdHideWindow.Checked = true;
+            this.GGXrdHideWindow.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.GGXrdHideWindow.Location = new System.Drawing.Point(9, 1);
+            this.GGXrdHideWindow.Name = "GGXrdHideWindow";
+            this.GGXrdHideWindow.Size = new System.Drawing.Size(90, 17);
+            this.GGXrdHideWindow.TabIndex = 9;
+            this.GGXrdHideWindow.Text = "Hide Window";
+            this.GGXrdHideWindow.UseVisualStyleBackColor = true;
+            // 
+            // GGXrdInputsKeyboardInput
+            // 
+            this.GGXrdInputsKeyboardInput.Location = new System.Drawing.Point(174, 105);
+            this.GGXrdInputsKeyboardInput.Name = "GGXrdInputsKeyboardInput";
+            this.GGXrdInputsKeyboardInput.ReadOnly = true;
+            this.GGXrdInputsKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.GGXrdInputsKeyboardInput.TabIndex = 7;
+            // 
+            // GGXrdHUDKeyboardInput
+            // 
+            this.GGXrdHUDKeyboardInput.Location = new System.Drawing.Point(174, 75);
+            this.GGXrdHUDKeyboardInput.Name = "GGXrdHUDKeyboardInput";
+            this.GGXrdHUDKeyboardInput.ReadOnly = true;
+            this.GGXrdHUDKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.GGXrdHUDKeyboardInput.TabIndex = 6;
+            // 
+            // GGXrdWindowKeyboardInput
+            // 
+            this.GGXrdWindowKeyboardInput.Location = new System.Drawing.Point(174, 45);
+            this.GGXrdWindowKeyboardInput.Name = "GGXrdWindowKeyboardInput";
+            this.GGXrdWindowKeyboardInput.ReadOnly = true;
+            this.GGXrdWindowKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.GGXrdWindowKeyboardInput.TabIndex = 5;
+            // 
+            // GGXrdConfirmKeyboardInput
+            // 
+            this.GGXrdConfirmKeyboardInput.Location = new System.Drawing.Point(174, 15);
+            this.GGXrdConfirmKeyboardInput.Name = "GGXrdConfirmKeyboardInput";
+            this.GGXrdConfirmKeyboardInput.ReadOnly = true;
+            this.GGXrdConfirmKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.GGXrdConfirmKeyboardInput.TabIndex = 4;
+            // 
+            // label9
+            // 
+            this.label9.AutoSize = true;
+            this.label9.Location = new System.Drawing.Point(34, 108);
+            this.label9.Name = "label9";
+            this.label9.Size = new System.Drawing.Size(109, 13);
+            this.label9.TabIndex = 3;
+            this.label9.Text = "Inputs keyboard input";
+            // 
+            // label10
+            // 
+            this.label10.AutoSize = true;
+            this.label10.Location = new System.Drawing.Point(34, 78);
+            this.label10.Name = "label10";
+            this.label10.Size = new System.Drawing.Size(104, 13);
+            this.label10.TabIndex = 2;
+            this.label10.Text = "HUD keyboard input";
+            // 
+            // label11
+            // 
+            this.label11.AutoSize = true;
+            this.label11.Location = new System.Drawing.Point(34, 48);
+            this.label11.Name = "label11";
+            this.label11.Size = new System.Drawing.Size(119, 13);
+            this.label11.TabIndex = 1;
+            this.label11.Text = "Window keyboard input";
+            // 
+            // label12
+            // 
+            this.label12.AutoSize = true;
+            this.label12.Location = new System.Drawing.Point(34, 18);
+            this.label12.Name = "label12";
+            this.label12.Size = new System.Drawing.Size(115, 13);
+            this.label12.TabIndex = 0;
+            this.label12.Text = "Confirm keyboard input";
+            // 
             // Settings
             // 
             this.AcceptButton = this.OK;
@@ -512,6 +656,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.Cancel;
             this.ClientSize = new System.Drawing.Size(482, 269);
+            this.Controls.Add(this.panelGGXrd);
             this.Controls.Add(this.panelBBTag);
             this.Controls.Add(this.ptrupdatelabel);
             this.Controls.Add(this.UpdatePointers);
@@ -539,6 +684,10 @@
             this.panelBBTag.PerformLayout();
             this.BBTagSettings.ResumeLayout(false);
             this.BBTagSettings.PerformLayout();
+            this.panelGGXrd.ResumeLayout(false);
+            this.panelGGXrd.PerformLayout();
+            this.panel2.ResumeLayout(false);
+            this.panel2.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -590,5 +739,18 @@
         private System.Windows.Forms.Panel BBTagSettings;
         private System.Windows.Forms.CheckBox BBTagHideWindow;
         private System.Windows.Forms.CheckBox BBTagHideGauge;
+        private System.Windows.Forms.Panel panelGGXrd;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.CheckBox GGXrdHideInputs;
+        private System.Windows.Forms.CheckBox GGXrdHideHUD;
+        private System.Windows.Forms.CheckBox GGXrdHideWindow;
+        private TapToSetTextBox GGXrdInputsKeyboardInput;
+        private TapToSetTextBox GGXrdHUDKeyboardInput;
+        private TapToSetTextBox GGXrdWindowKeyboardInput;
+        private TapToSetTextBox GGXrdConfirmKeyboardInput;
+        private System.Windows.Forms.Label label9;
+        private System.Windows.Forms.Label label10;
+        private System.Windows.Forms.Label label11;
+        private System.Windows.Forms.Label label12;
     }
 }

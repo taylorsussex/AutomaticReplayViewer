@@ -1,3 +1,6 @@
+v1.5
+- Now supports Guilty Gear Xrd Rev 2
+
 v1.4
 - Now supports Blazblue Cross Tag Battle! The third game to be supported
 - The ROA implementation was reworked as a result of the switch to GameMaker Studio 2. Because of this, new pointers will no longer be compatible with previous versions of this program.

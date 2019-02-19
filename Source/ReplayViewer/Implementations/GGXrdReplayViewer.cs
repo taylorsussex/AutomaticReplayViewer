@@ -3,31 +3,46 @@ using System;
 using System.Threading;
 using System.Windows.Forms;
 
-class BBTagReplayViewer : ReplayViewer
+class GGXrdReplayViewer : ReplayViewer
 {
-    public BBTagReplayViewer() : base("BBTAG", "BBTag", true)
+    public GGXrdReplayViewer() : base("GuiltyGearXrd", "Guilty Gear Xrd Rev 2", true)
     {
     }
 
-    public void StartLoop(int ReplaysToPlay, Keys inputUp, Keys inputConfirm, Keys inputGauge, Keys inputWindow, Keys RecordStart, Keys RecordStop, bool gauge, bool window)
+    public void StartLoop(int ReplaysToPlay, Keys inputConfirm, Keys inputGauge, Keys inputWindow, Keys inputInputs, Keys RecordStart, Keys RecordStop, bool gauge, bool window, bool inputs)
     {
         NoErrors = true;
         getProcess();
-        Up = inputUp;
         Confirm = inputConfirm;
         Gauge = inputGauge;
         Window = inputWindow;
+        Inputs = inputInputs;
         hideGauge = gauge;
         hideWindow = window;
-        
+        hideInputs = inputs;
+
         if (NoErrors)
         {
             // Get pointers
-            ReplayTheaterActive = findPointer(GetPointerArray("BBTagReplayTheaterActive"));
-            ReplayCursorPointer = findPointer(GetPointerArray("BBTagCursor"));
-            ReplayPlaying = findPointer(GetPointerArray("BBTagReplayPlaying"));
+            MenuState = findPointer(GetPointerArray("GGXrdMenuState"));
+
+            // Notes:
+            // 8 -> outro not playing
+            // 4 -> P2 outro playing
+            // 0 -> P1 outro playing
+            OutroPlaying = findPointer(GetPointerArray("GGXrdOutroPlaying"));
+
+            // Make sure user is in replay menu before proceeding
+            if (readMemory(MenuState) != 228)
+            {
+                ProgressText = "Please start at the replay menu";
+                OnLoopEnd(new EventArgs());
+                return;
+            }
 
             // Find initReplay
+            cursor = GetPointerArray("GGXrdCursor");
+            ReplayCursorPointer = findPointer(cursor);
             initReplay = readMemory(ReplayCursorPointer);
 
             // Limit amount of replays if not enough exist
@@ -45,7 +60,15 @@ class BBTagReplayViewer : ReplayViewer
 
     protected override void MenuStateActive(ref bool menu)
     {
-        menu = (readMemory(ReplayTheaterActive) == 1);
+        menu = (readMemory(MenuState) == 228);
+
+        int outro = readMemory(OutroPlaying);
+        if (outro == 0 || outro == 4)
+        {
+            Keyboard.KeyDown(Confirm);
+            Thread.Sleep(50);
+            Keyboard.KeyUp(Confirm);
+        }
     }
 
     protected override void NavigateDefault()
@@ -53,18 +76,13 @@ class BBTagReplayViewer : ReplayViewer
         // Find current replay to navigate to
         currentReplay = initReplay - ReplaysPlayed + 1;
 
+        // Find current cursor pointer
+        ReplayCursorPointer = findPointer(cursor);
+
         // Write to memory to go to replay location
         writeMemory(ReplayCursorPointer, currentReplay);
 
         // Input keystrokes to play selected replay
-        Thread.Sleep(50);
-        Keyboard.KeyDown(Confirm);
-        Thread.Sleep(50);
-        Keyboard.KeyUp(Confirm);
-        Thread.Sleep(50);
-        Keyboard.KeyDown(Up);
-        Thread.Sleep(50);
-        Keyboard.KeyUp(Up);
         Thread.Sleep(50);
         Keyboard.KeyDown(Confirm);
         Thread.Sleep(50);
@@ -76,20 +94,26 @@ class BBTagReplayViewer : ReplayViewer
         while (ProcessRunning)
         {
             // Check if replay has loaded
-            if (readMemory(ReplayPlaying) == 1)
+            if (readMemory(MenuState) == 177)
             {
                 Thread.Sleep(100);
+                if (hideWindow)
+                {
+                    Keyboard.KeyDown(Window);
+                    Thread.Sleep(100);
+                    Keyboard.KeyUp(Window);
+                }
                 if (hideGauge)
                 {
                     Keyboard.KeyDown(Gauge);
                     Thread.Sleep(100);
                     Keyboard.KeyUp(Gauge);
                 }
-                if (hideWindow)
+                if (hideInputs)
                 {
-                    Keyboard.KeyDown(Window);
+                    Keyboard.KeyDown(Inputs);
                     Thread.Sleep(100);
-                    Keyboard.KeyUp(Window);
+                    Keyboard.KeyUp(Inputs);
                 }
                 return;
             }
@@ -99,22 +123,25 @@ class BBTagReplayViewer : ReplayViewer
     protected override void GameNotOpen()
     {
         base.GameNotOpen();
-        ProgressText = "BBTag was not open";
+        ProgressText = "GGXrd was not open";
         NoErrors = false;
     }
 
     private bool NoErrors;
     private bool hideGauge;
     private bool hideWindow;
+    private bool hideInputs;
 
-    private Keys Up = Keys.W;
-    private Keys Confirm = Keys.J;
-    private Keys Gauge = Keys.U;
+    private Keys Confirm = Keys.U;
+    private Keys Gauge = Keys.J;
     private Keys Window = Keys.I;
+    private Keys Inputs = Keys.L;
 
+    private int MenuState;
     private int ReplayCursorPointer;
-    private int ReplayTheaterActive;
-    private int ReplayPlaying;
+    private int OutroPlaying;
     private int initReplay;
     private int currentReplay;
+
+    private int[] cursor;
 }

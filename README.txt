@@ -1,4 +1,4 @@
-AutomaticReplayViewer v1.4
+AutomaticReplayViewer v1.5
 
 Created by Mao (@NZMao)
 InputManager.dll by shynet (https://www.codeproject.com/Articles/117657/InputManager-library-Track-user-input-and-simulate)
@@ -9,6 +9,7 @@ The games supported in the current version are:
 - Skullgirls
 - Rivals of Aether
 - Blazblue Cross Tag Battle
+- Guilty Gear Xrd Rev 2
 
 Before starting the viewing process, navigate to the first replay to be played.
 
@@ -47,6 +48,14 @@ Blazblue Cross Tag Battle
 	- This will hide the health/meter/assist gauges during playback
 - Hide Window
 	- This will hide the playback controls window during playback
+
+Guilty Gear Xrd Rev 2
+- Hide Window
+	- This will hide the playback controls window during playback
+- Hide HUD
+	- This will hide the heads up display during playback
+- Hide Inputs
+	- This will hide the player inputs during playback
 
 Textboxes that contain keybindings maybe cleared by right-clicking on them
 

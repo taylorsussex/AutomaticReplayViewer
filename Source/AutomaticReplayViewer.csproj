@@ -67,6 +67,7 @@
       <DependentUpon>MainForm.cs</DependentUpon>
     </Compile>
     <Compile Include="ReplayViewer\Implementations\BBTagReplayViewer.cs" />
+    <Compile Include="ReplayViewer\Implementations\GGXrdReplayViewer.cs" />
     <Compile Include="ReplayViewer\MemoryReader.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

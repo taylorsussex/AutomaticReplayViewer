@@ -30,6 +30,7 @@ namespace AutomaticReplayViewer
             viewSG = new SGReplayViewer();
             viewROA = new ROAReplayViewer();
             viewBBTag = new BBTagReplayViewer();
+            viewGGXrd = new GGXrdReplayViewer();
 
             // Initialise event handlers
             viewSG.PropertyChanged += ProgressText_PropertyChanged;
@@ -38,6 +39,8 @@ namespace AutomaticReplayViewer
             viewROA.LoopEnded += ResetUI;
             viewBBTag.PropertyChanged += ProgressText_PropertyChanged;
             viewBBTag.LoopEnded += ResetUI;
+            viewGGXrd.PropertyChanged += ProgressText_PropertyChanged;
+            viewGGXrd.LoopEnded += ResetUI;
 
             // Set initial values of forms from config file
             numReplays.Text = ConfigurationManager.AppSettings["DefaultNumberOfReplays"];
@@ -58,6 +61,9 @@ namespace AutomaticReplayViewer
                     break;
                 case "BBTag":
                     BBTagToolStripMenuItem_Click(bBTagToolStripMenuItem, new EventArgs());
+                    break;
+                case "GGXrd Rev 2":
+                    gGXrdRev2ToolStripMenuItem_Click(gGXrdRev2ToolStripMenuItem, new EventArgs());
                     break;
             }
 
@@ -114,10 +120,10 @@ namespace AutomaticReplayViewer
             numReplays.Enabled = false;
             InputRecordHotkey.Enabled = false;
             InputStopHotkey.Enabled = false;
-            DisplayHitboxes.Enabled = false;
-            DisplayInputs.Enabled = false;
-            DisplayAttackData.Enabled = false;
             menuStrip.Enabled = false;
+            SGSettings.Enabled = false;
+            BBTagSettings.Enabled = false;
+            GGXrdSettings.Enabled = false;
 
             // Start main loop
             switch (currentGame)
@@ -131,6 +137,9 @@ namespace AutomaticReplayViewer
                 case "BBTag":
                     viewBBTag.StartLoop(ReplaysToPlay, BBTagUp, BBTagConfirm, BBTagGauge, BBTagWindow, RecordHotkey, StopHotkey, BBTagHideGauge.Checked, BBTagHideWindow.Checked);
                     break;
+                case "Guilty Gear Xrd Rev 2":
+                    viewGGXrd.StartLoop(ReplaysToPlay, GGXrdConfirm, GGXrdHUD, GGXrdWindow, GGXrdInputs, RecordHotkey, StopHotkey, GGXrdHideHUD.Checked, GGXrdHideWindow.Checked, GGXrdHideInputs.Checked);
+                    break;
             }
 
             StopButton.Focus();
@@ -141,6 +150,7 @@ namespace AutomaticReplayViewer
             viewSG.ProcessRunning = false;
             viewROA.ProcessRunning = false;
             viewBBTag.ProcessRunning = false;
+            viewGGXrd.ProcessRunning = false;
         }
 
         private void ResetUI(object sender, EventArgs e)
@@ -151,10 +161,10 @@ namespace AutomaticReplayViewer
             numReplays.BeginInvoke((Action)delegate () { numReplays.Enabled = true; });
             InputRecordHotkey.BeginInvoke((Action)delegate () { InputRecordHotkey.Enabled = true; });
             InputStopHotkey.BeginInvoke((Action)delegate () { InputStopHotkey.Enabled = true; });
-            DisplayHitboxes.BeginInvoke((Action)delegate () { DisplayHitboxes.Enabled = true; });
-            DisplayInputs.BeginInvoke((Action)delegate () { DisplayInputs.Enabled = true; });
-            DisplayAttackData.BeginInvoke((Action)delegate () { DisplayAttackData.Enabled = true; });
             menuStrip.BeginInvoke((Action)delegate () { menuStrip.Enabled = true; });
+            SGSettings.BeginInvoke((Action)delegate () { SGSettings.Enabled = true; });
+            BBTagSettings.BeginInvoke((Action)delegate () { BBTagSettings.Enabled = true; });
+            GGXrdSettings.BeginInvoke((Action)delegate () { GGXrdSettings.Enabled = true; });
         }
 
         private void ProgressText_PropertyChanged(object sender, PropertyChangedEventArgs e)
@@ -169,6 +179,9 @@ namespace AutomaticReplayViewer
                     break;
                 case "BBTag":
                     labelText = viewBBTag.ProgressText;
+                    break;
+                case "Guilty Gear Xrd Rev 2":
+                    labelText = viewGGXrd.ProgressText;
                     break;
             }
         }
@@ -207,9 +220,9 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"ROA Start keyboard input\" value=\"Return\" />");
             sb.AppendLine("    <add key=\"ROA L keyboard input\" value=\"A\" />");
             sb.AppendLine("    <!--ROA Pointers-->");
-            sb.AppendLine("    <add key=\"ROAMenuState\" value=\"0x228BBE8\" />");
-            sb.AppendLine("    <add key=\"ROACursorX\" value=\"0x0228BC50,0xE4,0x80,0xA0\" />");
-            sb.AppendLine("    <add key=\"ROACursorY\" value=\"0x0228BC50,0xE4,0x80,0xA4\" />");
+            sb.AppendLine("    <add key=\"ROAMenuState\" value=\"0x229A728\" />");
+            sb.AppendLine("    <add key=\"ROACursorX\" value=\"0x0229A790,0xE4,0x80,0xA0\" />");
+            sb.AppendLine("    <add key=\"ROACursorY\" value=\"0x0229A790,0xE4,0x80,0xA4\" />");
             sb.AppendLine("    <!--Relevant Key Bindings in BBTag-->");
             sb.AppendLine("    <add key=\"BBTag Up keyboard input\" value=\"W\" />");
             sb.AppendLine("    <add key=\"BBTag Confirm keyboard input\" value=\"J\" />");
@@ -221,12 +234,24 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"BBTagReplayTheaterActive\" value=\"0x1650DF8\" />");
             sb.AppendLine("    <add key=\"BBTagReplayPlaying\" value=\"0x5CACD8\" />");
             sb.AppendLine("    <add key=\"BBTagCursor\" value=\"0xFF8D90\" />");
+            sb.AppendLine("    <!--Relevant Key Bindings in GGXrd-->");
+            sb.AppendLine("    <add key=\"GGXrd Confirm keyboard input\" value=\"U\" />");
+            sb.AppendLine("    <add key=\"GGXrd Window keyboard input\" value=\"I\" />");
+            sb.AppendLine("    <add key=\"GGXrd HUD keyboard input\" value=\"J\" />");
+            sb.AppendLine("    <add key=\"GGXrd Inputs keyboard input\" value=\"L\" />");
+            sb.AppendLine("    <add key=\"GGXrd Hide Window\" value=\"True\" />");
+            sb.AppendLine("    <add key=\"GGXrd Hide HUD\" value=\"False\" />");
+            sb.AppendLine("    <add key=\"GGXrd Hide Inputs\" value=\"False\" />");
+            sb.AppendLine("    <!--GGXrd Pointers-->");
+            sb.AppendLine("    <add key=\"GGXrdMenuState\" value=\"0x177FB8C\" />");
+            sb.AppendLine("    <add key=\"GGXrdOutroPlaying\" value=\"0x1937DEC\" />");
+            sb.AppendLine("    <add key=\"GGXrdCursor\" value=\"0x0173A670,0x14,0x4,0x60,0x1BC\" />");
             sb.AppendLine("    <!--Default Settings on Load-->");
             sb.AppendLine("    <add key=\"DefaultNumberOfReplays\" value=\"1\" />");
             sb.AppendLine("    <add key=\"DefaultRecordHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultStopHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultGame\" value=\"Skullgirls\" />");
-            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"27/1/19\" />");
+            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"19/2/19\" />");
             sb.AppendLine("  </appSettings>");
             sb.AppendLine("</configuration>");
 
@@ -253,11 +278,16 @@ namespace AutomaticReplayViewer
             BBTagConfirm = ParseKeys(ConfigurationManager.AppSettings["BBTag Confirm keyboard input"]);
             BBTagGauge = ParseKeys(ConfigurationManager.AppSettings["BBTag Gauge keyboard input"]);
             BBTagWindow = ParseKeys(ConfigurationManager.AppSettings["BBTag Window keyboard input"]);
+            GGXrdConfirm = ParseKeys(ConfigurationManager.AppSettings["GGXrd Confirm keyboard input"]);
+            GGXrdWindow = ParseKeys(ConfigurationManager.AppSettings["GGXrd Window keyboard input"]);
+            GGXrdHUD = ParseKeys(ConfigurationManager.AppSettings["GGXrd HUD keyboard input"]);
+            GGXrdInputs = ParseKeys(ConfigurationManager.AppSettings["GGXrd Inputs keyboard input"]);
         }
 
         private SGReplayViewer viewSG;
         private ROAReplayViewer viewROA;
         private BBTagReplayViewer viewBBTag;
+        private GGXrdReplayViewer viewGGXrd;
         private Keys SGLP = Keys.A;
         private Keys SGLK = Keys.Z;
         private Keys SGMP = Keys.S;
@@ -268,6 +298,10 @@ namespace AutomaticReplayViewer
         private Keys BBTagConfirm = Keys.J;
         private Keys BBTagGauge = Keys.U;
         private Keys BBTagWindow = Keys.I;
+        private Keys GGXrdConfirm = Keys.U;
+        private Keys GGXrdWindow = Keys.I;
+        private Keys GGXrdHUD = Keys.J;
+        private Keys GGXrdInputs = Keys.L;
         private string currentGame = "Skullgirls";
 
         private void skullgirlsToolStripMenuItem_Click(object sender, EventArgs e)
@@ -276,8 +310,10 @@ namespace AutomaticReplayViewer
             skullgirlsToolStripMenuItem.Checked = true;
             rivalsOfAetherToolStripMenuItem.Checked = false;
             bBTagToolStripMenuItem.Checked = false;
+            gGXrdRev2ToolStripMenuItem.Checked = false;
             SGSettings.Visible = true;
             BBTagSettings.Visible = false;
+            GGXrdSettings.Visible = false;
         }
 
         private void rivalsOfAetherToolStripMenuItem_Click(object sender, EventArgs e)
@@ -286,8 +322,10 @@ namespace AutomaticReplayViewer
             skullgirlsToolStripMenuItem.Checked = false;
             rivalsOfAetherToolStripMenuItem.Checked = true;
             bBTagToolStripMenuItem.Checked = false;
+            gGXrdRev2ToolStripMenuItem.Checked = false;
             SGSettings.Visible = false;
             BBTagSettings.Visible = false;
+            GGXrdSettings.Visible = false;
         }
 
         private void BBTagToolStripMenuItem_Click(object sender, EventArgs e)
@@ -296,8 +334,22 @@ namespace AutomaticReplayViewer
             skullgirlsToolStripMenuItem.Checked = false;
             rivalsOfAetherToolStripMenuItem.Checked = false;
             bBTagToolStripMenuItem.Checked = true;
+            gGXrdRev2ToolStripMenuItem.Checked = false;
             SGSettings.Visible = false;
             BBTagSettings.Visible = true;
+            GGXrdSettings.Visible = false;
+        }
+
+        private void gGXrdRev2ToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentGame = viewGGXrd.game;
+            skullgirlsToolStripMenuItem.Checked = false;
+            rivalsOfAetherToolStripMenuItem.Checked = false;
+            bBTagToolStripMenuItem.Checked = false;
+            gGXrdRev2ToolStripMenuItem.Checked = true;
+            SGSettings.Visible = false;
+            BBTagSettings.Visible = false;
+            GGXrdSettings.Visible = true;
         }
 
         private void moreOptionsToolStripMenuItem_Click(object sender, EventArgs e)

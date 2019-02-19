@@ -33,6 +33,13 @@ namespace AutomaticReplayViewer
             BBTagWindowKeyboardInput.Text = ConfigurationManager.AppSettings["BBTag Window keyboard input"];
             BBTagHideGauge.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["BBTag Hide Gauge"]);
             BBTagHideWindow.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["BBTag Hide Window"]);
+            GGXrdConfirmKeyboardInput.Text = ConfigurationManager.AppSettings["GGXrd Confirm keyboard input"];
+            GGXrdWindowKeyboardInput.Text = ConfigurationManager.AppSettings["GGXrd Window keyboard input"];
+            GGXrdHUDKeyboardInput.Text = ConfigurationManager.AppSettings["GGXrd HUD keyboard input"];
+            GGXrdInputsKeyboardInput.Text = ConfigurationManager.AppSettings["GGXrd Inputs keyboard input"];
+            GGXrdHideWindow.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["GGXrd Hide Window"]);
+            GGXrdHideHUD.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["GGXrd Hide HUD"]);
+            GGXrdHideInputs.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["GGXrd Hide Inputs"]);
             ptrupdatelabel.Text = "Last Updated:" + ConfigurationManager.AppSettings["LastTimePointersUpdated"];
 
             foreach (Control ctrl in this.Controls)
@@ -80,24 +87,35 @@ namespace AutomaticReplayViewer
                     panelSG.Visible = false;
                     panelROA.Visible = false;
                     panelBBTag.Visible = false;
+                    panelGGXrd.Visible = false;
                     break;
                 case 1:
                     panelGeneral.Visible = false;
                     panelSG.Visible = true;
                     panelROA.Visible = false;
                     panelBBTag.Visible = false;
+                    panelGGXrd.Visible = false;
                     break;
                 case 2:
                     panelGeneral.Visible = false;
                     panelSG.Visible = false;
                     panelROA.Visible = true;
                     panelBBTag.Visible = false;
+                    panelGGXrd.Visible = false;
                     break;
                 case 3:
                     panelGeneral.Visible = false;
                     panelSG.Visible = false;
                     panelROA.Visible = false;
                     panelBBTag.Visible = true;
+                    panelGGXrd.Visible = false;
+                    break;
+                case 4:
+                    panelGeneral.Visible = false;
+                    panelSG.Visible = false;
+                    panelROA.Visible = false;
+                    panelBBTag.Visible = false;
+                    panelGGXrd.Visible = true;
                     break;
             }
         }
@@ -194,6 +212,34 @@ namespace AutomaticReplayViewer
                                 ConfigurationManager.AppSettings["BBTag Hide Window"] = BBTagHideWindow.Checked.ToString();
                                 node.Attributes[1].Value = BBTagHideWindow.Checked.ToString();
                                 break;
+                            case "GGXrd Confirm keyboard input":
+                                ConfigurationManager.AppSettings["GGXrd Confirm keyboard input"] = GGXrdConfirmKeyboardInput.Text;
+                                node.Attributes[1].Value = GGXrdConfirmKeyboardInput.Text;
+                                break;
+                            case "GGXrd Window keyboard input":
+                                ConfigurationManager.AppSettings["GGXrd Window keyboard input"] = GGXrdWindowKeyboardInput.Text;
+                                node.Attributes[1].Value = GGXrdWindowKeyboardInput.Text;
+                                break;
+                            case "GGXrd HUD keyboard input":
+                                ConfigurationManager.AppSettings["GGXrd HUD keyboard input"] = GGXrdHUDKeyboardInput.Text;
+                                node.Attributes[1].Value = GGXrdHUDKeyboardInput.Text;
+                                break;
+                            case "GGXrd Inputs keyboard input":
+                                ConfigurationManager.AppSettings["GGXrd Inputs keyboard input"] = GGXrdInputsKeyboardInput.Text;
+                                node.Attributes[1].Value = GGXrdInputsKeyboardInput.Text;
+                                break;
+                            case "GGXrd Hide Window":
+                                ConfigurationManager.AppSettings["GGXrd Hide Window"] = GGXrdHideWindow.Checked.ToString();
+                                node.Attributes[1].Value = GGXrdHideWindow.Checked.ToString();
+                                break;
+                            case "GGXrd Hide HUD":
+                                ConfigurationManager.AppSettings["GGXrd Hide HUD"] = GGXrdHideHUD.Checked.ToString();
+                                node.Attributes[1].Value = GGXrdHideHUD.Checked.ToString();
+                                break;
+                            case "GGXrd Hide Inputs":
+                                ConfigurationManager.AppSettings["GGXrd Hide Inputs"] = GGXrdHideInputs.Checked.ToString();
+                                node.Attributes[1].Value = GGXrdHideInputs.Checked.ToString();
+                                break;
                             default:
                                 break;
                         }
@@ -236,9 +282,9 @@ namespace AutomaticReplayViewer
         {
             this.Enabled = false;
 
-            string SGMenuState, ROAMenuState, ROACursorX, ROACursorY, BBTagReplayTheaterActive, BBTagReplayPlaying, BBTagCursor, LastTimePointersUpdated;
+            string SGMenuState, ROAMenuState, ROACursorX, ROACursorY, BBTagReplayTheaterActive, BBTagReplayPlaying, BBTagCursor, GGXrdMenuState, GGXrdOutroPlaying, GGXrdCursor, LastTimePointersUpdated;
             bool AlreadyUpToDate = false;
-            SGMenuState = ROAMenuState = ROACursorX = ROACursorY = BBTagReplayTheaterActive = BBTagReplayPlaying = BBTagCursor = LastTimePointersUpdated = "";
+            SGMenuState = ROAMenuState = ROACursorX = ROACursorY = BBTagReplayTheaterActive = BBTagReplayPlaying = BBTagCursor = GGXrdMenuState = GGXrdOutroPlaying = GGXrdCursor = LastTimePointersUpdated = "";
 
             string url = "https://drive.google.com/uc?export=download&id=1brS3pncZNdeWSUX26YwBjipefdrZrkhk";
             XmlDocument ptrXML = new XmlDocument();
@@ -280,6 +326,15 @@ namespace AutomaticReplayViewer
                             break;
                         case "BBTagReplayPlaying":
                             BBTagReplayPlaying = node.Attributes[1].Value;
+                            break;
+                        case "GGXrdMenuState":
+                            GGXrdMenuState = node.Attributes[1].Value;
+                            break;
+                        case "GGXrdOutroPlaying":
+                            GGXrdOutroPlaying = node.Attributes[1].Value;
+                            break;
+                        case "GGXrdCursor":
+                            GGXrdCursor = node.Attributes[1].Value;
                             break;
                         case "LastTimePointersUpdated":
                             LastTimePointersUpdated = node.Attributes[1].Value;
@@ -333,6 +388,18 @@ namespace AutomaticReplayViewer
                             case "BBTagReplayPlaying":
                                 ConfigurationManager.AppSettings["BBTagReplayPlaying"] = BBTagReplayPlaying;
                                 node.Attributes[1].Value = BBTagReplayPlaying;
+                                break;
+                            case "GGXrdMenuState":
+                                ConfigurationManager.AppSettings["GGXrdMenuState"] = GGXrdMenuState;
+                                node.Attributes[1].Value = GGXrdMenuState;
+                                break;
+                            case "GGXrdOutroPlaying":
+                                ConfigurationManager.AppSettings["GGXrdOutroPlaying"] = GGXrdOutroPlaying;
+                                node.Attributes[1].Value = GGXrdOutroPlaying;
+                                break;
+                            case "GGXrdCursor":
+                                ConfigurationManager.AppSettings["GGXrdCursor"] = GGXrdCursor;
+                                node.Attributes[1].Value = GGXrdCursor;
                                 break;
                             case "LastTimePointersUpdated":
                                 ConfigurationManager.AppSettings["LastTimePointersUpdated"] = LastTimePointersUpdated;

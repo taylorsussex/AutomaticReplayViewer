@@ -43,6 +43,7 @@ namespace AutomaticReplayViewer
             this.skullgirlsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.rivalsOfAetherToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.bBTagToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.gGXrdRev2ToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.moreOptionsToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.helpToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.readmeToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,11 +55,16 @@ namespace AutomaticReplayViewer
             this.BBTagSettings = new System.Windows.Forms.Panel();
             this.BBTagHideWindow = new System.Windows.Forms.CheckBox();
             this.BBTagHideGauge = new System.Windows.Forms.CheckBox();
+            this.GGXrdSettings = new System.Windows.Forms.Panel();
+            this.GGXrdHideInputs = new System.Windows.Forms.CheckBox();
+            this.GGXrdHideHUD = new System.Windows.Forms.CheckBox();
+            this.GGXrdHideWindow = new System.Windows.Forms.CheckBox();
             this.InputStopHotkey = new AutomaticReplayViewer.TapToSetTextBox();
             this.InputRecordHotkey = new AutomaticReplayViewer.TapToSetTextBox();
             this.menuStrip.SuspendLayout();
             this.SGSettings.SuspendLayout();
             this.BBTagSettings.SuspendLayout();
+            this.GGXrdSettings.SuspendLayout();
             this.SuspendLayout();
             // 
             // StartButton
@@ -143,6 +149,7 @@ namespace AutomaticReplayViewer
             this.skullgirlsToolStripMenuItem,
             this.rivalsOfAetherToolStripMenuItem,
             this.bBTagToolStripMenuItem,
+            this.gGXrdRev2ToolStripMenuItem,
             this.moreOptionsToolStripMenuItem});
             this.selectGameToolStripMenuItem.Name = "selectGameToolStripMenuItem";
             this.selectGameToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
@@ -170,6 +177,13 @@ namespace AutomaticReplayViewer
             this.bBTagToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
             this.bBTagToolStripMenuItem.Text = "BBTag";
             this.bBTagToolStripMenuItem.Click += new System.EventHandler(this.BBTagToolStripMenuItem_Click);
+            // 
+            // gGXrdRev2ToolStripMenuItem
+            // 
+            this.gGXrdRev2ToolStripMenuItem.Name = "gGXrdRev2ToolStripMenuItem";
+            this.gGXrdRev2ToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.gGXrdRev2ToolStripMenuItem.Text = "GGXrd Rev 2";
+            this.gGXrdRev2ToolStripMenuItem.Click += new System.EventHandler(this.gGXrdRev2ToolStripMenuItem_Click);
             // 
             // moreOptionsToolStripMenuItem
             // 
@@ -270,6 +284,48 @@ namespace AutomaticReplayViewer
             this.BBTagHideGauge.Text = "Hide Gauge";
             this.BBTagHideGauge.UseVisualStyleBackColor = true;
             // 
+            // GGXrdSettings
+            // 
+            this.GGXrdSettings.Controls.Add(this.GGXrdHideInputs);
+            this.GGXrdSettings.Controls.Add(this.GGXrdHideHUD);
+            this.GGXrdSettings.Controls.Add(this.GGXrdHideWindow);
+            this.GGXrdSettings.Location = new System.Drawing.Point(0, 202);
+            this.GGXrdSettings.Name = "GGXrdSettings";
+            this.GGXrdSettings.Size = new System.Drawing.Size(340, 18);
+            this.GGXrdSettings.TabIndex = 13;
+            // 
+            // GGXrdHideInputs
+            // 
+            this.GGXrdHideInputs.AutoSize = true;
+            this.GGXrdHideInputs.Location = new System.Drawing.Point(217, 1);
+            this.GGXrdHideInputs.Name = "GGXrdHideInputs";
+            this.GGXrdHideInputs.Size = new System.Drawing.Size(80, 17);
+            this.GGXrdHideInputs.TabIndex = 11;
+            this.GGXrdHideInputs.Text = "Hide Inputs";
+            this.GGXrdHideInputs.UseVisualStyleBackColor = true;
+            // 
+            // GGXrdHideHUD
+            // 
+            this.GGXrdHideHUD.AutoSize = true;
+            this.GGXrdHideHUD.Location = new System.Drawing.Point(119, 1);
+            this.GGXrdHideHUD.Name = "GGXrdHideHUD";
+            this.GGXrdHideHUD.Size = new System.Drawing.Size(75, 17);
+            this.GGXrdHideHUD.TabIndex = 10;
+            this.GGXrdHideHUD.Text = "Hide HUD";
+            this.GGXrdHideHUD.UseVisualStyleBackColor = true;
+            // 
+            // GGXrdHideWindow
+            // 
+            this.GGXrdHideWindow.AutoSize = true;
+            this.GGXrdHideWindow.Checked = true;
+            this.GGXrdHideWindow.CheckState = System.Windows.Forms.CheckState.Checked;
+            this.GGXrdHideWindow.Location = new System.Drawing.Point(9, 1);
+            this.GGXrdHideWindow.Name = "GGXrdHideWindow";
+            this.GGXrdHideWindow.Size = new System.Drawing.Size(90, 17);
+            this.GGXrdHideWindow.TabIndex = 9;
+            this.GGXrdHideWindow.Text = "Hide Window";
+            this.GGXrdHideWindow.UseVisualStyleBackColor = true;
+            // 
             // InputStopHotkey
             // 
             this.InputStopHotkey.Location = new System.Drawing.Point(140, 171);
@@ -291,6 +347,7 @@ namespace AutomaticReplayViewer
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 232);
+            this.Controls.Add(this.GGXrdSettings);
             this.Controls.Add(this.BBTagSettings);
             this.Controls.Add(this.SGSettings);
             this.Controls.Add(this.InputStopHotkey);
@@ -315,6 +372,8 @@ namespace AutomaticReplayViewer
             this.SGSettings.PerformLayout();
             this.BBTagSettings.ResumeLayout(false);
             this.BBTagSettings.PerformLayout();
+            this.GGXrdSettings.ResumeLayout(false);
+            this.GGXrdSettings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -376,6 +435,11 @@ namespace AutomaticReplayViewer
         private Panel BBTagSettings;
         private CheckBox BBTagHideWindow;
         private CheckBox BBTagHideGauge;
+        private ToolStripMenuItem gGXrdRev2ToolStripMenuItem;
+        private Panel GGXrdSettings;
+        private CheckBox GGXrdHideInputs;
+        private CheckBox GGXrdHideHUD;
+        private CheckBox GGXrdHideWindow;
     }
 }
 
