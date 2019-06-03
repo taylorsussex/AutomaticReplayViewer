@@ -3,17 +3,17 @@
 	<!--SG Pointers-->
 	<Pointer key="SGMenuState" value="3909632"></Pointer>
 	<!--ROA Pointers-->
-	<Pointer key="ROAMenuState" value="0x229A728"></Pointer>
-	<Pointer key="ROACursorX" value="0x0229A790,0xE4,0x80,0xA0"></Pointer>
-	<Pointer key="ROACursorY" value="0x0229A790,0xE4,0x80,0xA4"></Pointer>
+	<Pointer key="ROAMenuState" value="0x22E1090"></Pointer>
+	<Pointer key="ROACursorX" value="0x022E1068,0x80,0xA0"></Pointer>
+	<Pointer key="ROACursorY" value="0x022E1068,0x80,0xA4"></Pointer>
 	<!--BBTag Pointers-->
-	<Pointer key="BBTagReplayTheaterActive" value="0x1650DF8"></Pointer>
-	<Pointer key="BBTagReplayPlaying" value="0x5CACD8"></Pointer>
-	<Pointer key="BBTagCursor" value="0xFF8D90"></Pointer>
+	<Pointer key="BBTagReplayTheaterActive" value="0x166F658"></Pointer>
+	<Pointer key="BBTagReplayPlaying" value="0x5D8AD8"></Pointer>
+	<Pointer key="BBTagCursor" value="0x100B578"></Pointer>
     <!--GGXrd Pointers-->
 	<Pointer key="GGXrdMenuState" value="0x177FB8C"></Pointer>
 	<Pointer key="GGXrdOutroPlaying" value="0x1937DEC"></Pointer>
 	<Pointer key="GGXrdCursor" value="0x0173A670,0x14,0x4,0x60,0x1BC"></Pointer>
 	<!--General Info-->
-	<Pointer key="LastTimePointersUpdated" value="20/2/19"></Pointer>
+	<Pointer key="LastTimePointersUpdated" value="3/6/19"></Pointer>
 </Pointers>
