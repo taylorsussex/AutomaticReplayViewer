@@ -3,9 +3,9 @@
 	<!--SG Pointers-->
 	<Pointer key="SGMenuState" value="3909632"></Pointer>
 	<!--ROA Pointers-->
-	<Pointer key="ROAMenuState" value="0x232F908"></Pointer>
-	<Pointer key="ROACursorX" value="0x0232F8E0,0x80,0xA0"></Pointer>
-	<Pointer key="ROACursorY" value="0x0232F8E0,0x80,0xA4"></Pointer>
+	<Pointer key="ROAMenuState" value="0x2343AB0"></Pointer>
+	<Pointer key="ROACursorX" value="0x02343A88,0x80,0xA0"></Pointer>
+	<Pointer key="ROACursorY" value="0x02343A88,0x80,0xA4"></Pointer>
 	<!--BBTag Pointers-->
 	<Pointer key="BBTagReplayTheaterActive" value="0x166F658"></Pointer>
 	<Pointer key="BBTagReplayPlaying" value="0x5D8AD8"></Pointer>
@@ -15,5 +15,5 @@
 	<Pointer key="GGXrdOutroPlaying" value="0x1937DEC"></Pointer>
 	<Pointer key="GGXrdCursor" value="0x0173A670,0x14,0x4,0x60,0x1BC"></Pointer>
 	<!--General Info-->
-	<Pointer key="LastTimePointersUpdated" value="1/9/19"></Pointer>
+	<Pointer key="LastTimePointersUpdated" value="9/10/19"></Pointer>
 </Pointers>
