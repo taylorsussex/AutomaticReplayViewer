@@ -243,7 +243,7 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"GGXrd Hide HUD\" value=\"False\" />");
             sb.AppendLine("    <add key=\"GGXrd Hide Inputs\" value=\"False\" />");
             sb.AppendLine("    <!--GGXrd Pointers-->");
-            sb.AppendLine("    <add key=\"GGXrdMenuState\" value=\"0x177FB8C\" />");
+            sb.AppendLine("    <add key=\"GGXrdMenuState\" value=\"0x0173A674,0x94,0x4\" />");
             sb.AppendLine("    <add key=\"GGXrdOutroPlaying\" value=\"0x1937DEC\" />");
             sb.AppendLine("    <add key=\"GGXrdCursor\" value=\"0x0173A670,0x14,0x4,0x60,0x1BC\" />");
             sb.AppendLine("    <!--Default Settings on Load-->");
@@ -251,7 +251,7 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"DefaultRecordHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultStopHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultGame\" value=\"Skullgirls\" />");
-            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"3/6/20\" />");
+            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"27/8/20\" />");
             sb.AppendLine("  </appSettings>");
             sb.AppendLine("</configuration>");
 

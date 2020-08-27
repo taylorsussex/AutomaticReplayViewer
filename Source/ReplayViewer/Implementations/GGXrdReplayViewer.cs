@@ -33,7 +33,7 @@ class GGXrdReplayViewer : ReplayViewer
             OutroPlaying = findPointer(GetPointerArray("GGXrdOutroPlaying"));
 
             // Make sure user is in replay menu before proceeding
-            if (readMemory(MenuState) != 228)
+            if (readMemory(MenuState) != 4)
             {
                 ProgressText = "Please start at the replay menu";
                 OnLoopEnd(new EventArgs());
@@ -60,7 +60,7 @@ class GGXrdReplayViewer : ReplayViewer
 
     protected override void MenuStateActive(ref bool menu)
     {
-        menu = (readMemory(MenuState) == 228);
+        menu = (readMemory(MenuState) == 4);
 
         int outro = readMemory(OutroPlaying);
         if (outro == 0 || outro == 4)
@@ -94,7 +94,7 @@ class GGXrdReplayViewer : ReplayViewer
         while (ProcessRunning)
         {
             // Check if replay has loaded
-            if (readMemory(MenuState) == 177)
+            if (readMemory(MenuState) == 2)
             {
                 Thread.Sleep(100);
                 if (hideWindow)

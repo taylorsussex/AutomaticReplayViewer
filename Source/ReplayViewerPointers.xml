@@ -11,9 +11,9 @@
 	<Pointer key="BBTagReplayPlaying" value="0x5FE488"></Pointer>
 	<Pointer key="BBTagCursor" value="0x10CBD58"></Pointer>
     <!--GGXrd Pointers-->
-	<Pointer key="GGXrdMenuState" value="0x177FB8C"></Pointer>
+	<Pointer key="GGXrdMenuState" value="0x0173A674,0x94,0x4"></Pointer>
 	<Pointer key="GGXrdOutroPlaying" value="0x1937DEC"></Pointer>
 	<Pointer key="GGXrdCursor" value="0x0173A670,0x14,0x4,0x60,0x1BC"></Pointer>
 	<!--General Info-->
-	<Pointer key="LastTimePointersUpdated" value="6/7/20"></Pointer>
+	<Pointer key="LastTimePointersUpdated" value="27/8/20"></Pointer>
 </Pointers>

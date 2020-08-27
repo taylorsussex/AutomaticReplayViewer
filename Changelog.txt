@@ -1,3 +1,7 @@
+v1.52
+- Changed the pointers used for GGXrd
+- Due to these changes, previous versions of ReplayViewer will no longer be compatible with GGXrd
+
 v1.51
 - Updated pointers for BBTag and ROA
 - Due to changes to ROA, previous versions of ReplayViewer will no longer be compatible with ROA
