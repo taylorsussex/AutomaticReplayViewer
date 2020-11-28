@@ -1,3 +1,7 @@
+v1.53
+- Updated pointers for ROA
+- Due to changes to ROA, revious versions of ReplayViewer will no longer be compatible with ROA
+
 v1.52
 - Changed the pointers used for GGXrd
 - Due to these changes, previous versions of ReplayViewer will no longer be compatible with GGXrd

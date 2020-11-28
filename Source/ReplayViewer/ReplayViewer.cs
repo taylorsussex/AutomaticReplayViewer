@@ -54,6 +54,8 @@ abstract class ReplayViewer : MemoryReader
 
                 if (!IsLoading && menu)
                 {
+                    FocusWindow();
+
                     ReplaysPlayed++;
                     // Check if all the replays have been played
                     if (ReplaysPlayed > ReplaysToPlay)
@@ -70,6 +72,7 @@ abstract class ReplayViewer : MemoryReader
                 }
                 else if (IsLoading && !menu)
                 {
+                    FocusWindow();
                     IsLoading = false;
                     InMatchInputs();
                 }
