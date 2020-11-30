@@ -215,7 +215,7 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"DefaultDisplayInputs\" value=\"False\" />");
             sb.AppendLine("    <add key=\"DefaultDisplayAttackData\" value=\"False\" />");
             sb.AppendLine("    <!--SG Pointers-->");
-            sb.AppendLine("    <add key=\"SGMenuState\" value=\"3958808\" />");
+            sb.AppendLine("    <add key=\"SGMenuState\" value=\"4028396\" />");
             sb.AppendLine("    <!--Relevant Key Bindings in ROA-->");
             sb.AppendLine("    <add key=\"ROA Start keyboard input\" value=\"Return\" />");
             sb.AppendLine("    <add key=\"ROA L keyboard input\" value=\"A\" />");
@@ -251,7 +251,7 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"DefaultRecordHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultStopHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultGame\" value=\"Skullgirls\" />");
-            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"19/11/20\" />");
+            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"30/11/20\" />");
             sb.AppendLine("  </appSettings>");
             sb.AppendLine("</configuration>");
 
