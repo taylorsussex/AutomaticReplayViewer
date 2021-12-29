@@ -29,8 +29,9 @@ namespace AutomaticReplayViewer
             // Initialise ReplayViewer objects
             viewSG = new SGReplayViewer();
             viewROA = new ROAReplayViewer();
-            viewBBTag = new BBTagReplayViewer();
+            viewBBTag = new BBCFReplayViewer();
             viewGGXrd = new GGXrdReplayViewer();
+            viewBBCF = new BBCFReplayViewer();
 
             // Initialise event handlers
             viewSG.PropertyChanged += ProgressText_PropertyChanged;
@@ -41,6 +42,8 @@ namespace AutomaticReplayViewer
             viewBBTag.LoopEnded += ResetUI;
             viewGGXrd.PropertyChanged += ProgressText_PropertyChanged;
             viewGGXrd.LoopEnded += ResetUI;
+            viewBBCF.PropertyChanged += ProgressText_PropertyChanged;
+            viewBBCF.LoopEnded += ResetUI;
 
             // Set initial values of forms from config file
             numReplays.Text = ConfigurationManager.AppSettings["DefaultNumberOfReplays"];
@@ -64,6 +67,9 @@ namespace AutomaticReplayViewer
                     break;
                 case "GGXrd Rev 2":
                     gGXrdRev2ToolStripMenuItem_Click(gGXrdRev2ToolStripMenuItem, new EventArgs());
+                    break;
+                case "BBCF":
+                    BBCFToolStripMenuItem_Click(BBCFToolStripMenuItem, new EventArgs());
                     break;
             }
 
@@ -140,6 +146,9 @@ namespace AutomaticReplayViewer
                 case "Guilty Gear Xrd Rev 2":
                     viewGGXrd.StartLoop(ReplaysToPlay, GGXrdConfirm, GGXrdHUD, GGXrdWindow, GGXrdInputs, RecordHotkey, StopHotkey, GGXrdHideHUD.Checked, GGXrdHideWindow.Checked, GGXrdHideInputs.Checked);
                     break;
+                case "BlazBlue Centralfiction":
+                    viewBBCF.StartLoop(ReplaysToPlay, BBTagUp, BBTagConfirm, BBTagGauge, BBTagWindow, RecordHotkey, StopHotkey, BBCFHideGauge.Checked, BBCFHideWindow.Checked);
+                    break;
             }
 
             StopButton.Focus();
@@ -151,6 +160,7 @@ namespace AutomaticReplayViewer
             viewROA.ProcessRunning = false;
             viewBBTag.ProcessRunning = false;
             viewGGXrd.ProcessRunning = false;
+            viewBBCF.ProcessRunning = false;
         }
 
         private void ResetUI(object sender, EventArgs e)
@@ -182,6 +192,9 @@ namespace AutomaticReplayViewer
                     break;
                 case "Guilty Gear Xrd Rev 2":
                     labelText = viewGGXrd.ProgressText;
+                    break;
+                case "BlazBlue Centralfiction":
+                    labelText = viewBBCF.ProgressText;
                     break;
             }
         }
@@ -215,7 +228,7 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"DefaultDisplayInputs\" value=\"False\" />");
             sb.AppendLine("    <add key=\"DefaultDisplayAttackData\" value=\"False\" />");
             sb.AppendLine("    <!--SG Pointers-->");
-            sb.AppendLine("    <add key=\"SGMenuState\" value=\"4195368\" />");
+            sb.AppendLine("    <add key=\"SGMenuState\" value=\"4369548\" />");
             sb.AppendLine("    <!--Relevant Key Bindings in ROA-->");
             sb.AppendLine("    <add key=\"ROA Start keyboard input\" value=\"Return\" />");
             sb.AppendLine("    <add key=\"ROA L keyboard input\" value=\"A\" />");
@@ -251,7 +264,7 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"DefaultRecordHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultStopHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultGame\" value=\"Skullgirls\" />");
-            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"6/12/21\" />");
+            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"30/12/21\" />");
             sb.AppendLine("  </appSettings>");
             sb.AppendLine("</configuration>");
 
@@ -286,8 +299,9 @@ namespace AutomaticReplayViewer
 
         private SGReplayViewer viewSG;
         private ROAReplayViewer viewROA;
-        private BBTagReplayViewer viewBBTag;
+        private BBCFReplayViewer viewBBTag;
         private GGXrdReplayViewer viewGGXrd;
+        private BBCFReplayViewer viewBBCF;
         private Keys SGLP = Keys.A;
         private Keys SGLK = Keys.Z;
         private Keys SGMP = Keys.S;
@@ -311,9 +325,11 @@ namespace AutomaticReplayViewer
             rivalsOfAetherToolStripMenuItem.Checked = false;
             bBTagToolStripMenuItem.Checked = false;
             gGXrdRev2ToolStripMenuItem.Checked = false;
+            BBCFToolStripMenuItem.Checked = false;
             SGSettings.Visible = true;
             BBTagSettings.Visible = false;
             GGXrdSettings.Visible = false;
+            BBCFSettings.Visible = false;
         }
 
         private void rivalsOfAetherToolStripMenuItem_Click(object sender, EventArgs e)
@@ -323,9 +339,11 @@ namespace AutomaticReplayViewer
             rivalsOfAetherToolStripMenuItem.Checked = true;
             bBTagToolStripMenuItem.Checked = false;
             gGXrdRev2ToolStripMenuItem.Checked = false;
+            BBCFToolStripMenuItem.Checked = false;
             SGSettings.Visible = false;
             BBTagSettings.Visible = false;
             GGXrdSettings.Visible = false;
+            BBCFSettings.Visible = false;
         }
 
         private void BBTagToolStripMenuItem_Click(object sender, EventArgs e)
@@ -335,9 +353,11 @@ namespace AutomaticReplayViewer
             rivalsOfAetherToolStripMenuItem.Checked = false;
             bBTagToolStripMenuItem.Checked = true;
             gGXrdRev2ToolStripMenuItem.Checked = false;
+            BBCFToolStripMenuItem.Checked = false;
             SGSettings.Visible = false;
             BBTagSettings.Visible = true;
             GGXrdSettings.Visible = false;
+            BBCFSettings.Visible = false;
         }
 
         private void gGXrdRev2ToolStripMenuItem_Click(object sender, EventArgs e)
@@ -347,9 +367,25 @@ namespace AutomaticReplayViewer
             rivalsOfAetherToolStripMenuItem.Checked = false;
             bBTagToolStripMenuItem.Checked = false;
             gGXrdRev2ToolStripMenuItem.Checked = true;
+            BBCFToolStripMenuItem.Checked = false;
             SGSettings.Visible = false;
             BBTagSettings.Visible = false;
             GGXrdSettings.Visible = true;
+            BBCFSettings.Visible = false;
+        }
+
+        private void BBCFToolStripMenuItem_Click(object sender, EventArgs e)
+        {
+            currentGame = viewBBCF.game;
+            skullgirlsToolStripMenuItem.Checked = false;
+            rivalsOfAetherToolStripMenuItem.Checked = false;
+            bBTagToolStripMenuItem.Checked = false;
+            gGXrdRev2ToolStripMenuItem.Checked = false;
+            BBCFToolStripMenuItem.Checked = true;
+            SGSettings.Visible = false;
+            BBTagSettings.Visible = false;
+            GGXrdSettings.Visible = false;
+            BBCFSettings.Visible = true;
         }
 
         private void moreOptionsToolStripMenuItem_Click(object sender, EventArgs e)

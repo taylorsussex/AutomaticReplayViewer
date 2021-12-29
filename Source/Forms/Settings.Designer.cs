@@ -86,6 +86,18 @@
             this.label10 = new System.Windows.Forms.Label();
             this.label11 = new System.Windows.Forms.Label();
             this.label12 = new System.Windows.Forms.Label();
+            this.panelBBCF = new System.Windows.Forms.Panel();
+            this.BBCFSettings = new System.Windows.Forms.Panel();
+            this.BBCFHideWindow = new System.Windows.Forms.CheckBox();
+            this.BBCFHideGauge = new System.Windows.Forms.CheckBox();
+            this.BBCFWindowKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
+            this.label24 = new System.Windows.Forms.Label();
+            this.BBCFConfirmKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
+            this.BBCFGaugeKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
+            this.BBCFUpKeyboardInput = new AutomaticReplayViewer.TapToSetTextBox();
+            this.label21 = new System.Windows.Forms.Label();
+            this.label22 = new System.Windows.Forms.Label();
+            this.label23 = new System.Windows.Forms.Label();
             this.panelSG.SuspendLayout();
             this.SGSettings.SuspendLayout();
             this.panelGeneral.SuspendLayout();
@@ -103,7 +115,8 @@
             "Skullgirls",
             "Rivals of Aether",
             "BBTag",
-            "GGXrd Rev 2"});
+            "GGXrd Rev 2",
+            "BBCF"});
             this.SettingsList.Location = new System.Drawing.Point(12, 12);
             this.SettingsList.Name = "SettingsList";
             this.SettingsList.Size = new System.Drawing.Size(85, 212);
@@ -296,7 +309,8 @@
             "Skullgirls",
             "Rivals of Aether",
             "BBTag",
-            "GGXrd Rev 2"});
+            "GGXrd Rev 2",
+            "BBCF"});
             this.DefaultGame.Location = new System.Drawing.Point(190, 168);
             this.DefaultGame.Name = "DefaultGame";
             this.DefaultGame.Size = new System.Drawing.Size(121, 21);
@@ -649,6 +663,120 @@
             this.label12.TabIndex = 0;
             this.label12.Text = "Confirm keyboard input";
             // 
+            // panelBBCF
+            // 
+            this.panelBBCF.BackColor = System.Drawing.SystemColors.Control;
+            this.panelBBCF.Controls.Add(this.BBCFSettings);
+            this.panelBBCF.Controls.Add(this.BBCFWindowKeyboardInput);
+            this.panelBBCF.Controls.Add(this.label24);
+            this.panelBBCF.Controls.Add(this.BBCFConfirmKeyboardInput);
+            this.panelBBCF.Controls.Add(this.BBCFGaugeKeyboardInput);
+            this.panelBBCF.Controls.Add(this.BBCFUpKeyboardInput);
+            this.panelBBCF.Controls.Add(this.label21);
+            this.panelBBCF.Controls.Add(this.label22);
+            this.panelBBCF.Controls.Add(this.label23);
+            this.panelBBCF.Location = new System.Drawing.Point(103, 12);
+            this.panelBBCF.Name = "panelBBCF";
+            this.panelBBCF.Size = new System.Drawing.Size(367, 212);
+            this.panelBBCF.TabIndex = 14;
+            // 
+            // BBCFSettings
+            // 
+            this.BBCFSettings.Controls.Add(this.BBCFHideWindow);
+            this.BBCFSettings.Controls.Add(this.BBCFHideGauge);
+            this.BBCFSettings.Location = new System.Drawing.Point(13, 142);
+            this.BBCFSettings.Name = "BBCFSettings";
+            this.BBCFSettings.Size = new System.Drawing.Size(340, 18);
+            this.BBCFSettings.TabIndex = 13;
+            // 
+            // BBCFHideWindow
+            // 
+            this.BBCFHideWindow.AutoSize = true;
+            this.BBCFHideWindow.Location = new System.Drawing.Point(181, 1);
+            this.BBCFHideWindow.Name = "BBCFHideWindow";
+            this.BBCFHideWindow.Size = new System.Drawing.Size(90, 17);
+            this.BBCFHideWindow.TabIndex = 10;
+            this.BBCFHideWindow.Text = "Hide Window";
+            this.BBCFHideWindow.UseVisualStyleBackColor = true;
+            // 
+            // BBCFHideGauge
+            // 
+            this.BBCFHideGauge.AutoSize = true;
+            this.BBCFHideGauge.Location = new System.Drawing.Point(71, 1);
+            this.BBCFHideGauge.Name = "BBCFHideGauge";
+            this.BBCFHideGauge.Size = new System.Drawing.Size(83, 17);
+            this.BBCFHideGauge.TabIndex = 9;
+            this.BBCFHideGauge.Text = "Hide Gauge";
+            this.BBCFHideGauge.UseVisualStyleBackColor = true;
+            // 
+            // BBCFWindowKeyboardInput
+            // 
+            this.BBCFWindowKeyboardInput.Location = new System.Drawing.Point(174, 105);
+            this.BBCFWindowKeyboardInput.Name = "BBCFWindowKeyboardInput";
+            this.BBCFWindowKeyboardInput.ReadOnly = true;
+            this.BBCFWindowKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.BBCFWindowKeyboardInput.TabIndex = 7;
+            // 
+            // label24
+            // 
+            this.label24.AutoSize = true;
+            this.label24.Location = new System.Drawing.Point(34, 108);
+            this.label24.Name = "label24";
+            this.label24.Size = new System.Drawing.Size(119, 13);
+            this.label24.TabIndex = 7;
+            this.label24.Text = "Window keyboard input";
+            // 
+            // BBCFConfirmKeyboardInput
+            // 
+            this.BBCFConfirmKeyboardInput.Location = new System.Drawing.Point(174, 45);
+            this.BBCFConfirmKeyboardInput.Name = "BBCFConfirmKeyboardInput";
+            this.BBCFConfirmKeyboardInput.ReadOnly = true;
+            this.BBCFConfirmKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.BBCFConfirmKeyboardInput.TabIndex = 5;
+            // 
+            // BBCFGaugeKeyboardInput
+            // 
+            this.BBCFGaugeKeyboardInput.Location = new System.Drawing.Point(174, 75);
+            this.BBCFGaugeKeyboardInput.Name = "BBCFGaugeKeyboardInput";
+            this.BBCFGaugeKeyboardInput.ReadOnly = true;
+            this.BBCFGaugeKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.BBCFGaugeKeyboardInput.TabIndex = 6;
+            // 
+            // BBCFUpKeyboardInput
+            // 
+            this.BBCFUpKeyboardInput.Location = new System.Drawing.Point(174, 15);
+            this.BBCFUpKeyboardInput.Name = "BBCFUpKeyboardInput";
+            this.BBCFUpKeyboardInput.ReadOnly = true;
+            this.BBCFUpKeyboardInput.Size = new System.Drawing.Size(100, 20);
+            this.BBCFUpKeyboardInput.TabIndex = 4;
+            // 
+            // label21
+            // 
+            this.label21.AutoSize = true;
+            this.label21.Location = new System.Drawing.Point(34, 78);
+            this.label21.Name = "label21";
+            this.label21.Size = new System.Drawing.Size(112, 13);
+            this.label21.TabIndex = 2;
+            this.label21.Text = "Gauge keyboard input";
+            // 
+            // label22
+            // 
+            this.label22.AutoSize = true;
+            this.label22.Location = new System.Drawing.Point(34, 48);
+            this.label22.Name = "label22";
+            this.label22.Size = new System.Drawing.Size(115, 13);
+            this.label22.TabIndex = 1;
+            this.label22.Text = "Confirm keyboard input";
+            // 
+            // label23
+            // 
+            this.label23.AutoSize = true;
+            this.label23.Location = new System.Drawing.Point(34, 18);
+            this.label23.Name = "label23";
+            this.label23.Size = new System.Drawing.Size(94, 13);
+            this.label23.TabIndex = 0;
+            this.label23.Text = "Up keyboard input";
+            // 
             // Settings
             // 
             this.AcceptButton = this.OK;
@@ -656,6 +784,7 @@
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.CancelButton = this.Cancel;
             this.ClientSize = new System.Drawing.Size(482, 269);
+            this.Controls.Add(this.panelBBCF);
             this.Controls.Add(this.panelGGXrd);
             this.Controls.Add(this.panelBBTag);
             this.Controls.Add(this.ptrupdatelabel);
@@ -686,6 +815,10 @@
             this.BBTagSettings.PerformLayout();
             this.panelGGXrd.ResumeLayout(false);
             this.panelGGXrd.PerformLayout();
+            this.panelBBCF.ResumeLayout(false);
+            this.panelBBCF.PerformLayout();
+            this.BBCFSettings.ResumeLayout(false);
+            this.BBCFSettings.PerformLayout();
             this.panel2.ResumeLayout(false);
             this.panel2.PerformLayout();
             this.ResumeLayout(false);
@@ -752,5 +885,17 @@
         private System.Windows.Forms.Label label10;
         private System.Windows.Forms.Label label11;
         private System.Windows.Forms.Label label12;
+        private System.Windows.Forms.Panel panelBBCF;
+        private TapToSetTextBox BBCFConfirmKeyboardInput;
+        private TapToSetTextBox BBCFGaugeKeyboardInput;
+        private TapToSetTextBox BBCFUpKeyboardInput;
+        private System.Windows.Forms.Label label21;
+        private System.Windows.Forms.Label label22;
+        private System.Windows.Forms.Label label23;
+        private TapToSetTextBox BBCFWindowKeyboardInput;
+        private System.Windows.Forms.Label label24;
+        private System.Windows.Forms.Panel BBCFSettings;
+        private System.Windows.Forms.CheckBox BBCFHideWindow;
+        private System.Windows.Forms.CheckBox BBCFHideGauge;
     }
 }

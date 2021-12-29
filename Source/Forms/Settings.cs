@@ -40,6 +40,12 @@ namespace AutomaticReplayViewer
             GGXrdHideWindow.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["GGXrd Hide Window"]);
             GGXrdHideHUD.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["GGXrd Hide HUD"]);
             GGXrdHideInputs.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["GGXrd Hide Inputs"]);
+            BBCFUpKeyboardInput.Text = ConfigurationManager.AppSettings["BBCF Up keyboard input"];
+            BBCFConfirmKeyboardInput.Text = ConfigurationManager.AppSettings["BBCF Confirm keyboard input"];
+            BBCFGaugeKeyboardInput.Text = ConfigurationManager.AppSettings["BBCF Gauge keyboard input"];
+            BBCFWindowKeyboardInput.Text = ConfigurationManager.AppSettings["BBCF Window keyboard input"];
+            BBCFHideGauge.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["BBCF Hide Gauge"]);
+            BBCFHideWindow.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["BBCF Hide Window"]);
             ptrupdatelabel.Text = "Last Updated:" + ConfigurationManager.AppSettings["LastTimePointersUpdated"];
 
             foreach (Control ctrl in this.Controls)
@@ -88,6 +94,7 @@ namespace AutomaticReplayViewer
                     panelROA.Visible = false;
                     panelBBTag.Visible = false;
                     panelGGXrd.Visible = false;
+                    panelBBCF.Visible = false;
                     break;
                 case 1:
                     panelGeneral.Visible = false;
@@ -95,6 +102,7 @@ namespace AutomaticReplayViewer
                     panelROA.Visible = false;
                     panelBBTag.Visible = false;
                     panelGGXrd.Visible = false;
+                    panelBBCF.Visible = false;
                     break;
                 case 2:
                     panelGeneral.Visible = false;
@@ -102,6 +110,7 @@ namespace AutomaticReplayViewer
                     panelROA.Visible = true;
                     panelBBTag.Visible = false;
                     panelGGXrd.Visible = false;
+                    panelBBCF.Visible = false;
                     break;
                 case 3:
                     panelGeneral.Visible = false;
@@ -109,6 +118,7 @@ namespace AutomaticReplayViewer
                     panelROA.Visible = false;
                     panelBBTag.Visible = true;
                     panelGGXrd.Visible = false;
+                    panelBBCF.Visible = false;
                     break;
                 case 4:
                     panelGeneral.Visible = false;
@@ -116,6 +126,15 @@ namespace AutomaticReplayViewer
                     panelROA.Visible = false;
                     panelBBTag.Visible = false;
                     panelGGXrd.Visible = true;
+                    panelBBCF.Visible = false;
+                    break;
+                case 5:
+                    panelGeneral.Visible = false;
+                    panelSG.Visible = false;
+                    panelROA.Visible = false;
+                    panelBBTag.Visible = false;
+                    panelGGXrd.Visible = false;
+                    panelBBCF.Visible = true;
                     break;
             }
         }
@@ -240,6 +259,30 @@ namespace AutomaticReplayViewer
                                 ConfigurationManager.AppSettings["GGXrd Hide Inputs"] = GGXrdHideInputs.Checked.ToString();
                                 node.Attributes[1].Value = GGXrdHideInputs.Checked.ToString();
                                 break;
+                            case "BBCF Up keyboard input":
+                                ConfigurationManager.AppSettings["BBCF Up keyboard input"] = BBCFUpKeyboardInput.Text;
+                                node.Attributes[1].Value = BBCFUpKeyboardInput.Text;
+                                break;
+                            case "BBCF Confirm keyboard input":
+                                ConfigurationManager.AppSettings["BBCF Confirm keyboard input"] = BBCFConfirmKeyboardInput.Text;
+                                node.Attributes[1].Value = BBCFConfirmKeyboardInput.Text;
+                                break;
+                            case "BBCF Gauge keyboard input":
+                                ConfigurationManager.AppSettings["BBCF Gauge keyboard input"] = BBCFGaugeKeyboardInput.Text;
+                                node.Attributes[1].Value = BBCFGaugeKeyboardInput.Text;
+                                break;
+                            case "BBCF Window keyboard input":
+                                ConfigurationManager.AppSettings["BBCF Window keyboard input"] = BBCFWindowKeyboardInput.Text;
+                                node.Attributes[1].Value = BBCFWindowKeyboardInput.Text;
+                                break;
+                            case "BBCF Hide Gauge":
+                                ConfigurationManager.AppSettings["BBCF Hide Gauge"] = BBCFHideGauge.Checked.ToString();
+                                node.Attributes[1].Value = BBCFHideGauge.Checked.ToString();
+                                break;
+                            case "BBCF Hide Window":
+                                ConfigurationManager.AppSettings["BBCF Hide Window"] = BBCFHideWindow.Checked.ToString();
+                                node.Attributes[1].Value = BBCFHideWindow.Checked.ToString();
+                                break;
                             default:
                                 break;
                         }
@@ -282,9 +325,9 @@ namespace AutomaticReplayViewer
         {
             this.Enabled = false;
 
-            string SGMenuState, ROAMenuState, ROACursorX, ROACursorY, BBTagReplayTheaterActive, BBTagReplayPlaying, BBTagCursor, GGXrdMenuState, GGXrdOutroPlaying, GGXrdCursor, LastTimePointersUpdated;
+            string SGMenuState, ROAMenuState, ROACursorX, ROACursorY, BBTagReplayTheaterActive, BBTagReplayPlaying, BBTagCursor, GGXrdMenuState, GGXrdOutroPlaying, GGXrdCursor, BBCFMenuState, BBCFReplayPlaying, BBCFCursor, LastTimePointersUpdated;
             bool AlreadyUpToDate = false;
-            SGMenuState = ROAMenuState = ROACursorX = ROACursorY = BBTagReplayTheaterActive = BBTagReplayPlaying = BBTagCursor = GGXrdMenuState = GGXrdOutroPlaying = GGXrdCursor = LastTimePointersUpdated = "";
+            SGMenuState = ROAMenuState = ROACursorX = ROACursorY = BBTagReplayTheaterActive = BBTagReplayPlaying = BBTagCursor = GGXrdMenuState = GGXrdOutroPlaying = GGXrdCursor = BBCFMenuState = BBCFReplayPlaying = BBCFCursor = LastTimePointersUpdated = "";
 
             string url = "https://drive.google.com/uc?export=download&id=1brS3pncZNdeWSUX26YwBjipefdrZrkhk";
             XmlDocument ptrXML = new XmlDocument();
@@ -335,6 +378,15 @@ namespace AutomaticReplayViewer
                             break;
                         case "GGXrdCursor":
                             GGXrdCursor = node.Attributes[1].Value;
+                            break;
+                        case "BBCFMenuState":
+                            BBCFMenuState = node.Attributes[1].Value;
+                            break;
+                        case "BBCFReplayPlaying":
+                            BBCFReplayPlaying = node.Attributes[1].Value;
+                            break;
+                        case "BBCFCursor":
+                            BBCFCursor = node.Attributes[1].Value;
                             break;
                         case "LastTimePointersUpdated":
                             LastTimePointersUpdated = node.Attributes[1].Value;
@@ -400,6 +452,18 @@ namespace AutomaticReplayViewer
                             case "GGXrdCursor":
                                 ConfigurationManager.AppSettings["GGXrdCursor"] = GGXrdCursor;
                                 node.Attributes[1].Value = GGXrdCursor;
+                                break;
+                            case "BBCFMenuState":
+                                ConfigurationManager.AppSettings["BBCFMenuState"] = BBCFMenuState;
+                                node.Attributes[1].Value = BBCFMenuState;
+                                break;
+                            case "BBCFReplayPlaying":
+                                ConfigurationManager.AppSettings["BBCFReplayPlaying"] = BBCFReplayPlaying;
+                                node.Attributes[1].Value = BBCFReplayPlaying;
+                                break;
+                            case "BBCFCursor":
+                                ConfigurationManager.AppSettings["BBCFCursor"] = BBCFCursor;
+                                node.Attributes[1].Value = BBCFCursor;
                                 break;
                             case "LastTimePointersUpdated":
                                 ConfigurationManager.AppSettings["LastTimePointersUpdated"] = LastTimePointersUpdated;

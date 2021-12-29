@@ -59,6 +59,10 @@ namespace AutomaticReplayViewer
             this.GGXrdHideInputs = new System.Windows.Forms.CheckBox();
             this.GGXrdHideHUD = new System.Windows.Forms.CheckBox();
             this.GGXrdHideWindow = new System.Windows.Forms.CheckBox();
+            this.BBCFToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
+            this.BBCFSettings = new System.Windows.Forms.Panel();
+            this.BBCFHideWindow = new System.Windows.Forms.CheckBox();
+            this.BBCFHideGauge = new System.Windows.Forms.CheckBox();
             this.InputStopHotkey = new AutomaticReplayViewer.TapToSetTextBox();
             this.InputRecordHotkey = new AutomaticReplayViewer.TapToSetTextBox();
             this.menuStrip.SuspendLayout();
@@ -150,6 +154,7 @@ namespace AutomaticReplayViewer
             this.rivalsOfAetherToolStripMenuItem,
             this.bBTagToolStripMenuItem,
             this.gGXrdRev2ToolStripMenuItem,
+            this.BBCFToolStripMenuItem,
             this.moreOptionsToolStripMenuItem});
             this.selectGameToolStripMenuItem.Name = "selectGameToolStripMenuItem";
             this.selectGameToolStripMenuItem.Size = new System.Drawing.Size(84, 20);
@@ -326,6 +331,42 @@ namespace AutomaticReplayViewer
             this.GGXrdHideWindow.Text = "Hide Window";
             this.GGXrdHideWindow.UseVisualStyleBackColor = true;
             // 
+            // BBCFToolStripMenuItem
+            // 
+            this.BBCFToolStripMenuItem.Name = "BBCFToolStripMenuItem";
+            this.BBCFToolStripMenuItem.Size = new System.Drawing.Size(156, 22);
+            this.BBCFToolStripMenuItem.Text = "BBCF";
+            this.BBCFToolStripMenuItem.Click += new System.EventHandler(this.BBCFToolStripMenuItem_Click);
+            // 
+            // BBCFSettings
+            // 
+            this.BBCFSettings.Controls.Add(this.BBCFHideWindow);
+            this.BBCFSettings.Controls.Add(this.BBCFHideGauge);
+            this.BBCFSettings.Location = new System.Drawing.Point(0, 202);
+            this.BBCFSettings.Name = "BBCFSettings";
+            this.BBCFSettings.Size = new System.Drawing.Size(340, 18);
+            this.BBCFSettings.TabIndex = 12;
+            // 
+            // BBCFHideWindow
+            // 
+            this.BBCFHideWindow.AutoSize = true;
+            this.BBCFHideWindow.Location = new System.Drawing.Point(181, 1);
+            this.BBCFHideWindow.Name = "BBCFHideWindow";
+            this.BBCFHideWindow.Size = new System.Drawing.Size(90, 17);
+            this.BBCFHideWindow.TabIndex = 10;
+            this.BBCFHideWindow.Text = "Hide Window";
+            this.BBCFHideWindow.UseVisualStyleBackColor = true;
+            // 
+            // BBCFHideGauge
+            // 
+            this.BBCFHideGauge.AutoSize = true;
+            this.BBCFHideGauge.Location = new System.Drawing.Point(71, 1);
+            this.BBCFHideGauge.Name = "BBCFHideGauge";
+            this.BBCFHideGauge.Size = new System.Drawing.Size(83, 17);
+            this.BBCFHideGauge.TabIndex = 9;
+            this.BBCFHideGauge.Text = "Hide Gauge";
+            this.BBCFHideGauge.UseVisualStyleBackColor = true;
+            // 
             // InputStopHotkey
             // 
             this.InputStopHotkey.Location = new System.Drawing.Point(140, 171);
@@ -347,6 +388,7 @@ namespace AutomaticReplayViewer
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(340, 232);
+            this.Controls.Add(this.BBCFSettings);
             this.Controls.Add(this.GGXrdSettings);
             this.Controls.Add(this.BBTagSettings);
             this.Controls.Add(this.SGSettings);
@@ -374,6 +416,8 @@ namespace AutomaticReplayViewer
             this.BBTagSettings.PerformLayout();
             this.GGXrdSettings.ResumeLayout(false);
             this.GGXrdSettings.PerformLayout();
+            this.BBCFSettings.ResumeLayout(false);
+            this.BBCFSettings.PerformLayout();
             this.ResumeLayout(false);
             this.PerformLayout();
 
@@ -440,6 +484,10 @@ namespace AutomaticReplayViewer
         private CheckBox GGXrdHideInputs;
         private CheckBox GGXrdHideHUD;
         private CheckBox GGXrdHideWindow;
+        private ToolStripMenuItem BBCFToolStripMenuItem;
+        private Panel BBCFSettings;
+        private CheckBox BBCFHideWindow;
+        private CheckBox BBCFHideGauge;
     }
 }
 
