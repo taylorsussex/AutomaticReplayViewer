@@ -1,3 +1,6 @@
+v2.0
+- Added support for BBCF
+
 v1.53
 - Updated pointers for ROA
 - Due to changes to ROA, revious versions of ReplayViewer will no longer be compatible with ROA
