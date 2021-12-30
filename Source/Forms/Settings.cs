@@ -4,6 +4,7 @@ using System.Configuration;
 using System.Reflection;
 using System.Windows.Forms;
 using System.Xml;
+using System.Net;
 
 namespace AutomaticReplayViewer
 {
@@ -329,8 +330,13 @@ namespace AutomaticReplayViewer
             bool AlreadyUpToDate = false;
             SGMenuState = ROAMenuState = ROACursorX = ROACursorY = BBTagReplayTheaterActive = BBTagReplayPlaying = BBTagCursor = GGXrdMenuState = GGXrdOutroPlaying = GGXrdCursor = BBCFMenuState = BBCFReplayPlaying = BBCFCursor = LastTimePointersUpdated = "";
 
-            string url = "https://drive.google.com/uc?export=download&id=1brS3pncZNdeWSUX26YwBjipefdrZrkhk";
+            ServicePointManager.Expect100Continue = true;
+            ServicePointManager.SecurityProtocol = SecurityProtocolType.Tls12;
+
+            string url = "https://raw.githubusercontent.com/taylorsussex/AutomaticReplayViewer/master/Source/ReplayViewerPointers.xml";
+
             XmlDocument ptrXML = new XmlDocument();
+            ptrXML.Load(url);
             try
             {
                 ptrXML.Load(url);
