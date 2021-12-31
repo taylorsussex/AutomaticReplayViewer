@@ -54,6 +54,11 @@ namespace AutomaticReplayViewer
             DisplayAttackData.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["DefaultDisplayAttackData"]);
             BBTagHideGauge.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["BBTag Hide Gauge"]);
             BBTagHideWindow.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["BBTag Hide Window"]);
+            GGXrdHideWindow.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["GGXrd Hide Window"]);
+            GGXrdHideHUD.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["GGXrd Hide HUD"]);
+            GGXrdHideInputs.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["GGXrd Hide Inputs"]);
+            BBCFHideGauge.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["BBCF Hide Gauge"]);
+            BBCFHideWindow.Checked = Convert.ToBoolean(ConfigurationManager.AppSettings["BBCF Hide Window"]);
             switch (ConfigurationManager.AppSettings["DefaultGame"])
             {
                 default:
@@ -259,6 +264,17 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"GGXrdMenuState\" value=\"0x0173A674,0x94,0x4\" />");
             sb.AppendLine("    <add key=\"GGXrdOutroPlaying\" value=\"0x1937DEC\" />");
             sb.AppendLine("    <add key=\"GGXrdCursor\" value=\"0x0173A670,0x14,0x4,0x60,0x1BC\" />");
+            sb.AppendLine("    <!--Relevant Key Bindings in BBCF-->");
+            sb.AppendLine("    <add key=\"BBCF Up keyboard input\" value=\"W\" />");
+            sb.AppendLine("    <add key=\"BBCF Confirm keyboard input\" value=\"J\" />");
+            sb.AppendLine("    <add key=\"BBCF Gauge keyboard input\" value=\"U\" />");
+            sb.AppendLine("    <add key=\"BBCF Window keyboard input\" value=\"I\" />");
+            sb.AppendLine("    <add key=\"BBCF Hide Gauge\" value=\"False\" />");
+            sb.AppendLine("    <add key=\"BBCF Hide Window\" value=\"True\" />");
+            sb.AppendLine("    <!--BBCF Pointers-->");
+            sb.AppendLine("    <add key=\"BBCFMenuState\" value=\"0x5C09DC\" />");
+            sb.AppendLine("    <add key=\"BBCFReplayPlaying\" value=\"0x5F9590\" />");
+            sb.AppendLine("    <add key=\"BBCFCursor\" value=\"0xE302B4\" />");
             sb.AppendLine("    <!--Default Settings on Load-->");
             sb.AppendLine("    <add key=\"DefaultNumberOfReplays\" value=\"1\" />");
             sb.AppendLine("    <add key=\"DefaultRecordHotkey\" value=\"\" />");
