@@ -272,15 +272,15 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"BBCF Hide Gauge\" value=\"False\" />");
             sb.AppendLine("    <add key=\"BBCF Hide Window\" value=\"True\" />");
             sb.AppendLine("    <!--BBCF Pointers-->");
-            sb.AppendLine("    <add key=\"BBCFMenuState\" value=\"0x5C09DC\" />");
-            sb.AppendLine("    <add key=\"BBCFReplayPlaying\" value=\"0x5F9590\" />");
-            sb.AppendLine("    <add key=\"BBCFCursor\" value=\"0xE302B4\" />");
+            sb.AppendLine("    <add key=\"BBCFMenuState\" value=\"0x5F15BC\" />");
+            sb.AppendLine("    <add key=\"BBCFReplayPlaying\" value=\"0x62A1D0\" />");
+            sb.AppendLine("    <add key=\"BBCFCursor\" value=\"0xE61324\" />");
             sb.AppendLine("    <!--Default Settings on Load-->");
             sb.AppendLine("    <add key=\"DefaultNumberOfReplays\" value=\"1\" />");
             sb.AppendLine("    <add key=\"DefaultRecordHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultStopHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultGame\" value=\"Skullgirls\" />");
-            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"30/12/21\" />");
+            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"22/01/22\" />");
             sb.AppendLine("  </appSettings>");
             sb.AppendLine("</configuration>");
 
