@@ -15,9 +15,9 @@
 	<Pointer key="GGXrdOutroPlaying" value="0x1937DEC"></Pointer>
 	<Pointer key="GGXrdCursor" value="0x0173A670,0x14,0x4,0x60,0x1BC"></Pointer>
     <!--BBCF Pointers-->
-    <Pointer key="BBCFMenuState" value="0x5F15BC"></Pointer>
-	<Pointer key="BBCFReplayPlaying" value="0x62A1D0"></Pointer>
-	<Pointer key="BBCFCursor" value="0xE61324"></Pointer>
+    <Pointer key="BBCFMenuState" value="0x5F15DC"></Pointer>
+	<Pointer key="BBCFReplayPlaying" value="0x62A1F0"></Pointer>
+	<Pointer key="BBCFCursor" value="0xE61344"></Pointer>
 	<!--General Info-->
-	<Pointer key="LastTimePointersUpdated" value="22/01/22"></Pointer>
+	<Pointer key="LastTimePointersUpdated" value="20/02/22"></Pointer>
 </Pointers>

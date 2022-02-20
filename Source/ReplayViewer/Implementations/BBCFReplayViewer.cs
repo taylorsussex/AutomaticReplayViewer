@@ -25,10 +25,6 @@ class BBCFReplayViewer : ReplayViewer
             // Get pointers
             MenuState = findPointer(GetPointerArray("BBCFMenuState"));
 
-            // Notes:
-            // 8 -> outro not playing
-            // 4 -> P2 outro playing
-            // 0 -> P1 outro playing
             ReplayPlaying = findPointer(GetPointerArray("BBCFReplayPlaying"));
 
             // Make sure user is in replay menu before proceeding
