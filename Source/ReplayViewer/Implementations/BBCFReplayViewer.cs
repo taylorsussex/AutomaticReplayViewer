@@ -55,14 +55,6 @@ class BBCFReplayViewer : ReplayViewer
     protected override void MenuStateActive(ref bool menu)
     {
         menu = (readMemory(MenuState) == 4);
-
-        //int outro = readMemory(OutroPlaying);
-        //if (outro == 0 || outro == 4)
-        //{
-        //    Keyboard.KeyDown(Confirm);
-        //    Thread.Sleep(50);
-        //    Keyboard.KeyUp(Confirm);
-        //}
     }
 
     protected override void NavigateDefault()

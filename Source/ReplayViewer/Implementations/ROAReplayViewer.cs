@@ -44,7 +44,7 @@ class ROAReplayViewer : ReplayViewer
 
     protected override void MenuStateActive(ref bool menu)
     {
-        menu = (readMemory(pointerMenuState) == 71);
+        menu = (readMemory(pointerMenuState) == 78);
         if (readMemory(pointerMenuState) == 8)
         {
             Keyboard.KeyDown(Start);
