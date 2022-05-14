@@ -233,14 +233,14 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"DefaultDisplayInputs\" value=\"False\" />");
             sb.AppendLine("    <add key=\"DefaultDisplayAttackData\" value=\"False\" />");
             sb.AppendLine("    <!--SG Pointers-->");
-            sb.AppendLine("    <add key=\"SGMenuState\" value=\"4369548\" />");
+            sb.AppendLine("    <add key=\"SGMenuState\" value=\"4394124\" />");
             sb.AppendLine("    <!--Relevant Key Bindings in ROA-->");
             sb.AppendLine("    <add key=\"ROA Start keyboard input\" value=\"Return\" />");
             sb.AppendLine("    <add key=\"ROA L keyboard input\" value=\"A\" />");
             sb.AppendLine("    <!--ROA Pointers-->");
-            sb.AppendLine("    <add key=\"ROAMenuState\" value=\"0x581F500\" />");
-            sb.AppendLine("    <add key=\"ROACursorX\" value=\"0x0581F4D8,0x80,0xA0\" />");
-            sb.AppendLine("    <add key=\"ROACursorY\" value=\"0x0581F4D8,0x80,0xA4\" />");
+            sb.AppendLine("    <add key=\"ROAMenuState\" value=\"0x59A8A40\" />");
+            sb.AppendLine("    <add key=\"ROACursorX\" value=\"0x059A8A18,0x80,0xA0\" />");
+            sb.AppendLine("    <add key=\"ROACursorY\" value=\"0x059A8A18,0x80,0xA4\" />");
             sb.AppendLine("    <!--Relevant Key Bindings in BBTag-->");
             sb.AppendLine("    <add key=\"BBTag Up keyboard input\" value=\"W\" />");
             sb.AppendLine("    <add key=\"BBTag Confirm keyboard input\" value=\"J\" />");
@@ -272,15 +272,15 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"BBCF Hide Gauge\" value=\"False\" />");
             sb.AppendLine("    <add key=\"BBCF Hide Window\" value=\"True\" />");
             sb.AppendLine("    <!--BBCF Pointers-->");
-            sb.AppendLine("    <add key=\"BBCFMenuState\" value=\"0x5F15DC\" />");
-            sb.AppendLine("    <add key=\"BBCFReplayPlaying\" value=\"0x62A1F0\" />");
-            sb.AppendLine("    <add key=\"BBCFCursor\" value=\"0xE61344\" />");
+            sb.AppendLine("    <add key=\"BBCFMenuState\" value=\"0x5F15FC\" />");
+            sb.AppendLine("    <add key=\"BBCFReplayPlaying\" value=\"0x62A218\" />");
+            sb.AppendLine("    <add key=\"BBCFCursor\" value=\"0xE612A4\" />");
             sb.AppendLine("    <!--Default Settings on Load-->");
             sb.AppendLine("    <add key=\"DefaultNumberOfReplays\" value=\"1\" />");
             sb.AppendLine("    <add key=\"DefaultRecordHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultStopHotkey\" value=\"\" />");
             sb.AppendLine("    <add key=\"DefaultGame\" value=\"Skullgirls\" />");
-            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"26/02/22\" />");
+            sb.AppendLine("    <add key=\"LastTimePointersUpdated\" value=\"14/05/22\" />");
             sb.AppendLine("  </appSettings>");
             sb.AppendLine("</configuration>");
 

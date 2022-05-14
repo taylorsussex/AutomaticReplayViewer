@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Pointers>
 	<!--SG Pointers-->
-	<Pointer key="SGMenuState" value="4369548"></Pointer>
+	<Pointer key="SGMenuState" value="4394124"></Pointer>
 	<!--ROA Pointers-->
-	<Pointer key="ROAMenuState" value="0x581F500"></Pointer>
-	<Pointer key="ROACursorX" value="0x0581F4D8,0x80,0xA0"></Pointer>
-	<Pointer key="ROACursorY" value="0x0581F4D8,0x80,0xA4"></Pointer>
+	<Pointer key="ROAMenuState" value="0x59A8A40"></Pointer>
+	<Pointer key="ROACursorX" value="0x059A8A18,0x80,0xA0"></Pointer>
+	<Pointer key="ROACursorY" value="0x059A8A18,0x80,0xA4"></Pointer>
 	<!--BBTag Pointers-->
 	<Pointer key="BBTagReplayTheaterActive" value="0x172FEC8"></Pointer>
 	<Pointer key="BBTagReplayPlaying" value="0x5FE488"></Pointer>
@@ -15,9 +15,9 @@
 	<Pointer key="GGXrdOutroPlaying" value="0x1937DEC"></Pointer>
 	<Pointer key="GGXrdCursor" value="0x0173A670,0x14,0x4,0x60,0x1BC"></Pointer>
     <!--BBCF Pointers-->
-    <Pointer key="BBCFMenuState" value="0x5F15DC"></Pointer>
-	<Pointer key="BBCFReplayPlaying" value="0x62A1F0"></Pointer>
-	<Pointer key="BBCFCursor" value="0xE61344"></Pointer>
+    <Pointer key="BBCFMenuState" value="0x5F15FC"></Pointer>
+	<Pointer key="BBCFReplayPlaying" value="0x62A218"></Pointer>
+	<Pointer key="BBCFCursor" value="0xE612A4"></Pointer>
 	<!--General Info-->
-	<Pointer key="LastTimePointersUpdated" value="26/02/22"></Pointer>
+	<Pointer key="LastTimePointersUpdated" value="14/05/22"></Pointer>
 </Pointers>
