@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <Pointers>
 	<!--SG Pointers-->
-	<Pointer key="SGMenuState" value="4394124"></Pointer>
+	<Pointer key="SGMenuState" value="4177096"></Pointer>
 	<!--ROA Pointers-->
 	<Pointer key="ROAMenuState" value="0x59A8A40"></Pointer>
 	<Pointer key="ROACursorX" value="0x059A8A18,0x80,0xA0"></Pointer>
@@ -19,5 +19,5 @@
 	<Pointer key="BBCFReplayPlaying" value="0x62A218"></Pointer>
 	<Pointer key="BBCFCursor" value="0xE612A4"></Pointer>
 	<!--General Info-->
-	<Pointer key="LastTimePointersUpdated" value="14/05/22"></Pointer>
+	<Pointer key="LastTimePointersUpdated" value="18/07/22"></Pointer>
 </Pointers>
