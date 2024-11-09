@@ -233,7 +233,7 @@ namespace AutomaticReplayViewer
             sb.AppendLine("    <add key=\"DefaultDisplayInputs\" value=\"False\" />");
             sb.AppendLine("    <add key=\"DefaultDisplayAttackData\" value=\"False\" />");
             sb.AppendLine("    <!--SG Pointers-->");
-            sb.AppendLine("    <add key=\"SGMenuState\" value=\"4176172\" />");
+            sb.AppendLine("    <add key=\"SGMenuState\" value=\"4416540\" />");
             sb.AppendLine("    <!--Relevant Key Bindings in ROA-->");
             sb.AppendLine("    <add key=\"ROA Start keyboard input\" value=\"Return\" />");
             sb.AppendLine("    <add key=\"ROA L keyboard input\" value=\"A\" />");
